@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  alacrittyThemeFilePath = ".config/alacritty/themes/gnome_terminal.toml";
-in
 {
   home.username = "rh";
   home.homeDirectory = "/home/rh";
@@ -22,11 +19,10 @@ in
     recursive = true;
   };
 
-  # basic configuration of git, please change to your own
-  programs.git = {
-    enable = true;
-    userName = "ramblehead";
-    userEmail = "v.rybynok@gmail.com";
+  programs.git.enable = true;
+  home.file.".config/git" = {
+    source = ./dotfiles/.config/git;
+    recursive = true;
   };
 
   # Packages that should be installed to the user profile.
