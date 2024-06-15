@@ -131,7 +131,8 @@
     hack-font
   ];
 
-  environment.variables.EDITOR = "micro";
+  # environment.variables.EDITOR = "micro";
+  environment.variables.EDITOR = "nvim";
   environment.variables.XCURSOR_THEME = "Adwaita";
 
   # Some programs need SUID wrappers, can be configured further or are
