@@ -21,7 +21,7 @@
 
     helix.url = "github:helix-editor/helix/master";
 
-    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
+    # alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
 
     dotfiles = {
       url = "git+file:./dotfiles";
@@ -29,14 +29,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, alacritty-theme, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.rh-krancher = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
-        ({ config, pkgs, ...}: {
-          nixpkgs.overlays = [ alacritty-theme.overlays.default ];
-        })
+        # ({ config, pkgs, ...}: {
+        #   nixpkgs.overlays = [ alacritty-theme.overlays.default ];
+        # })
 
         ({ config, pkgs, ... }: {
           nixpkgs.overlays = [
