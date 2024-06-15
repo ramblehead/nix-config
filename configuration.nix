@@ -105,6 +105,7 @@
   environment.systemPackages = with pkgs; [
     git
     neovim
+    mc
     micro
     inputs.helix.packages."${pkgs.system}".helix
     far2l
