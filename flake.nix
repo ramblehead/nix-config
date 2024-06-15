@@ -20,7 +20,13 @@
     # };
 
     helix.url = "github:helix-editor/helix/master";
+
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
+
+    dotfiles = {
+      url = "git+file:./dotfiles";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, alacritty-theme, ... }@inputs: {
@@ -74,6 +80,7 @@
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
+          home-manager.extraSpecialArgs = { dotfiles = inputs.dotfiles; };
         }
       ];
     };

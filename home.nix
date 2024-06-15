@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, dotfiles, ... }:
 
 {
   home.username = "rh";
@@ -9,19 +9,19 @@
 
   programs.alacritty.enable = true;
   home.file.".config/alacritty" = {
-    source = ./dotfiles/.config/alacritty;
+    source = "${dotfiles}/.config/alacritty";
     recursive = true;
   };
 
   programs.zellij.enable = true;
   home.file.".config/zellij" = {
-    source = ./dotfiles/.config/zellij;
+    source = "${dotfiles}/.config/zellij";
     recursive = true;
   };
 
   programs.git.enable = true;
   home.file.".config/git" = {
-    source = ./dotfiles/.config/git;
+    source = "${dotfiles}/.config/git";
     recursive = true;
   };
 
