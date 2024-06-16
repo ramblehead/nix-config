@@ -9,6 +9,13 @@
 
   home.file.".inputrc".source = "${dotfiles}/.inputrc";
 
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      mc = "source ${pkgs.mc}/libexec/mc/mc-wrapper.sh";
+    };
+  };
+
   programs.alacritty.enable = true;
   home.file.".config/alacritty" = {
     source = "${dotfiles}/.config/alacritty";
