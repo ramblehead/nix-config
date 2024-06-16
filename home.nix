@@ -13,6 +13,8 @@
     enable = true;
     shellAliases = {
       mc = "source ${pkgs.mc}/libexec/mc/mc-wrapper.sh";
+      vi = "nvim";
+      vim = "nvim";
     };
   };
 
