@@ -128,8 +128,9 @@
     gnomeExtensions.steal-my-focus-window
     gnomeExtensions.system-monitor-next
     gnomeExtensions.appindicator # Old tray icons, e.g. Telegram
+    wl-clipboard
     hack-font
-  ];
+ ];
 
   # environment.variables.EDITOR = "micro";
   environment.variables.EDITOR = "nvim";
