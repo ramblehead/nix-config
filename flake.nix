@@ -30,94 +30,100 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: rec {
-    commonMcAttrs = {
-      buildInputs = with nixpkgs.legacyPackages.x86_64-linux; [
-        autoconf
-        automake
-        libtool
-      ];
-      shellHook = ''
-        export RH="test-x";
-      '';
-    }; 
+    # mcAttrs = {
+    #   buildInputs = nixpkgs.legacyPackages.x86_64-linux.mc.buildInputs ++ (with nixpkgs.legacyPackages.x86_64-linux; [
+    #     autoconf
+    #     automake
+    #     libtool
+    #   ]);
+    #   shellHook = ''
+    #     export RH="test-x";
+    #   '';
+    # }; 
  
-    devShells = {
-      x86_64-linux = {
-        mc = nixpkgs.legacyPackages.x86_64-linux.mkShell commonMcAttrs;
-      };
-    };
+    # devShells = {
+    #   x86_64-linux = {
+    #     mc = nixpkgs.legacyPackages.x86_64-linux.mkShell mcAttrs;
+    #   };
+    # };
 
 
     nixosConfigurations.rh-krancher = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; inherit commonMcAttrs; };
+      specialArgs = { inherit inputs; };
       modules = [
         # ({ config, pkgs, ...}: {
         #   nixpkgs.overlays = [ alacritty-theme.overlays.default ];
         # })
 
-        ({ config, pkgs, commonMcAttrs, ... }: {
-          nixpkgs.overlays = [
-            # (self: super: {
-            #   mc = super.mc.overrideAttrs (oldAttrs: {
-            #     shellHook = ''
-            #       export RH="test-x";
-            #     '';
+        # ({ config, pkgs, mcAttrs, ... }: {
+        #   nixpkgs.overlays = [
+        #     # (self: super: {
+        #     #   mc = super.mc.overrideAttrs (oldAttrs: {
+        #     #     shellHook = ''
+        #     #       export RH="test-x";
+        #     #     '';
 
-            #     # preConfigure = ''
-            #     #   # Copy syntax file
-            #     #   # cp ./nix.syntax misc/syntax/nix.syntax
-            #     #   echo ${builtins.readFile ./nix.syntax} > misc/syntax/nix.syntax
+        #     #     # preConfigure = ''
+        #     #     #   # Copy syntax file
+        #     #     #   # cp ./nix.syntax misc/syntax/nix.syntax
+        #     #     #   echo ${builtins.readFile ./nix.syntax} > misc/syntax/nix.syntax
 
-            #     #   # Add syntax file to the list of data files to be installed
-            #     #   sed -i -e "s|yxx.syntax|yxx.syntax nix.syntax|" misc/syntax/Makefile.am
+        #     #     #   # Add syntax file to the list of data files to be installed
+        #     #     #   sed -i -e "s|yxx.syntax|yxx.syntax nix.syntax|" misc/syntax/Makefile.am
 
-            #     #   # Add Nix syntax to the syntax configuration
-            #     #   sed -i -e '/unknown$/i \
-            #     #   file ..\\*\\\\.nix$ Nix\\sExpression\
-            #     #   include nix.syntax\
-            #     #   ' misc/syntax/Syntax.in
+        #     #     #   # Add Nix syntax to the syntax configuration
+        #     #     #   sed -i -e '/unknown$/i \
+        #     #     #   file ..\\*\\\\.nix$ Nix\\sExpression\
+        #     #     #   include nix.syntax\
+        #     #     #   ' misc/syntax/Syntax.in
 
-            #     #   Regenerate configure script
-            #     #   autoreconf -f -v -i
-            #     #   ./autogen.sh
-            #     # '';
-            #     buildInputs = oldAttrs.buildInputs ++ [ pkgs.autoconf pkgs.automake pkgs.libtool ];
-            #   });
-            # })
-            (self: super: {
-              mc = super.mc.overrideAttrs (oldAttrs: {
-                inherit (commonMcAttrs) shellHook;
+        #     #     #   Regenerate configure script
+        #     #     #   autoreconf -f -v -i
+        #     #     #   ./autogen.sh
+        #     #     # '';
+        #     #     buildInputs = oldAttrs.buildInputs ++ [ pkgs.autoconf pkgs.automake pkgs.libtool ];
+        #     #   });
+        #     # })
+        #     (self: super: {
+        #       mc = super.mc.overrideAttrs (oldAttrs: {
+        #         inherit (mcAttrs) shellHook buildInputs;
 
-                # preConfigure = ''
-                #   # Copy syntax file
-                #   # cp ./nix.syntax misc/syntax/nix.syntax
-                #   echo ${builtins.readFile ./nix.syntax} > misc/syntax/nix.syntax
+        #         # preConfigure = ''
+        #         #   # Copy syntax file
+        #         #   # cp ./nix.syntax misc/syntax/nix.syntax
+        #         #   # echo ${builtins.readFile ./nix.syntax} > misc/syntax/nix.syntax
+	# 	#   cp ${./nix.syntax} misc/syntax/nix.syntax
 
-                #   # Add syntax file to the list of data files to be installed
-                #   sed -i -e "s|yxx.syntax|yxx.syntax nix.syntax|" misc/syntax/Makefile.am
+        #         #   # Add syntax file to the list of data files to be installed
+        #         #   sed -i -e "s|yxx.syntax|yxx.syntax nix.syntax|" misc/syntax/Makefile.am
 
-                #   # Add Nix syntax to the syntax configuration
-                #   sed -i -e '/unknown$/i \
-                #   file ..\\*\\\\.nix$ Nix\\sExpression\
-                #   include nix.syntax\
-                #   ' misc/syntax/Syntax.in
+        #         #   # Add Nix syntax to the syntax configuration
+        #         #   sed -i -e '/unknown$/i \
+        #         #   file ..\\*\\\\.nix$ Nix\\sExpression\
+        #         #   include nix.syntax\
+        #         #   ' misc/syntax/Syntax.in
 
-                #   Regenerate configure script
-                #   autoreconf -f -v -i
-                #   ./autogen.sh
-                # '';
-                # buildInputs = oldAttrs.buildInputs ++ [ pkgs.autoconf pkgs.automake pkgs.libtool ];
-                buildInputs = oldAttrs.buildInputs ++ commonMcAttrs.buildInputs;
-              });
-            })
-            # (self: super: {
-            #   mc = super.mc.overrideAttrs (oldAttrs: rec {
-            #     inherit (commonMcAttrs) buildInputs shellHook;
-            #   });
-            # })
-          ];
-        })
+        #         #   # Regenerate configure script
+        #         #   autoreconf -f -v -i
+        #         # '';
+
+        #         preConfigure = ''
+        #           cp ${./nix.syntax} misc/syntax/nix.syntax
+        #           sed -i -e "s|yxx.syntax|yxx.syntax nix.syntax|" misc/syntax/Makefile.am
+        #           autoreconf -f -v -i
+        #         '';
+
+        #         # buildInputs = oldAttrs.buildInputs ++ [ pkgs.autoconf pkgs.automake pkgs.libtool ];
+        #       });
+        #     })
+        #     # (self: super: {
+        #     #   mc = super.mc.overrideAttrs (oldAttrs: rec {
+        #     #     inherit (mcAttrs) buildInputs shellHook;
+        #     #   });
+        #     # })
+        #   ];
+        # })
 
         ./configuration.nix
 
