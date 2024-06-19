@@ -143,7 +143,7 @@
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
-          home-manager.extraSpecialArgs = { dotfiles = inputs.dotfiles; };
+          home-manager.extraSpecialArgs = { inherit inputs; };
         }
       ];
     };

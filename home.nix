@@ -1,5 +1,6 @@
-{ config, pkgs, dotfiles, ... }:
+{ config, pkgs, inputs, ... }:
 
+let inherit (inputs) dotfiles; in
 {
   home.username = "rh";
   home.homeDirectory = "/home/rh";
@@ -38,11 +39,16 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    # Text editors and IDEs
+    inputs.helix.packages."${pkgs.system}".helix
+
+    # Terminals
+    tmux
+
     # Backup, Cloud Storage and NAS
     rclone
     restic
-    # Terminals
-    tmux
+
     # Misc
     fastfetch
     cowsay
