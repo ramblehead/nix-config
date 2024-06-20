@@ -27,6 +27,11 @@
       url = "git+file:./dotfiles";
       flake = false;
     };
+
+    overlay-mc = {
+      url = "/home/rh/box/backyard/garden/nix-config/overlays/mc";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: rec {
@@ -35,30 +40,31 @@
       specialArgs = { inherit inputs; };
       modules = [
         ({ config, pkgs, inputs, ... }: {
-          nixpkgs.overlays = [
-            # (import ./overlays/mc/default.nix)
-            (self: super: {
-              mc = super.mc.overrideAttrs (prevAttrs: {
-                preConfigure = ''
-                  cp ${./nix.syntax} misc/syntax/nix.syntax
+          nixpkgs.overlays =  [
+            (import "${inputs.overlay-mc}")
+            # (import ./overlay.nix)
+            # (self: super: {
+            #   mc = super.mc.overrideAttrs (prevAttrs: {
+            #     preConfigure = ''
+            #       cp ${./nix.syntax} misc/syntax/nix.syntax
 
-                  sed -i -e "s|yxx.syntax|yxx.syntax nix.syntax|" misc/syntax/Makefile.am
+            #       sed -i -e "s|yxx.syntax|yxx.syntax nix.syntax|" misc/syntax/Makefile.am
 
-                  sed -i -e '/unknown$/i \
-                  file ..\\*\\\\.nix$ Nix\\sExpression\
-                  include nix.syntax\
-                  ' misc/syntax/Syntax.in
+            #       sed -i -e '/unknown$/i \
+            #       file ..\\*\\\\.nix$ Nix\\sExpression\
+            #       include nix.syntax\
+            #       ' misc/syntax/Syntax.in
 
-                  autoreconf -f -v -i
-                '';
+            #       autoreconf -f -v -i
+            #     '';
 
-                buildInputs = prevAttrs.buildInputs ++ (with pkgs; [
-                  pkgs.autoconf
-                  pkgs.automake
-                  pkgs.libtool
-                ]);
-              });
-            })
+            #     buildInputs = prevAttrs.buildInputs ++ (with pkgs; [
+            #       pkgs.autoconf
+            #       pkgs.automake
+            #       pkgs.libtool
+            #     ]);
+            #   });
+            # })
           ];
         })
 

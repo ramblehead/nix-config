@@ -130,12 +130,26 @@
         "type": "github"
       }
     },
+    "overlay-mc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718923214,
+        "narHash": "sha256-uxb0QmZlQ0QjDkXteY0yVZeiLaldt5i/urGhIgMAMNI=",
+        "path": "/home/rh/box/backyard/garden/nix-config/overlays/mc",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/rh/box/backyard/garden/nix-config/overlays/mc",
+        "type": "path"
+      }
+    },
     "root": {
       "inputs": {
         "dotfiles": "dotfiles",
         "helix": "helix",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "overlay-mc": "overlay-mc"
       }
     },
     "rust-overlay": {
