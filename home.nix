@@ -40,6 +40,7 @@ let inherit (inputs) dotfiles; in
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     # Text editors and IDEs
+    gitui
     inputs.helix.packages."${pkgs.system}".helix
 
     # Terminals
