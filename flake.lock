@@ -135,11 +135,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-C7d9IsAgBrqQONmHyJ3k5D82GwuQANuDU/3eL2/S2OY=",
-        "path": "/nix/store/z20syp6gxbxng5jiknqdc2xjwvhk05jq-source/overlays/mc",
+        "path": "/nix/store/hc2rsxz7rhxr36kicwphnz3dhqrg74v0-source/overlays/mc",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/z20syp6gxbxng5jiknqdc2xjwvhk05jq-source/overlays/mc",
+        "path": "/nix/store/hc2rsxz7rhxr36kicwphnz3dhqrg74v0-source/overlays/mc",
         "type": "path"
       }
     },
