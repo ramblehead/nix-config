@@ -29,7 +29,7 @@
     };
 
     overlay-mc = {
-      url = "/home/rh/box/backyard/garden/nix-config/overlays/mc";
+      url = "./overlays/mc";
       flake = false;
     };
   };
@@ -41,7 +41,7 @@
       modules = [
         ({ config, pkgs, inputs, ... }: {
           nixpkgs.overlays =  [
-            (import "${inputs.overlay-mc}")
+            (import "${inputs.overlay-mc}" { inherit pkgs; inherit inputs; }).overlay
             # (import ./overlay.nix)
             # (self: super: {
             #   mc = super.mc.overrideAttrs (prevAttrs: {

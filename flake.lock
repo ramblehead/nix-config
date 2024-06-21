@@ -133,13 +133,13 @@
     "overlay-mc": {
       "flake": false,
       "locked": {
-        "lastModified": 1718923214,
-        "narHash": "sha256-uxb0QmZlQ0QjDkXteY0yVZeiLaldt5i/urGhIgMAMNI=",
-        "path": "/home/rh/box/backyard/garden/nix-config/overlays/mc",
+        "lastModified": 1,
+        "narHash": "sha256-C7d9IsAgBrqQONmHyJ3k5D82GwuQANuDU/3eL2/S2OY=",
+        "path": "/nix/store/z20syp6gxbxng5jiknqdc2xjwvhk05jq-source/overlays/mc",
         "type": "path"
       },
       "original": {
-        "path": "/home/rh/box/backyard/garden/nix-config/overlays/mc",
+        "path": "/nix/store/z20syp6gxbxng5jiknqdc2xjwvhk05jq-source/overlays/mc",
         "type": "path"
       }
     },
