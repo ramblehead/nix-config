@@ -24,11 +24,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1718477437,
-        "narHash": "sha256-Z63DhMtL/rciMI3ATEG/80n78z5tXk+lfwAyKE1VjkU=",
+        "lastModified": 1719105018,
+        "narHash": "sha256-5kAyjKt6dWqLFHyAt13CVw34ZA2NuE1APcoEuxIr9qw=",
         "ref": "refs/heads/main",
-        "rev": "b1235e119d08c176c99d9e6a18eb3b7d3b6afa41",
-        "revCount": 6,
+        "rev": "fb75068614337f2e45c522fafc128c9dcfaafbba",
+        "revCount": 8,
         "type": "git",
         "url": "file:./dotfiles"
       },
@@ -63,11 +63,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1718727545,
-        "narHash": "sha256-j9h28WtYUswzsF/mwm7DJMxCPleloFrGUsnuysyE0OQ=",
+        "lastModified": 1719104979,
+        "narHash": "sha256-7gcMYBV2uYJyR01ILS6919t9wGGQtC5oTMLFTTEnOhM=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "9b7dffbd613b3ba981890de78712ac0df520f145",
+        "rev": "a982e5ce260e8191a2a24fa62e9e5bdf488bb5d4",
         "type": "github"
       },
       "original": {

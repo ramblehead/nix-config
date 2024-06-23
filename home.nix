@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ self, config, pkgs, inputs, ... }:
 
 let inherit (inputs) dotfiles; in
 {
@@ -19,22 +19,23 @@ let inherit (inputs) dotfiles; in
     };
   };
 
+  # see https://github.com/nix-community/home-manager/issues/257
   programs.alacritty.enable = true;
   home.file.".config/alacritty" = {
     source = "${dotfiles}/.config/alacritty";
-    recursive = true;
+    # recursive = true;
   };
 
   programs.zellij.enable = true;
   home.file.".config/zellij" = {
     source = "${dotfiles}/.config/zellij";
-    recursive = true;
+    # recursive = true;
   };
 
   programs.git.enable = true;
   home.file.".config/git" = {
     source = "${dotfiles}/.config/git";
-    recursive = true;
+    # recursive = true;
   };
 
   # Packages that should be installed to the user profile.
