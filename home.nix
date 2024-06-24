@@ -1,13 +1,13 @@
-{ self, config, pkgs, inputs, ... }:
+{ config, pkgs, self, inputs, ... }:
 
 let
   inherit (inputs) dotfiles;
-  dotfilesLib = import ./lib/dotfiles {
+  dotfilesLib = (import ./lib/dotfiles.nix) {
     inherit self;
     inherit config;
     inherit inputs;
   };
-  # inherit (dotfilesLib) deduceRuntimePath;
+  inherit (dotfilesLib) deduceRuntimePath;
 in
 {
   home.username = "rh";
@@ -36,7 +36,8 @@ in
 
   programs.zellij.enable = true;
   home.file.".config/zellij" = {
-    source = config.lib.file.mkOutOfStoreSymlink (dotfilesLib.deduceRuntimePath ./dotfiles/.config/zellij);
+    source = config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath ./dotfiles/.config/zellij);
     # source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/zellij";
     # source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zellij";
     # source = "${dotfiles}/.config/zellij";

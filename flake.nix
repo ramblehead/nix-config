@@ -14,11 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # mcedit-syntax = {
-    #   url = "github:svanderburg/nix-syntax-for-mcedit";
-    #   flake = false;
-    # };
-
     helix.url = "github:helix-editor/helix/master";
 
     # alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
@@ -54,7 +49,7 @@
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
-          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.extraSpecialArgs = { inherit self; inherit inputs; };
         }
       ];
     };
