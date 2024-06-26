@@ -66,6 +66,8 @@
             inherit inputs;
           };
         }
+
+        ./lib/current-system-packages.nix
       ];
     };
   };

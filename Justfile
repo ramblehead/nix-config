@@ -10,6 +10,12 @@ update-package pkg:
 history:
   nix profile history --profile /nix/var/nix/profiles/system
 
+list-packages:
+  nix profile list --profile /nix/var/nix/profiles/system
+
+metadata:
+  nix flake metadata .
+
 # Open a nix shell with the flake
 repl:
   nix repl -f flake:nixpkgs
