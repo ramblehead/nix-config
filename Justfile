@@ -1,3 +1,5 @@
+# see https://github.com/kamadorueda/alejandra for good Nix practices.
+
 update:
   nix flake update
 
