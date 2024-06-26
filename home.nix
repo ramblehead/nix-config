@@ -1,6 +1,10 @@
-{ config, pkgs, self, inputs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  self,
+  inputs,
+  ...
+}: let
   inherit (inputs) dotfiles;
   dotfilesLib = (import ./lib/dotfiles.nix) {
     inherit self;
@@ -8,8 +12,7 @@ let
     inherit inputs;
   };
   inherit (dotfilesLib) deduceRuntimePath;
-in
-{
+in {
   home.username = "rh";
   home.homeDirectory = "/home/rh";
 
@@ -36,7 +39,8 @@ in
 
   programs.zellij.enable = true;
   home.file.".config/zellij" = {
-    source = config.lib.file.mkOutOfStoreSymlink
+    source =
+      config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath ./dotfiles/.config/zellij);
     # source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/.config/zellij";
     # source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zellij";
@@ -52,8 +56,9 @@ in
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    # Text editors and IDEs
+    # Text editors and software development tools
     gitui
+    just
     inputs.helix.packages."${pkgs.system}".helix
 
     # Terminals

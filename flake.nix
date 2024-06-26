@@ -24,12 +24,24 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: rec {
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: rec {
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+
     nixosConfigurations.rh-krancher = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
       modules = [
-        ({ config, pkgs, inputs, ... }: {
+        ({
+          config,
+          pkgs,
+          inputs,
+          ...
+        }: {
           nixpkgs.overlays = [
             (import ./overlays/mc)
           ];
@@ -49,7 +61,10 @@
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
-          home-manager.extraSpecialArgs = { inherit self; inherit inputs; };
+          home-manager.extraSpecialArgs = {
+            inherit self;
+            inherit inputs;
+          };
         }
       ];
     };

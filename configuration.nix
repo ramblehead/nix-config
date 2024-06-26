@@ -1,14 +1,15 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -89,9 +90,9 @@
   users.users.rh = {
     isNormalUser = true;
     description = "ramblehead";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -129,7 +130,7 @@
     gnomeExtensions.appindicator # Old tray icons, e.g. Telegram
     wl-clipboard
     hack-font
- ];
+  ];
 
   # environment.variables.EDITOR = "micro";
   environment.variables.EDITOR = "nvim";
@@ -150,7 +151,7 @@
 
   # Open ports in the firewall.
   networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 3389 3390 22 ];
+  networking.firewall.allowedTCPPorts = [3389 3390 22];
   # networking.firewall.allowedUDPPorts = [ 3389 3390 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 

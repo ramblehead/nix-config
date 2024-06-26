@@ -1,5 +1,7 @@
 final: prev: {
-  mc = prev.mc.overrideAttrs (prevAttrs: let path = ./.; in {
+  mc = prev.mc.overrideAttrs (prevAttrs: let
+    path = ./.;
+  in {
     preConfigure = ''
       cp ${path}/nix.syntax misc/syntax/nix.syntax
 
@@ -13,10 +15,12 @@ final: prev: {
       autoreconf -f -v -i
     '';
 
-    buildInputs = prevAttrs.buildInputs ++ (with prev; [
-      autoconf
-      automake
-      libtool
-    ]);
+    buildInputs =
+      prevAttrs.buildInputs
+      ++ (with prev; [
+        autoconf
+        automake
+        libtool
+      ]);
   });
 }
