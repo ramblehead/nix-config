@@ -6,6 +6,9 @@ update:
 update-package pkg:
   nix flake update {{pkg}}
 
+rebuild:
+  sudo nixos-rebuild switch --flake .
+
 # List all generations of the system profile
 history:
   nix profile history --profile /nix/var/nix/profiles/system
@@ -42,4 +45,4 @@ fmt:
   nix fmt
 
 path:
-   echo $PATH | sed -e 's/:/\n/g'
+  echo $PATH | sed -e 's/:/\n/g'

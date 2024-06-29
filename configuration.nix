@@ -130,6 +130,7 @@
     gnomeExtensions.appindicator # Old tray icons, e.g. Telegram
     wl-clipboard
     hack-font
+    xonsh
   ];
 
   # environment.variables.EDITOR = "micro";
