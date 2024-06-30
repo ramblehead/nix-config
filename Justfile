@@ -27,6 +27,8 @@ repl:
 clean:
   sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
   sudo nixos-rebuild boot
+  # Remove auto GC-roots
+  sudo rm -f /nix/var/nix/gcroots/auto/*
 
 gc:
   # Garbage collect all unused nix store entries
@@ -34,8 +36,6 @@ gc:
   nix store gc --debug
   sudo nix-collect-garbage --delete-old
   nix-collect-garbage --delete-old
-  # Remove auto GC-roots
-  sudo rm -f /nix/var/nix/gcroots/auto/*
 
 # Remove all reflog entries and prune unreachable objects
 gitgc:
