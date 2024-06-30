@@ -65,6 +65,9 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.hplipWithPlugin ];
+  # services.printing.drivers = [ pkgs.hplipWithPlugin pkgs.hplip ];
+  # services.printing.logLevel = "debug";
 
   # Enable sound with pipewire.
   sound.enable = true;
