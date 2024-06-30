@@ -130,7 +130,15 @@
     gnomeExtensions.appindicator # Old tray icons, e.g. Telegram
     wl-clipboard
     hack-font
+
+    # Text editors and software development tools
+    just
+
+    # Shells
     xonsh
+
+    # Terminals
+    tmux
   ];
 
   # environment.variables.EDITOR = "micro";

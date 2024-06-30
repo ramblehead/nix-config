@@ -61,9 +61,6 @@ in {
     just
     inputs.helix.packages."${pkgs.system}".helix
 
-    # Terminals
-    tmux
-
     # Backup, Cloud Storage and NAS
     rclone
     restic
