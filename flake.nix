@@ -14,7 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    helix.url = "github:helix-editor/helix/master";
+    helix = {
+      url = "github:helix-editor/helix/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
 
