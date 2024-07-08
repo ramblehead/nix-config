@@ -73,5 +73,42 @@
         ./lib/current-system-packages.nix
       ];
     };
+
+    homeConfigurations = {
+      username = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          home-manager.modules.home-manager
+          ./home.nix
+        ];
+      };
+    };
   };
+
+  let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    # homeConfigurations."rh" = home-manager.lib.homeManagerConfiguration {
+    #   inherit pkgs;
+
+    #   # Specify your home configuration modules here, for example,
+    #   # the path to your home.nix.
+    #   modules = [ ./home-no-nixos.nix ];
+
+    #   # Optionally use extraSpecialArgs
+    #   # to pass through arguments to home.nix
+    # };
+
+    homeConfigurations."root" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+
+      # Specify your home configuration modules here, for example,
+      # the path to your home.nix.
+      modules = [ ./home-no-nixos.nix ];
+
+      # Optionally use extraSpecialArgs
+      # to pass through arguments to home.nix
+    };
+  }
 }
