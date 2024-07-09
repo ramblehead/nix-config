@@ -74,10 +74,8 @@
       ];
     };
 
-    homeConfigurations."rh-krancher.root" = home-manager.lib.homeManagerConfiguration (let
+    homeConfigurations."rh-krancher.root" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    in {
-      inherit pkgs;
 
       modules = [./home-no-nixos.nix];
 
@@ -85,6 +83,6 @@
         inherit self;
         inherit inputs;
       };
-    });
+    };
   };
 }
