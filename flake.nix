@@ -90,12 +90,15 @@
       # };
 
       root = home-manager.lib.homeManagerConfiguration {
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+
         modules = [./home-no-nixos.nix];
 
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+        home-manager.extraSpecialArgs = {
+          inherit self;
+          inherit inputs;
+        };
       };
     };
   };
