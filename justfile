@@ -1,4 +1,6 @@
-# see https://github.com/kamadorueda/alejandra for good Nix practices.
+# Inspirations:
+# https://github.com/kamadorueda/alejandra for good Nix practices.
+# https://github.com/juspay/nix-dev-home
 
 # Default command when 'just' is run without arguments
 default:
@@ -9,6 +11,7 @@ io:
   nix flake metadata
   nix flake show
 
+# Update nix flake
 update:
   nix flake update
 
@@ -55,12 +58,14 @@ gitgc:
   git reflog expire --expire-unreachable=now --all
   git gc --prune=now
 
+# Check nix flake
 check:
   nix flake check
 
-# format the nix files in this repo
-fmt:
+# Lint and format the nix files in this repo
+lint:
   nix fmt
 
+# Print surrent $PATH - one path par line
 path:
   echo $PATH | sed -e 's/:/\n/g'
