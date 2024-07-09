@@ -74,32 +74,17 @@
       ];
     };
 
-    homeConfigurations.rh-krancher = let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+    homeConfigurations."rh-krancher.root" = home-manager.lib.homeManagerConfiguration (let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
     in {
-      # rh = home-manager.lib.homeManagerConfiguration {
-      #   inherit pkgs;
+      inherit pkgs;
 
-      #   # Specify your home configuration modules here, for example,
-      #   # the path to your home.nix.
-      #   modules = [ ./home-no-nixos.nix ];
+      modules = [./home-no-nixos.nix];
 
-      #   # Optionally use extraSpecialArgs
-      #   # to pass through arguments to home.nix
-      # };
-
-      root = home-manager.lib.homeManagerConfiguration {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-
-        modules = [./home-no-nixos.nix];
-
-        home-manager.extraSpecialArgs = {
-          inherit self;
-          inherit inputs;
-        };
+      extraSpecialArgs = {
+        inherit self;
+        inherit inputs;
       };
-    };
+    });
   };
 }

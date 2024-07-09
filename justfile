@@ -1,5 +1,14 @@
 # see https://github.com/kamadorueda/alejandra for good Nix practices.
 
+# Default command when 'just' is run without arguments
+default:
+  @just --list
+
+# Print nix flake inputs and outputs
+io:
+  nix flake metadata
+  nix flake show
+
 update:
   nix flake update
 
@@ -23,6 +32,10 @@ metadata:
 repl:
   nix repl -f flake:nixpkgs
 
+# Manually enter dev shell
+dev:
+  nix develop
+
 # remove all generations older than 7 days
 clean:
   sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
@@ -41,6 +54,9 @@ gc:
 gitgc:
   git reflog expire --expire-unreachable=now --all
   git gc --prune=now
+
+check:
+  nix flake check
 
 # format the nix files in this repo
 fmt:
