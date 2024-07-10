@@ -75,6 +75,6 @@ home-manager-global-init host:
   sudo -i nix run home-manager/release-24.05 -- init --switch ${PWD}
   sudo -i home-manager switch --flake ${PWD}#{{host}}
 
-home-manager-global-init host-user:
+home-manager-init host-user:
   home-manager init --switch ${PWD}
   home-manager switch --flake ${PWD}#{{host-user}}
