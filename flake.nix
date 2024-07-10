@@ -74,7 +74,18 @@
       ];
     };
 
-    homeConfigurations."rh-krancher.root" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."rh-krancher" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+      modules = [./home-no-nixos.nix];
+
+      extraSpecialArgs = {
+        inherit self;
+        inherit inputs;
+      };
+    };
+
+    homeConfigurations."qt-dl1" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
       modules = [./home-no-nixos.nix];

@@ -69,3 +69,12 @@ lint:
 # Print surrent $PATH - one path par line
 path:
   echo $PATH | sed -e 's/:/\n/g'
+
+# Initialise global (root) home-manager for host
+home-manager-global-init host:
+  sudo -i nix run home-manager/release-24.05 -- init --switch ${PWD}
+  sudo -i home-manager switch --flake ${PWD}#{{host}}
+
+home-manager-global-init host-user:
+  home-manager init --switch ${PWD}
+  home-manager switch --flake ${PWD}#{{host-user}}
