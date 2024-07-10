@@ -85,6 +85,17 @@
       };
     };
 
+    homeConfigurations."rh" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+      modules = [./home-rh.nix];
+
+      extraSpecialArgs = {
+        inherit self;
+        inherit inputs;
+      };
+    };
+
     homeConfigurations."qt-dl1" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
