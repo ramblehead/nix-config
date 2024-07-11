@@ -24,11 +24,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1719105018,
-        "narHash": "sha256-5kAyjKt6dWqLFHyAt13CVw34ZA2NuE1APcoEuxIr9qw=",
+        "lastModified": 1720717951,
+        "narHash": "sha256-PmDGstt0uloOyv+qV27bcLs3t3Uaz3V5b0NgC26olMk=",
         "ref": "refs/heads/main",
-        "rev": "fb75068614337f2e45c522fafc128c9dcfaafbba",
-        "revCount": 8,
+        "rev": "1911e7cb1e0385d883141e8b3afbd896c8723f2e",
+        "revCount": 10,
         "type": "git",
         "url": "file:./dotfiles"
       },
@@ -65,11 +65,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1719909389,
-        "narHash": "sha256-d6PZ7WpOV+yb4u4P+8vJ+xmRZbZxiQCpjNnqYoUTBQc=",
+        "lastModified": 1720680469,
+        "narHash": "sha256-TU5YTUwYi21QP5pBZ9Xert8DDWZXvHcz0j0sZ6PN8Iw=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "fc97ecc3e3186b9dfe958869178bdb6b8cd7d8df",
+        "rev": "8229a40da8a6675cbfa394e2437207bcf7863b45",
         "type": "github"
       },
       "original": {
@@ -102,11 +102,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1719956923,
-        "narHash": "sha256-nNJHJ9kfPdzYsCOlHOnbiiyKjZUW5sWbwx3cakg3/C4=",
+        "lastModified": 1720553833,
+        "narHash": "sha256-IXMiHQMtdShDXcBW95ctA+m5Oq2kLxnBt7WlMxvDQXA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "706eef542dec88cc0ed25b9075d3037564b2d164",
+        "rev": "249fbde2a178a2ea2638b65b9ecebd531b338cf9",
         "type": "github"
       },
       "original": {
