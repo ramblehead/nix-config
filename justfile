@@ -70,11 +70,24 @@ lint:
 path:
   echo $PATH | sed -e 's/:/\n/g'
 
-# Initialise global (root) home-manager for host
-hm-global-init hostname:
+# Initialise root (global) home-manager
+hm-root-init *hostname:
   sudo -i nix run home-manager/release-24.05 -- init --switch ${PWD}
-  sudo -i home-manager switch --flake ${PWD}#{{hostname}}
+  @just hm-root-switch {{hostname}}
 
-hm-init username:
-  home-manager init --switch ${PWD}
-  home-manager switch --flake ${PWD}#{{username}}
+# Switch root (global) home-manager
+hm-root-switch *hostname:
+  if [ -z "{{hostname}}" ]; then \
+    sudo -i home-manager switch --flake "$PWD#$(hostname)"; \
+  else \
+    sudo -i home-manager switch --flake "$PWD#{{hostname}}"; \
+  fi
+
+# Initialise user home-manager
+hm-init *username:
+  echo home-manager init --switch ${PWD}
+  @just hm-switch {{username}}
+
+# Switch user home-manager
+hm-switch *username:
+  UN={{username}}; echo home-manager switch --flake "$PWD${UN:+#}$UN"
