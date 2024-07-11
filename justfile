@@ -71,9 +71,9 @@ path:
   echo $PATH | sed -e 's/:/\n/g'
 
 # Initialise global (root) home-manager for host
-hm-global-init host:
+hm-global-init hostname:
   sudo -i nix run home-manager/release-24.05 -- init --switch ${PWD}
-  sudo -i home-manager switch --flake ${PWD}#{{host}}
+  sudo -i home-manager switch --flake ${PWD}#{{hostname}}
 
 hm-init username:
   home-manager init --switch ${PWD}
