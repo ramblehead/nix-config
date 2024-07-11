@@ -75,7 +75,11 @@
     };
 
     homeConfigurations."rh-krancher" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      # pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
 
       modules = [./home-no-nixos.nix];
 
@@ -86,7 +90,10 @@
     };
 
     homeConfigurations."rh" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
 
       modules = [./home-rh.nix];
 
@@ -97,7 +104,6 @@
     };
 
     homeConfigurations."qt-dl1" = home-manager.lib.homeManagerConfiguration {
-      # pkgs = nixpkgs.legacyPackages.x86_64-linux;
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         config.allowUnfree = true;
