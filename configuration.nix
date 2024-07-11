@@ -121,9 +121,13 @@
     telegram-desktop
     google-chrome
     pavucontrol
+    wl-clipboard
+    hack-font
     gnome.gnome-tweaks
     gnomeExtensions.arcmenu
+    gnomeExtensions.date-menu-formatter
     gnomeExtensions.dash-to-panel
+    gnomeExtensions.gtk4-desktop-icons-ng-ding
     gnomeExtensions.caffeine
     gnomeExtensions.clipboard-indicator
     # gnomeExtensions.vitals
@@ -131,8 +135,6 @@
     gnomeExtensions.steal-my-focus-window
     gnomeExtensions.system-monitor-next
     gnomeExtensions.appindicator # Old tray icons, e.g. Telegram
-    wl-clipboard
-    hack-font
 
     # Text editors and software development tools
     just
