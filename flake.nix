@@ -81,7 +81,7 @@
         config.allowUnfree = true;
       };
 
-      modules = [./home-no-nixos.nix];
+      modules = [./hm-root.nix];
 
       extraSpecialArgs = {
         inherit self;
@@ -95,7 +95,7 @@
         config.allowUnfree = true;
       };
 
-      modules = [./home-rh.nix];
+      modules = [./hm-rh.nix];
 
       extraSpecialArgs = {
         inherit self;
@@ -109,7 +109,7 @@
         config.allowUnfree = true;
       };
 
-      modules = [./home-no-nixos.nix];
+      modules = [./hm-root.nix];
 
       extraSpecialArgs = {
         inherit self;
