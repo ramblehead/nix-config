@@ -11,6 +11,10 @@
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with
       # the `inputs.nixpkgs` of the current flake,
       # to avoid problems caused by different versions of nixpkgs.
+    };
+
+    nixgl = {
+      url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -31,6 +35,7 @@
     self,
     nixpkgs,
     home-manager,
+    nixgl,
     ...
   } @ inputs: rec {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
@@ -78,10 +83,11 @@
       # pkgs = nixpkgs.legacyPackages.x86_64-linux;
       pkgs = import nixpkgs {
         system = "x86_64-linux";
+        overlays = [nixgl.overlay];
         config.allowUnfree = true;
       };
 
-      modules = [./hm-root.nix];
+      modules = [./hm-rh-krancher.nix ./hm-root.nix];
 
       extraSpecialArgs = {
         inherit self;
@@ -106,6 +112,7 @@
     homeConfigurations."qt-dl1" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         system = "x86_64-linux";
+        overlays = [nixgl.overlay];
         config.allowUnfree = true;
       };
 
