@@ -1,8 +1,18 @@
 {
   config,
   pkgs,
+  self,
+  inputs,
   ...
-}: {
+}: let
+  inherit (inputs) dotfiles;
+  dotfilesLib = (import ./lib/dotfiles.nix) {
+    inherit self;
+    inherit config;
+    inherit inputs;
+  };
+  inherit (dotfilesLib) deduceRuntimePath;
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "rh";
@@ -42,6 +52,17 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".config/zellij".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath ./dotfiles/.config/zellij);
+
+    ".config/alacritty" = {
+      source =
+        config.lib.file.mkOutOfStoreSymlink
+        (deduceRuntimePath ./dotfiles/.config/alacritty);
+      # recursive = true;
+    };
   };
 
   # Home Manager can also manage your environment variables through

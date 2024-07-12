@@ -90,4 +90,4 @@ hm-init *username:
 
 # Switch user home-manager
 hm-switch *username:
-  UN={{username}}; echo home-manager switch --flake "$PWD${UN:+#}$UN"
+  UN={{username}}; home-manager switch --flake "$PWD${UN:+#}$UN"
