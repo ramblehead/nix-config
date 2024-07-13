@@ -23,8 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
-
     dotfiles = {
       url = "git+file:./dotfiles";
       flake = false;

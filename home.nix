@@ -70,6 +70,15 @@ in {
     cowsay
   ];
 
+  # This value determines whether home Manager should use the XDG base
+  # directory specification for placing configuration files and other
+  # user-specific data files.
+  #
+  # When set to true, home Manager will place configuration files in
+  # ~/.config, data files in ~/.local/share, and cache files in
+  # ~/.cache according to the XDG base directory specification.
+  home.preferXdgDirectories = true;
+
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
