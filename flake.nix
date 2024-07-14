@@ -81,11 +81,17 @@
       # pkgs = nixpkgs.legacyPackages.x86_64-linux;
       pkgs = import nixpkgs {
         system = "x86_64-linux";
-        overlays = [nixgl.overlay];
+        overlays = [
+          nixgl.overlay
+          (import ./overlays/mc)
+        ];
         config.allowUnfree = true;
       };
 
-      modules = [./hm-rh-krancher.nix ./hm-root.nix];
+      modules = [
+        ./hm-rh-krancher.nix
+        ./hm-root.nix
+      ];
 
       extraSpecialArgs = {
         inherit self;
@@ -110,7 +116,10 @@
     homeConfigurations."qt-dl1" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         system = "x86_64-linux";
-        overlays = [nixgl.overlay];
+        overlays = [
+          nixgl.overlay
+          (import ./overlays/mc)
+        ];
         config.allowUnfree = true;
       };
 

@@ -61,7 +61,42 @@ in {
       source =
         config.lib.file.mkOutOfStoreSymlink
         (deduceRuntimePath ./dotfiles/.config/alacritty);
-      # recursive = true;
+    };
+
+    ".local/bin/clip2output" = {
+      source =
+        config.lib.file.mkOutOfStoreSymlink
+        (deduceRuntimePath ./dotfiles/.local/bin/clip2output);
+    };
+
+    ".local/bin/file2clip" = {
+      source =
+        config.lib.file.mkOutOfStoreSymlink
+        (deduceRuntimePath ./dotfiles/.local/bin/file2clip);
+    };
+
+    ".config/mc/ini" = {
+      source =
+        config.lib.file.mkOutOfStoreSymlink
+        (deduceRuntimePath ./dotfiles/.config/mc/ini);
+    };
+
+    ".config/mc/mc.keymap" = {
+      source =
+        config.lib.file.mkOutOfStoreSymlink
+        (deduceRuntimePath ./dotfiles/.config/mc/mc.keymap);
+    };
+
+    ".config/mc/menu" = {
+      source =
+        config.lib.file.mkOutOfStoreSymlink
+        (deduceRuntimePath ./dotfiles/.config/mc/menu);
+    };
+
+    ".config/mc/panels.ini" = {
+      source =
+        config.lib.file.mkOutOfStoreSymlink
+        (deduceRuntimePath ./dotfiles/.config/mc/panels.ini);
     };
   };
 

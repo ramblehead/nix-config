@@ -21,7 +21,10 @@
   home.packages = with pkgs; [
     # nixgl.nixGLIntel
     # nixgl.auto.nixGLDefault
-    nixgl.nixGLIntel
     # nixgl.nixVulkanIntel
+    nixgl.nixGLIntel
+
+    # wl-clipboard
+    xsel
   ];
 }
