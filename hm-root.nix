@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -31,6 +32,14 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  home.activation = {
+    mcSymlink = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      # ln -sf ${pkgs.mc}/libexec/mc/mc.sh /etc/profile.d/mc.sh
+      cp -f "${pkgs.mc}/libexec/mc/mc.sh" /etc/profile.d/mc.sh
+      chmod a-x /etc/profile.d/mc.sh
+    '';
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
