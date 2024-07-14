@@ -85,7 +85,7 @@ hm-switch-root *hostname:
 
 # Initialise user home-manager
 hm-init *username:
-  echo home-manager init --switch ${PWD}
+  home-manager init --switch ${PWD}
   @just hm-switch {{username}}
 
 # Switch user home-manager
