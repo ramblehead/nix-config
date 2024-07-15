@@ -41,6 +41,7 @@
         sed -E 's|^(.*secure_path=".*)(")$|\1:'$SBIN:$BIN'\2|' -i $SUDS
       fi
     '';
+
     setupMc = lib.hm.dag.entryAfter ["writeBoundary"] ''
       SUDS=/etc/bash.bashrc
       if ! grep 'alias.*mc=' $SUDS \
