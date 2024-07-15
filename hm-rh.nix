@@ -97,9 +97,9 @@ in {
       cp -n "${pkgs.mc}/etc/mc/mc.menu" "$MC_CONF/menu"
       chmod ug+w "$MC_CONF/menu"
 
-      sed -i -E 's/^( ?)(\s*)echo "\.\.\/\$tar\.tar\.xz created\."$/&\
+      sed -i -E 's/^( ?)(\s*)echo "\.\.\/\$tar\.tar\.lzo created\."$/&\
       \
-      7\2Compress the current subdirectory (zip)\
+      9\2Compress the current subdirectory (zip)\
       \1\2Pwd=`basename %d \/`\
       \1\2echo -n "Name of the compressed file (without extension) [$Pwd]: "\
       \1\2read zip\
@@ -107,6 +107,11 @@ in {
       \1\2cd .. \&\& \\\
       \1\2zip -r "$Pwd" "$Pwd" \&\& \\\
       \1\2echo "..\/$zip.zip created."/' "$MC_CONF/menu"
+
+      sed -i -E 's/^( ?)(\s*)open -s -- sh$/&\
+      \
+      !\Open mc in as root\
+      \1\2cd "$HOME" \&\& alacritty --command sudo mc %d %D \&/' "$MC_CONF/menu"
     '';
   };
 
