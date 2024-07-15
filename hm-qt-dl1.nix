@@ -6,7 +6,6 @@
 }: {
   home.packages = with pkgs; [
     wl-clipboard
-    mc
   ];
 
   home.activation = {
