@@ -11,7 +11,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    (config.lib.nixGL.wrap alacritty)
     cowsay
     just
     # google-chrome

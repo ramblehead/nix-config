@@ -99,6 +99,27 @@
       };
     };
 
+    homeConfigurations."qt-dl1" = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        overlays = [
+          nixgl.overlay
+          (import ./overlays/mc)
+        ];
+        config.allowUnfree = true;
+      };
+
+      modules = [
+        ./hm-qt-dl1.nix
+        ./hm-root.nix
+      ];
+
+      extraSpecialArgs = {
+        inherit self;
+        inherit inputs;
+      };
+    };
+
     homeConfigurations."rh" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -113,22 +134,5 @@
       };
     };
 
-    homeConfigurations."qt-dl1" = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {
-        system = "x86_64-linux";
-        overlays = [
-          nixgl.overlay
-          (import ./overlays/mc)
-        ];
-        config.allowUnfree = true;
-      };
-
-      modules = [./hm-root.nix];
-
-      extraSpecialArgs = {
-        inherit self;
-        inherit inputs;
-      };
-    };
   };
 }
