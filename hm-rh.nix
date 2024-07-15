@@ -78,7 +78,7 @@ in {
       cp -n "${dotfiles}/.config/mc/ini" "$MC_CONF"
       chmod ug+w "$MC_CONF/ini"
 
-      cp -n "${pkgs.mc}/etc/mc/mc.keymap" "$MC_CONF"
+      cp -f "${pkgs.mc}/etc/mc/mc.keymap" "$MC_CONF"
       chmod ug+w "$MC_CONF/mc.keymap"
 
       sed -i -E 's/^Store = ctrl-insert$/Store = ctrl-c; ctrl-insert/' \
@@ -94,7 +94,7 @@ in {
       sed -i -E 's/^(WordRight = ctrl-right)(; ctrl-x)$/\1/' \
                 "$MC_CONF/mc.keymap"
 
-      cp -n "${pkgs.mc}/etc/mc/mc.menu" "$MC_CONF/menu"
+      cp -f "${pkgs.mc}/etc/mc/mc.menu" "$MC_CONF/menu"
       chmod ug+w "$MC_CONF/menu"
 
       sed -i -E 's/^( ?)(\s*)echo "\.\.\/\$tar\.tar\.lzo created\."$/&\
@@ -110,7 +110,7 @@ in {
 
       sed -i -E 's/^( ?)(\s*)open -s -- sh$/&\
       \
-      !\Open mc in as root\
+      !\2Open mc in as root\
       \1\2cd "$HOME" \&\& alacritty --command sudo mc %d %D \&/' "$MC_CONF/menu"
     '';
   };
