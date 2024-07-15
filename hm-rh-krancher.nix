@@ -27,7 +27,6 @@
 
     (config.lib.nixGL.wrap alacritty)
 
-    # wl-clipboard
     xsel
     mc
   ];
@@ -49,8 +48,8 @@
       if ! grep 'alias.*mc=' $SUDS \
          &>/dev/null
       then
-        #if [ "$(tail -c 1 $SUDS | xxd -p)" != "0a" ]; then
-        #if [ "$(tail -c 1 $SUDS | wc -l)" -ne 1 ]; then
+        # if [ "$(tail -c 1 $SUDS | xxd -p)" != "0a" ]; then
+        # if [ "$(tail -c 1 $SUDS | wc -l)" -ne 1 ]; then
         if (( "$(tail -c 1 $SUDS | wc -l)" < 1 )); then
           echo >> $SUDS
         fi
