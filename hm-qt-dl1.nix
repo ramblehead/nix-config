@@ -20,7 +20,7 @@
       fi
     '';
 
-    setupMc = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    setupMcWrapper = lib.hm.dag.entryAfter ["writeBoundary"] ''
       SUDS=/etc/bash.bashrc
       if ! grep 'alias.*mc=' $SUDS \
          &>/dev/null
