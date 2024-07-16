@@ -97,6 +97,9 @@ in {
       cp -f "${pkgs.mc}/etc/mc/mc.menu" "$MC_CONF/menu"
       chmod ug+w "$MC_CONF/menu"
 
+      if ! grep 'Compress the current subdirectory (zip)' "$MC_CONF/menu" \
+         &>/dev/null
+      then
       sed -i -E 's/^( ?)(\s*)echo "\.\.\/\$tar\.tar\.lzo created\."$/&\
       \
       9\2Compress the current subdirectory (zip)\
@@ -107,11 +110,19 @@ in {
       \1\2cd .. \&\& \\\
       \1\2zip -r "$Pwd" "$Pwd" \&\& \\\
       \1\2echo "..\/$zip.zip created."/' "$MC_CONF/menu"
+      fi
 
+      if ! grep 'Open mc in as root' "$MC_CONF/menu" \
+         &>/dev/null
+      then
       sed -i -E 's/^( ?)(\s*)open -s -- sh$/&\
       \
-      !\2Open mc in as root\
+      !\2Open mc in as root in zellij pane\
+      \1\2zellij run -- sudo mc\
+      \
+      \\\2Open mc in as root in alacritty\
       \1\2cd "$HOME" \&\& alacritty --command sudo mc %d %D \&/' "$MC_CONF/menu"
+      fi
     '';
   };
 
