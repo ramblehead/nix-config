@@ -133,6 +133,5 @@
         inherit inputs;
       };
     };
-
   };
 }
