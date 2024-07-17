@@ -8,7 +8,12 @@
     wl-clipboard
   ];
 
-  home.activation = {
+  home.activation = let
+    mc = (import ./hm/programs/mc/setup-debian.nix) {
+      inherit pkgs;
+      inherit lib;
+    };
+  in {
     setupSudoers = lib.hm.dag.entryAfter ["writeBoundary"] ''
       SUDS=/etc/sudoers
       if ! grep '^.*secure_path=.*/nix/var/nix/profiles/default/s\?bin.*$' \
@@ -20,19 +25,6 @@
       fi
     '';
 
-    setupMcWrapper = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      SUDS=/etc/bash.bashrc
-      if ! grep 'alias.*mc=' $SUDS \
-         &>/dev/null
-      then
-        # if [ "$(tail -c 1 $SUDS | xxd -p)" != "0a" ]; then
-        # if [ "$(tail -c 1 $SUDS | wc -l)" -ne 1 ]; then
-        if (( "$(tail -c 1 $SUDS | wc -l)" < 1 )); then
-          echo >> $SUDS
-        fi
-
-        echo -e "\nalias mc='. ${pkgs.mc}/libexec/mc/mc-wrapper.sh'" >> $SUDS
-      fi
-    '';
+    inherit (mc) setupMcWrapper;
   };
 }

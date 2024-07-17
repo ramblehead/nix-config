@@ -4,10 +4,11 @@
   self,
   lib,
   inputs,
+  flake-root,
   ...
 }: let
   inherit (inputs) dotfiles;
-  dotfilesLib = (import ./lib/dotfiles.nix) {
+  dotfilesLib = (import (flake-root + /lib/dotfiles.nix)) {
     inherit self;
     inherit config;
     inherit inputs;
@@ -70,7 +71,7 @@ in {
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath ./dotfiles/.local/bin/file2clip);
   };
-  
+
   home.activation = let
     mc = (import ./hm/programs/mc/setup-home.nix) {
       inherit config;

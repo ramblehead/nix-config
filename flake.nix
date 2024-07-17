@@ -36,6 +36,7 @@
     nixgl,
     ...
   } @ inputs: rec {
+    flake-root = ./.;
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
     nixosConfigurations.rh-krancher = nixpkgs.lib.nixosSystem {
@@ -96,6 +97,7 @@
       extraSpecialArgs = {
         inherit self;
         inherit inputs;
+        inherit flake-root;
       };
     };
 
@@ -117,6 +119,7 @@
       extraSpecialArgs = {
         inherit self;
         inherit inputs;
+        inherit flake-root;
       };
     };
 
@@ -131,6 +134,7 @@
       extraSpecialArgs = {
         inherit self;
         inherit inputs;
+        inherit flake-root;
       };
     };
   };
