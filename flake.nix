@@ -90,7 +90,7 @@
       };
 
       modules = [
-        ./hm-rh-krancher.nix
+        ./hm/hosts/rh-krancher.nix
         ./hm-root.nix
       ];
 
@@ -112,7 +112,7 @@
       };
 
       modules = [
-        ./hm-qt-dl1.nix
+        ./hm/hosts/qt-dl1.nix
         ./hm-root.nix
       ];
 

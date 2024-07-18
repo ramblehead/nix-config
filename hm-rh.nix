@@ -73,7 +73,7 @@ in {
   };
 
   home.activation = let
-    mc = (import ./hm/programs/mc/setup-home.nix) {
+    mc = (import (flake-root + /hm/programs/mc/setup-home.nix)) {
       inherit config;
       inherit pkgs;
       inherit lib;
