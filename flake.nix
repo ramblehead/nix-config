@@ -91,7 +91,7 @@
 
       modules = [
         ./hm/hosts/rh-krancher.nix
-        ./hm-root.nix
+        ./hm/users/root.nix
       ];
 
       extraSpecialArgs = {
@@ -113,7 +113,7 @@
 
       modules = [
         ./hm/hosts/qt-dl1.nix
-        ./hm-root.nix
+        ./hm/users/root.nix
       ];
 
       extraSpecialArgs = {
@@ -129,7 +129,7 @@
         config.allowUnfree = true;
       };
 
-      modules = [./hm-rh.nix];
+      modules = [./hm/users/rh.nix];
 
       extraSpecialArgs = {
         inherit self;
