@@ -32,6 +32,11 @@
   ];
 
   home.activation = let
+    nix = (import (flake-root + /hm/programs/nix/setup-debian.nix)) {
+      inherit pkgs;
+      inherit lib;
+    };
+
     sudo = (import (flake-root + /hm/programs/sudo/setup-debian.nix)) {
       inherit pkgs;
       inherit lib;

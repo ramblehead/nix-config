@@ -57,19 +57,19 @@ in {
 
     ".config/zellij".source =
       config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath ./dotfiles/.config/zellij);
+      (deduceRuntimePath (flake-root + /dotfiles/.config/zellij));
 
     ".config/alacritty".source =
       config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath ./dotfiles/.config/alacritty);
+      (deduceRuntimePath (flake-root + /dotfiles/.config/alacritty));
 
     ".local/bin/clip2output".source =
       config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath ./dotfiles/.local/bin/clip2output);
+      (deduceRuntimePath (flake-root + /dotfiles/.local/bin/clip2output));
 
     ".local/bin/file2clip".source =
       config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath ./dotfiles/.local/bin/file2clip);
+      (deduceRuntimePath (flake-root + /dotfiles/.local/bin/file2clip));
   };
 
   home.activation = let
