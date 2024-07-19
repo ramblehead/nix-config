@@ -26,10 +26,17 @@
     # nixgl.nixVulkanIntel
     nixgl.nixGLIntel
 
+    # (config.lib.nixGL.wrap wayland)
+    # (config.lib.nixGL.wrap gnome.gdm)
+    # (config.lib.nixGL.wrap gnome.gnome-shell)
+
     (config.lib.nixGL.wrap alacritty)
 
     xsel
   ];
+
+  # xsession.enable = true;
+  # xsession.windowManager.command = "gdm";
 
   home.activation = let
     nix = (import (flake-root + /hm/programs/nix/setup-debian.nix)) {

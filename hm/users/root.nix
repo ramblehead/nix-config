@@ -15,12 +15,19 @@
     just
     # google-chrome
     zellij
-    shfmt
     zoxide
     eza
     tmux
     zip
     mc
+    neovim
+
+    (emacs.override {
+      withNativeCompilation = true;
+      # withPgtk = true;
+      withGTK3 = true;
+    })
+    emacsPackages.vterm
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
