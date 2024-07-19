@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  flake-root,
   ...
 }: {
   home.packages = with pkgs; [
@@ -9,12 +10,12 @@
   ];
 
   home.activation = let
-    sudo = (import ./hm/programs/sudo/setup-debian.nix) {
+    sudo = (import (flake-root + /hm/programs/sudo/setup-debian.nix)) {
       inherit pkgs;
       inherit lib;
     };
 
-    mc = (import ./hm/programs/mc/setup-debian.nix) {
+    mc = (import (flake-root + /hm/programs/mc/setup-debian.nix)) {
       inherit pkgs;
       inherit lib;
     };
