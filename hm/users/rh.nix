@@ -55,9 +55,10 @@ in {
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    ".config/emacs".source =
-      config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath (flake-root + /dotfiles/.config/emacs));
+    ".config/emacs" = {
+      source = (flake-root + /dotfiles/.config/emacs);
+      recursive = true;
+    };
 
     ".config/zellij".source =
       config.lib.file.mkOutOfStoreSymlink

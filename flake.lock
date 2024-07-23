@@ -37,6 +37,22 @@
         "url": "file:./dotfiles"
       }
     },
+    "dotfilesEmacs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721429997,
+        "narHash": "sha256-FYfRR1yQ9KcBa1uyoDIvokeCqqRACvbUeialECWMioM=",
+        "ref": "refs/heads/master",
+        "rev": "48c5a68b2d0cb50054aea7d1fae54d7cdc76b556",
+        "revCount": 967,
+        "type": "git",
+        "url": "file:./dotfiles/.config/emacs"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:./dotfiles/.config/emacs"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -169,6 +185,7 @@
     "root": {
       "inputs": {
         "dotfiles": "dotfiles",
+        "dotfilesEmacs": "dotfilesEmacs",
         "helix": "helix",
         "home-manager": "home-manager",
         "nixgl": "nixgl",

@@ -27,6 +27,11 @@
       url = "git+file:./dotfiles";
       flake = false;
     };
+
+    dotfilesEmacs = {
+      url = "git+file:./dotfiles/.config/emacs";
+      flake = false;
+    };
   };
 
   outputs = {
