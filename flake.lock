@@ -24,33 +24,16 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1721080329,
-        "narHash": "sha256-MiNUmUee56PvfiElWFWS3jA1yyFWpBvM0IvCzCGPI1c=",
-        "ref": "refs/heads/main",
-        "rev": "8e91a1f7ac829595401ab95d20f93fbcc824119d",
-        "revCount": 16,
+        "lastModified": 1721687914,
+        "narHash": "sha256-QEBV64nAu1y6VDtty7CH8qw6vuqmmcY1oLGOxjmvuLA=",
+        "rev": "ee8058c4320cf44589ffbc83a7d47435a442c346",
+        "revCount": 17,
         "type": "git",
         "url": "file:./dotfiles"
       },
       "original": {
         "type": "git",
         "url": "file:./dotfiles"
-      }
-    },
-    "dotfilesEmacs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1721429997,
-        "narHash": "sha256-FYfRR1yQ9KcBa1uyoDIvokeCqqRACvbUeialECWMioM=",
-        "ref": "refs/heads/master",
-        "rev": "48c5a68b2d0cb50054aea7d1fae54d7cdc76b556",
-        "revCount": 967,
-        "type": "git",
-        "url": "file:./dotfiles/.config/emacs"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:./dotfiles/.config/emacs"
       }
     },
     "flake-utils": {
@@ -96,11 +79,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1721072345,
-        "narHash": "sha256-tn8WhFOkJK5APVOcL3MaYNtGTu/1Jh/6qA3QyzMdLSM=",
+        "lastModified": 1721764162,
+        "narHash": "sha256-PBqXEfsV6dJZsADzGD5og8LMMbNPfsoYzolnEIXR/bw=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "b0cf86d31bd85e1f0e38ec86f4dfeeade2cd0918",
+        "rev": "4c1835504b9bf963db209db28a05820e0cdc745c",
         "type": "github"
       },
       "original": {
@@ -168,11 +151,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1720954236,
-        "narHash": "sha256-1mEKHp4m9brvfQ0rjCca8P1WHpymK3TOr3v34ydv9bs=",
+        "lastModified": 1721548954,
+        "narHash": "sha256-7cCC8+Tdq1+3OPyc3+gVo9dzUNkNIQfwSDJ2HSi2u3o=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "53e81e790209e41f0c1efa9ff26ff2fd7ab35e27",
+        "rev": "63d37ccd2d178d54e7fb691d7ec76000740ea24a",
         "type": "github"
       },
       "original": {
@@ -185,7 +168,6 @@
     "root": {
       "inputs": {
         "dotfiles": "dotfiles",
-        "dotfilesEmacs": "dotfilesEmacs",
         "helix": "helix",
         "home-manager": "home-manager",
         "nixgl": "nixgl",
