@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   flake-root,
@@ -9,10 +10,11 @@
   ];
 
   home.activation = let
-    # nix = (import (flake-root + /hm/programs/nix/setup-debian.nix)) {
-    #   inherit pkgs;
-    #   inherit lib;
-    # };
+    nix = (import (flake-root + /hm/programs/nix/setup-debian.nix)) {
+      inherit config;
+      inherit pkgs;
+      inherit lib;
+    };
  
     sudo = (import (flake-root + /hm/programs/sudo/setup-debian.nix)) {
       inherit pkgs;
@@ -24,7 +26,7 @@
       inherit lib;
     };
   in {
-    # inherit (nix) setupNix;
+    inherit (nix) setupNix;
     inherit (sudo) setupSudoers;
     inherit (mc) setupMcWrapper;
   };
