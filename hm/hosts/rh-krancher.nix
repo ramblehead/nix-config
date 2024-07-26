@@ -7,7 +7,8 @@
 }: {
   imports = [
     # todo: remove when https://github.com/nix-community/home-manager/pull/5355 gets merged:
-    # see https://github.com/giggio/dotfiles/blob/main/home-manager/home.nix
+    # see https://github.com/Smona/home-manager/blob/nixgl-compat/modules/misc/nixgl.nix
+    #     https://github.com/giggio/dotfiles/blob/main/home-manager/home.nix
     #     https://github.com/giggio/dotfiles/blob/main/home-manager/flake.nix
     #     https://github.com/nix-community/home-manager/issues/3968
     #     https://github.com/nix-community/home-manager/pull/5355
@@ -31,6 +32,13 @@
     # (config.lib.nixGL.wrap gnome.gnome-shell)
 
     (config.lib.nixGL.wrap alacritty)
+
+    (emacs.override {
+      withNativeCompilation = true;
+      # withPgtk = true;
+      withGTK3 = true;
+    })
+    emacsPackages.vterm
 
     xsel
   ];
