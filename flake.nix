@@ -2,6 +2,9 @@
   description = "ramblehead's NixOS flake";
 
   inputs = {
+    # e.g. flake-utils.lib.eachDefaultSystem (system: ...)
+    flake-utils.url = "github:numtide/flake-utils";
+
     # NixOS official package source, using the nixos-24.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
@@ -15,6 +18,7 @@
 
     nixgl = {
       url = "github:nix-community/nixGL";
+      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
