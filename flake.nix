@@ -37,7 +37,6 @@
     self,
     nixpkgs,
     home-manager,
-    nixgl,
     ...
   } @ inputs: rec {
     flake-root = ./.;
@@ -87,7 +86,6 @@
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         overlays = [
-          nixgl.overlay
           (import ./overlays/mc)
         ];
         config.allowUnfree = true;
@@ -109,7 +107,6 @@
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         overlays = [
-          nixgl.overlay
           (import ./overlays/mc)
         ];
         config.allowUnfree = true;

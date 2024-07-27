@@ -1,10 +1,13 @@
 {
   config,
   pkgs,
+  inputs,
   lib,
   flake-root,
   ...
-}: {
+}: let
+  inherit (inputs.nixgl.packages."${pkgs.system}") nixGLIntel;
+in {
   imports = [
     # todo: remove when https://github.com/nix-community/home-manager/pull/5355 gets merged:
     # see https://github.com/Smona/home-manager/blob/nixgl-compat/modules/misc/nixgl.nix
@@ -19,13 +22,13 @@
     })
   ];
 
-  nixGL.prefix = "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel";
+  nixGL.prefix = "${nixGLIntel}/bin/nixGLIntel";
 
   home.packages = with pkgs; [
     # nixgl.nixGLIntel
     # nixgl.auto.nixGLDefault
     # nixgl.nixVulkanIntel
-    nixgl.nixGLIntel
+    nixGLIntel
 
     # (config.lib.nixGL.wrap wayland)
     # (config.lib.nixGL.wrap gnome.gdm)
