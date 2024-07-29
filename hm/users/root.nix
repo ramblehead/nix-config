@@ -20,7 +20,10 @@
     tmux
     zip
     mc
+    gitui
     neovim
+    # treefmt
+    treefmt2
 
     # Nix-related
     # /b/{

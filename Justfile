@@ -63,8 +63,9 @@ check:
   nix flake check
 
 # Lint and format the nix files in this repo
-lint:
-  nix fmt
+fmt:
+  # nix fmt
+  treefmt --walk=filesystem
 
 # Print surrent $PATH - one path par line
 path:

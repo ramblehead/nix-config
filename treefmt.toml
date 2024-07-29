@@ -1,0 +1,13 @@
+[global]
+excludes = [".git/*"]
+
+[formatter.nix]
+command = "alejandra"
+
+includes = [
+  "*.nix",
+]
+
+excludes = [
+  "dotfiles/.config/emacs/straight/repos/flycheck/test/*"
+]
