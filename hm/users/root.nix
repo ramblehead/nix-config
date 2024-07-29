@@ -11,7 +11,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    alejandra
     cowsay
     just
     # google-chrome
@@ -24,8 +23,13 @@
     neovim
 
     # Nix-related
+    # /b/{
+
     nil
+    alejandra
     # nixd
+
+    # /b/}
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

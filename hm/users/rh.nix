@@ -7,7 +7,7 @@
   flake-root,
   ...
 }: let
-  inherit (inputs) dotfiles;
+  # inherit (inputs) dotfiles;
   dotfilesLib = (import (flake-root + /lib/dotfiles.nix)) {
     inherit self;
     inherit config;
