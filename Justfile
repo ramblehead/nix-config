@@ -41,7 +41,9 @@ dev:
 
 # remove all generations older than 7 days
 clean:
-  sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
+  sudo nix profile wipe-history \
+    --profile /nix/var/nix/profiles/system  \
+    --older-than 7d
   sudo nixos-rebuild boot
   # Remove auto GC-roots
   sudo rm -f /nix/var/nix/gcroots/auto/*
