@@ -19,8 +19,12 @@
         rev = "v0.13.2";
         hash = "sha256-MrlzAZWLgfwIoTdxY+fjWbrv7tygAjnxXebiEgwOM9A=";
       };
-      buildInputs = [pkgs.cargo pkgs.rustc];
+
+      nativeBuildInputs = [ pkgs.cmake ];
+      buildInputs = [ pkgs.rustc pkgs.cargo ];
+
       buildPhase = ''
+        export PATH="$HOME/.cargo/bin:$PATH"
         cargo build --release
       '';
       installPhase = ''
@@ -29,8 +33,9 @@
     };
 
     devShell.${system} = pkgs.mkShell {
+      # devShell.${system} = pkgs.buildEnv {
       # buildInputs = [pkgs.cargo pkgs.rustc];
-      inherit (packages.${system}.alacritty) buildInputs;
+      inherit (packages.${system}.alacritty) src buildInputs;
       shellHook = ''
         echo "Entering Alacritty build environment..."
       '';

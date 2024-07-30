@@ -27,6 +27,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # alacritty-flake = {
+    #   url = "path:./hm/programs/cargo-alacritty";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     dotfiles = {
       url = "git+file:./dotfiles";
       flake = false;

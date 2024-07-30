@@ -6,7 +6,8 @@
   flake-root,
   ...
 }: let
-  inherit (inputs.nixgl.packages."${pkgs.system}") nixGLIntel;
+  inherit (pkgs) system;
+  inherit (inputs.nixgl.packages."${system}") nixGLIntel;
 in {
   imports = [
     # todo: remove when https://github.com/nix-community/home-manager/pull/5355 gets merged:
@@ -35,6 +36,7 @@ in {
     # (config.lib.nixGL.wrap gnome.gnome-shell)
 
     (config.lib.nixGL.wrap alacritty)
+    # inputs.alacritty-flake.packages.${system}.alacritty
 
     (emacs.override {
       withNativeCompilation = true;
