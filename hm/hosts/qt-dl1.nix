@@ -39,8 +39,8 @@ in {
 
     (emacs.override {
       withNativeCompilation = true;
-      withPgtk = true;
-      # withGTK3 = true;
+      # withPgtk = true;
+      withGTK3 = true;
     })
     emacsPackages.vterm
 
