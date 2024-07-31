@@ -36,7 +36,6 @@ in {
     # (config.lib.nixGL.wrap gnome.gnome-shell)
 
     (config.lib.nixGL.wrap alacritty)
-    # inputs.alacritty-flake.packages.${system}.alacritty
 
     (emacs.override {
       withNativeCompilation = true;
@@ -44,6 +43,15 @@ in {
       withGTK3 = true;
     })
     emacsPackages.vterm
+
+    (fenix.complete.withComponents [
+      "cargo"
+      "clippy"
+      "rust-src"
+      "rustc"
+      "rustfmt"
+    ])
+    rust-analyzer-nightly
 
     xsel
   ];
