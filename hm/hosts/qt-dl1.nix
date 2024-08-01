@@ -35,7 +35,7 @@ in {
     # (config.lib.nixGL.wrap gnome.gnome-shell)
 
     # Install via cargo to avoid glibc issues
-    # (config.lib.nixGL.wrap alacritty)
+    (config.lib.nixGL.wrap alacritty)
 
     (emacs.override {
       withNativeCompilation = true;
