@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Reset nixGL config when not on NixOS
+if [ ! -f /etc/os-release ] || ! grep -q '^ID=nixos' /etc/os-release; then
+  unset LIBGL_DRIVERS_PATH LIBVA_DRIVERS_PATH \
+    __EGL_VENDOR_LIBRARY_FILENAMES LD_LIBRARY_PATH
+fi
+
+exec -a "zellij" zellij "$@"

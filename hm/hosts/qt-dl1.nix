@@ -49,7 +49,6 @@ in {
 
   home.activation = let
     nix = (import (flake-root + /hm/programs/nix/setup-debian.nix)) {
-      inherit config;
       inherit pkgs;
       inherit lib;
     };

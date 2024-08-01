@@ -63,7 +63,6 @@ in {
     nix = (import (flake-root + /hm/programs/nix/setup-debian.nix)) {
       inherit pkgs;
       inherit lib;
-      inherit config;
     };
 
     sudo = (import (flake-root + /hm/programs/sudo/setup-debian.nix)) {
