@@ -67,6 +67,10 @@ in {
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flake-root + /dotfiles/.config/alacritty));
 
+    ".local/bin/zellij-select-gl".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flake-root + /dotfiles/.local/bin/zellij-select-gl));
+
     ".local/bin/clip2output".source =
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flake-root + /dotfiles/.local/bin/clip2output));
