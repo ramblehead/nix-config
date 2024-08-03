@@ -20,6 +20,7 @@
     tmux
     zip
     mc
+    ripgrep
     gitui
     neovim
     # treefmt
