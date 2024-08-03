@@ -74,12 +74,12 @@ path:
   echo $PATH | sed -e 's/:/\n/g'
 
 # Initialise root (global) home-manager
-hm-init-root *hostname:
+hm-init-host *hostname:
   sudo -i nix run home-manager/release-24.05 -- init --switch ${PWD}
   @just hm-root-switch {{hostname}}
 
-# Switch root (global) home-manager
-hm-switch-root *hostname:
+# Switch host (root - global) home-manager
+hm-switch-host *hostname:
   if [ -z "{{hostname}}" ]; then \
     sudo -i home-manager switch --flake "$PWD#$(hostname)"; \
   else \
@@ -87,10 +87,10 @@ hm-switch-root *hostname:
   fi
 
 # Initialise user home-manager
-hm-init *username:
+hm-init-user *username:
   home-manager init --switch ${PWD}
   @just hm-switch {{username}}
 
 # Switch user home-manager
-hm-switch *username:
+hm-switch-user *username:
   UN={{username}}; home-manager switch --flake "$PWD${UN:+#}$UN"
