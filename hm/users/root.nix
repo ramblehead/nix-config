@@ -13,6 +13,7 @@
   home.packages = with pkgs; [
     cowsay
     just
+    git
     # google-chrome
     zellij
     zoxide
