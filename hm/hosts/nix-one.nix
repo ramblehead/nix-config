@@ -6,8 +6,7 @@
   flake-root,
   ...
 }: let
-  inherit (pkgs) system;
-  inherit (inputs.nixgl.packages."${system}") nixGLIntel;
+  inherit (inputs.nixgl.packages."${pkgs.system}") nixGLIntel;
 in {
   imports = [
     # todo: remove when https://github.com/nix-community/home-manager/pull/5355 gets merged:
@@ -44,25 +43,14 @@ in {
     })
     emacsPackages.vterm
 
-    (fenix.complete.withComponents [
-      "cargo"
-      "clippy"
-      "rust-src"
-      "rustc"
-      "rustfmt"
-    ])
-    rust-analyzer-nightly
-
     xsel
   ];
-
-  # xsession.enable = true;
-  # xsession.windowManager.command = "gdm";
 
   home.activation = let
     nix = (import (flake-root + /hm/programs/nix/setup-debian.nix)) {
       inherit pkgs;
       inherit lib;
+      inherit config;
     };
 
     sudo = (import (flake-root + /hm/programs/sudo/setup-debian.nix)) {

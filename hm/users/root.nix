@@ -11,9 +11,9 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    alejandra
     cowsay
     just
+    git
     # google-chrome
     zellij
     zoxide
@@ -21,11 +21,30 @@
     tmux
     zip
     mc
+    ripgrep
+    gitui
     neovim
+    # treefmt
+    treefmt2
 
     # Nix-related
+    # /b/{
+
     nil
-    # nixd
+    alejandra
+
+    # Generate Nix fetcher calls from repository URLs.
+    # Use example:
+    #   $ nurl https://github.com/nix-community/patsh v0.2.0 2>/dev/null
+    #   fetchFromGitHub {
+    #     owner = "nix-community";
+    #     repo = "patsh";
+    #     rev = "v0.2.0";
+    #     hash = "sha256-7HXJspebluQeejKYmVA7sy/F3dtU1gc4eAbKiPexMMA=";
+    #   }
+    nurl
+
+    # /b/}
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

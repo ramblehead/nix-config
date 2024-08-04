@@ -27,6 +27,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Fenix provides profiles of rust toolchains.
+    # see https://rust-lang.github.io/rustup/concepts/profiles.html
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # alacritty-flake = {
+    #   url = "path:./hm/programs/cargo-alacritty";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     dotfiles = {
       url = "git+file:./dotfiles";
       flake = false;
@@ -87,6 +99,7 @@
         system = "x86_64-linux";
         overlays = [
           (import ./overlays/mc)
+          inputs.fenix.overlays.default
         ];
         config.allowUnfree = true;
       };
