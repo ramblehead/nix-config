@@ -34,11 +34,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # alacritty-flake = {
-    #   url = "path:./hm/programs/cargo-alacritty";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     dotfiles = {
       url = "git+file:./dotfiles";
       flake = false;
@@ -58,17 +53,6 @@
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
-        ({
-          config,
-          pkgs,
-          inputs,
-          ...
-        }: {
-          nixpkgs.overlays = [
-            (import ./overlays/mc)
-          ];
-        })
-
         ./configuration.nix
 
         # make home-manager as a module of nixos
@@ -79,13 +63,18 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.rh = import ./home.nix;
+          home-manager.users.rh = import ./hm/users/rh_nix.nix;
+
+          home-manager.sharedModules = [
+            ./hm/hosts/nix-vostok.nix
+          ];
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
           home-manager.extraSpecialArgs = {
             inherit self;
             inherit inputs;
+            inherit flake-root;
           };
         }
 

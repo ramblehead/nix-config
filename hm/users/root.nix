@@ -11,21 +11,46 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    cowsay
-    just
-    git
     # google-chrome
     zellij
     zoxide
     eza
-    tmux
     zip
-    mc
-    ripgrep
+
+    wget
+    curl
+    htop
+    btop
+
+    rpi-imager
+
+    # Text editors and software development tools
+    git
     gitui
+    just
     neovim
-    # treefmt
+    # micro
+    inputs.helix.packages."${pkgs.system}".helix
     treefmt2
+    hack-font
+    ripgrep
+
+    # Backup, Cloud Storage and NAS
+    rclone
+    restic
+
+    # Orthodox Commanders
+    mc
+    # far2l
+
+    # Text editors and software development tools
+    just
+
+    # Shells
+    xonsh
+
+    # Terminals
+    tmux
 
     # Nix-related
     # /b/{
@@ -45,6 +70,10 @@
     nurl
 
     # /b/}
+
+    # Misc
+    fastfetch
+    cowsay
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

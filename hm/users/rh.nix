@@ -20,12 +20,15 @@ in {
   home.username = "rh";
   home.homeDirectory = "/home/rh";
 
+  # link the configuration file in current directory to the specified location in home directory
+  # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
+  home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    hello
+    # hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -54,6 +57,10 @@ in {
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".inputrc".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flake-root + /dotfiles/.inputrc));
 
     ".config/emacs".source =
       config.lib.file.mkOutOfStoreSymlink

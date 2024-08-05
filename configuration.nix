@@ -106,22 +106,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    git
-    neovim
-    mc
-    micro
-    far2l
-    wget
-    curl
-    htop
-    btop
-    rpi-imager
     chromium
     telegram-desktop
     google-chrome
+
+    # PulseAudio Volume Control
     pavucontrol
     wl-clipboard
-    hack-font
+
     gnome.gnome-tweaks
     gnomeExtensions.arcmenu
     gnomeExtensions.date-menu-formatter
@@ -133,20 +125,12 @@
     # gnomeExtensions.noannoyance-fork
     gnomeExtensions.steal-my-focus-window
     gnomeExtensions.system-monitor-next
-    gnomeExtensions.appindicator # Old tray icons, e.g. Telegram
-
-    # Text editors and software development tools
-    just
-
-    # Shells
-    xonsh
-
-    # Terminals
-    tmux
+    # Old tray icons, e.g. Telegram
+    gnomeExtensions.appindicator
   ];
 
   # environment.variables.EDITOR = "micro";
-  environment.variables.EDITOR = "nvim";
+  # environment.variables.EDITOR = "nvim";
   environment.variables.XCURSOR_THEME = "Adwaita";
 
   # Some programs need SUID wrappers, can be configured further or are
