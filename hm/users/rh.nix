@@ -66,6 +66,10 @@ in {
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flake-root + /dotfiles/.config/emacs));
 
+    ".local/bin/em".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flake-root + /dotfiles/.local/bin/em));
+
     ".config/zellij".source =
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flake-root + /dotfiles/.config/zellij));
