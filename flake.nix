@@ -49,10 +49,22 @@
     flake-root = ./.;
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
-    nixosConfigurations.rh-krancher = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.vostok = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
+        ({
+          config,
+          pkgs,
+          inputs,
+          ...
+        }: {
+          nixpkgs.overlays = [
+            (import ./overlays/mc)
+            inputs.fenix.overlays.default
+          ];
+        })
+
         ./configuration.nix
 
         # make home-manager as a module of nixos
@@ -64,9 +76,10 @@
           home-manager.useUserPackages = true;
 
           home-manager.users.rh = import ./hm/users/rh_nix.nix;
+          home-manager.users.root = import ./hm/users/root.nix;
 
           home-manager.sharedModules = [
-            ./hm/hosts/nix-vostok.nix
+            ./hm/hosts/vostok.nix
           ];
 
           # Optionally, use home-manager.extraSpecialArgs to pass
@@ -132,7 +145,9 @@
         config.allowUnfree = true;
       };
 
-      modules = [./hm/users/rh.nix];
+      modules = [
+        ./hm/users/rh.nix
+      ];
 
       extraSpecialArgs = {
         inherit self;
