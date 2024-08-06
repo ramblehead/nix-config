@@ -113,15 +113,22 @@
 
     hack-font
 
+    hunspell
+    hunspellDicts.ru-ru
+    # hunspellDicts.en-us
+    hunspellDicts.en-us-large
+    # hunspellDicts.en-gb-ise
+    hunspellDicts.en-gb-large
+
     # Equivalent of the apt-get build-dep
-    pkgs.gcc
-    pkgs.gnumake
-    pkgs.pkg-config
-    pkgs.autoconf
-    pkgs.automake
-    pkgs.libtool
-    pkgs.cmake
-    pkgs.python3
+    gcc
+    gnumake
+    pkg-config
+    autoconf
+    automake
+    libtool
+    cmake
+    python3
 
     # PulseAudio Volume Control
     pavucontrol
