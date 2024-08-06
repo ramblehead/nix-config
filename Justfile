@@ -46,7 +46,7 @@ clean:
     --older-than 7d
   sudo nixos-rebuild boot
   # Remove auto GC-roots
-  sudo rm -f /nix/var/nix/gcroots/auto/*
+  sudo rm -vf /nix/var/nix/gcroots/auto/*
 
 gc:
   # Garbage collect all unused nix store entries
