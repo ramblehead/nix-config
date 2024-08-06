@@ -36,6 +36,9 @@
     hack-font
     ripgrep
 
+    # Used via lsp-mode
+    # semgrep
+
     # Backup, Cloud Storage and NAS
     rclone
     restic
