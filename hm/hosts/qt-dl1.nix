@@ -44,6 +44,15 @@ in {
     })
     emacsPackages.vterm
 
+    (fenix.complete.withComponents [
+      "cargo"
+      "clippy"
+      "rust-src"
+      "rustc"
+      "rustfmt"
+    ])
+    rust-analyzer-nightly
+
     wl-clipboard
   ];
 

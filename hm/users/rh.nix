@@ -62,6 +62,10 @@ in {
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flake-root + /dotfiles/.inputrc));
 
+    ".config/git".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flake-root + /dotfiles/.config/git));
+
     ".config/emacs".source =
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flake-root + /dotfiles/.config/emacs));
