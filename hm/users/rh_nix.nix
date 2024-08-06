@@ -25,10 +25,4 @@ in {
       vim = "nvim";
     };
   };
-
-  programs.git.enable = true;
-  home.file.".config/git" = {
-    source = "${dotfiles}/.config/git";
-    # recursive = true;
-  };
 }

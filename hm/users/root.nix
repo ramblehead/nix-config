@@ -35,6 +35,7 @@
     treefmt2
     hack-font
     ripgrep
+    ispell
 
     # Used via lsp-mode
     # semgrep

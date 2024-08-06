@@ -123,7 +123,8 @@ in {
   #  /etc/profiles/per-user/rh/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "em";
+    PATH = "${config.home.homeDirectory}/.local/bin:$PATH";
   };
 
   # This value determines whether home Manager should use the XDG base

@@ -15,6 +15,7 @@
       # withGTK3 = true;
     })
     emacsPackages.vterm
+    emacsPackages.clang-format
 
     (fenix.complete.withComponents [
       "cargo"
