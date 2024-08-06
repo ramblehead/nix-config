@@ -1,9 +1,9 @@
 {
-  config,
+  # config,
   pkgs,
-  inputs,
-  lib,
-  flake-root,
+  # inputs,
+  # lib,
+  # flake-root,
   ...
 }: {
   home.packages = with pkgs; [

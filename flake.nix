@@ -123,6 +123,7 @@
         system = "x86_64-linux";
         overlays = [
           (import ./overlays/mc)
+          inputs.fenix.overlays.default
         ];
         config.allowUnfree = true;
       };
