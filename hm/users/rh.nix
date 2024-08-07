@@ -122,10 +122,7 @@ in {
   #
   #  /etc/profiles/per-user/rh/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    EDITOR = "em";
-    PATH = "${config.home.homeDirectory}/.local/bin:$PATH";
-  };
+  # home.sessionVariables = {};
 
   # This value determines whether home Manager should use the XDG base
   # directory specification for placing configuration files and other

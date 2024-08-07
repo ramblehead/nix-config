@@ -152,7 +152,6 @@
   # environment.variables.EDITOR = "micro";
   # environment.variables.EDITOR = "nvim";
   environment.variables.XCURSOR_THEME = "Adwaita";
-  # environment.variables.PATH = "/run/wrappers/bin:/home/rh/.nix-profile/bin:/nix/profile/bin:/home/rh/.local/state/nix/profile/bin:/etc/profiles/per-user/rh/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin:/xxx";
   environment.variables.PATH = lib.mkAfter "/etc/profiles/per-user/root/bin";
 
   # Some programs need SUID wrappers, can be configured further or are
