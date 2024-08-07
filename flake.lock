@@ -24,11 +24,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1722943934,
+        "lastModified": 1723054616,
         "narHash": "sha256-O1wfMwwqdEssQOMQVfJpsWM8g/0bjzob5O1y5VMHsAg=",
-        "ref": "7029d4cb4dbec98c9970f9f18de06a2432db352d",
-        "rev": "7029d4cb4dbec98c9970f9f18de06a2432db352d",
-        "revCount": 34,
+        "ref": "refs/heads/main",
+        "rev": "b9736479b739b250522c8987539542c52d4c9972",
+        "revCount": 40,
         "type": "git",
         "url": "file:./dotfiles"
       },
@@ -45,11 +45,11 @@
         "rust-analyzer-src": "rust-analyzer-src"
       },
       "locked": {
-        "lastModified": 1722925878,
-        "narHash": "sha256-/wuVEbsqQnaNAYKqe/7CXm8cQXMAfsQYg9Mtkm2Aetg=",
+        "lastModified": 1723012113,
+        "narHash": "sha256-AJGsmwDnheWMjZWUqgiGtBjbxMmvLvMp5WJhmTRhJ4w=",
         "owner": "nix-community",
         "repo": "fenix",
-        "rev": "aefb786b6a2924f684ba9ecd8fcad4628b214ffe",
+        "rev": "3dab4ada5b0c5a22d56dbfd7e140c16f3df2e69a",
         "type": "github"
       },
       "original": {
@@ -104,11 +104,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1722972638,
-        "narHash": "sha256-s6ZmwHwnNaPdxdq2X7wBcuQdpgdS+azlgIzv44/ssmc=",
+        "lastModified": 1722983375,
+        "narHash": "sha256-EW07wheW5b2LGLDXlZ/V+qAyjBZIbwgqZE/mUP4nxu4=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "70918570a980908d127146790d63abed48fe262f",
+        "rev": "0929704699ec14e6d4770ddc345a80225a8a7fae",
         "type": "github"
       },
       "original": {
@@ -206,11 +206,11 @@
     "rust-analyzer-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1722868550,
-        "narHash": "sha256-Z708uZsfcP6IprVtw1AwjN0zjUX5+6lbneYiin58umc=",
+        "lastModified": 1722925734,
+        "narHash": "sha256-5maDP51jkTUCHDU7tKdbsMQTk0QMNZjNGZw2z++YaaI=",
         "owner": "rust-lang",
         "repo": "rust-analyzer",
-        "rev": "4a99d795d06970accb46bd594f473999818b2fa8",
+        "rev": "b23142209ef632475915e858f5f20901ef7c12da",
         "type": "github"
       },
       "original": {
