@@ -26,6 +26,7 @@
     ])
     rust-analyzer-nightly
 
+    bitcoin
     wl-clipboard
   ];
 }

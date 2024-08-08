@@ -56,7 +56,7 @@ gc:
   nix-collect-garbage --delete-old
 
 # Remove all reflog entries and prune unreachable objects
-gitgc:
+git-gc:
   git reflog expire --expire-unreachable=now --all
   git gc --prune=now
 
