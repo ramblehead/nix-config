@@ -27,6 +27,9 @@
     rust-analyzer-nightly
 
     bitcoin
+    monero-cli
+    monero-gui
+
     wl-clipboard
   ];
 }
