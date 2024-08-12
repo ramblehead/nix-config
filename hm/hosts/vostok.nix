@@ -7,7 +7,15 @@
   ...
 }: {
   home.packages = with pkgs; [
+    # Terminal
+    # /b/{
+
     alacritty
+
+    # /b/}
+
+    # Emacs
+    # /b/{
 
     (emacs.override {
       withNativeCompilation = true;
@@ -16,6 +24,11 @@
     })
     emacsPackages.vterm
     emacsPackages.clang-format
+
+    # /b/}
+
+    # Rust
+    # /b/{
 
     (fenix.complete.withComponents [
       "cargo"
@@ -26,10 +39,38 @@
     ])
     rust-analyzer-nightly
 
+    # /b/}
+
+    # apt's build-essential
+    # /b/{
+
+    gcc
+    gnumake
+    autoconf
+    automake
+    libtool
+    pkg-config
+    cmake
+
+    # /b/}
+
+    # Cryptocurrency
+    # /b/{
+
     bitcoin
     monero-cli
     monero-gui
+    p2pool
+    xmrig
+
+    # /b/}
+
+    # GUI
+    # /b/{
 
     wl-clipboard
+    gtk3
+
+    # /b/}
   ];
 }
