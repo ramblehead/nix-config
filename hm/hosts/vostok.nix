@@ -72,5 +72,7 @@
     gtk3
 
     # /b/}
+
+    openssl
   ];
 }

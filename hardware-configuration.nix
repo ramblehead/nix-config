@@ -12,9 +12,14 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  # boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
+  boot.kernelModules = ["kvm-amd" "msr" "amdgpu"];
+  # boot.kernelModules = ["kvm-amd" "msr" "amdgpu-pro"];
+  boot.extraModprobeConfig = ''
+    options msr allow_writes=on
+  '';
   boot.extraModulePackages = [];
 
   fileSystems."/" = {

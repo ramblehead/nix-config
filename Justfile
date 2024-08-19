@@ -48,6 +48,14 @@ clean:
   # Remove auto GC-roots
   sudo rm -vf /nix/var/nix/gcroots/auto/*
 
+# remove all generations
+clean-all:
+  sudo nix profile wipe-history \
+    --profile /nix/var/nix/profiles/system
+  sudo nixos-rebuild boot
+  # Remove auto GC-roots
+  sudo rm -vf /nix/var/nix/gcroots/auto/*
+
 gc:
   # Garbage collect all unused nix store entries
   sudo nix store gc --debug
