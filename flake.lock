@@ -24,11 +24,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1723461666,
+        "lastModified": 1724061493,
         "narHash": "sha256-Vld7umuWSNfgufo0BKDdKQF7n4x7zrJCMVj1a8LSvhY=",
         "ref": "refs/heads/main",
-        "rev": "c846a770a6593176f99a0ea2ebc16f2cf57ad8ce",
-        "revCount": 49,
+        "rev": "298d1c706ac96c6e7b4a2f2c9d8ddd0e8d064bb6",
+        "revCount": 50,
         "type": "git",
         "url": "file:./dotfiles"
       },
