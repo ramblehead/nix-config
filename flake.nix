@@ -1,5 +1,5 @@
 {
-  description = "ramblehead's NixOS flake";
+  description = "ramblehead's NixOS and Nix flake";
 
   inputs = {
     # e.g. flake-utils.lib.eachDefaultSystem (system: ...)
