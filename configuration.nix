@@ -23,11 +23,9 @@
     # "default_hugepagesz=1G"
     "hugepagesz=1G"
     "hugepages=${toString nproc}"
-    # "amdgpu.si_support=1"
-    # "amdgpu.cik_support=1"
-    # "radeon.si_support=0"
-    # "radeon.cik_support=0"
   ];
+
+  hardware.sane.enable = true; # enables support for SANE scanners
 
   hardware.amdgpu.initrd.enable = true;
   # hardware.amdgpu.opencl.enable = true;
@@ -197,7 +195,7 @@
   users.users.rh = {
     isNormalUser = true;
     description = "ramblehead";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "scanner" "lp"];
     packages = with pkgs; [
       #  thunderbird
     ];
