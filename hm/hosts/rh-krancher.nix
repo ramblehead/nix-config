@@ -53,6 +53,8 @@ in {
     ])
     rust-analyzer-nightly
 
+    bitcoin
+
     xsel
   ];
 
