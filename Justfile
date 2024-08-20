@@ -15,8 +15,8 @@ io:
 update:
   nix flake update
 
-update-package pkg:
-  nix flake update {{pkg}}
+update-input input:
+  nix flake lock --update-input {{input}}
 
 rebuild:
   sudo nixos-rebuild switch --flake .
