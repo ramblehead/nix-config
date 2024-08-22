@@ -30,6 +30,7 @@
   home.sessionVariables = {
     PATH = "${config.home.homeDirectory}/.local/bin:$PATH";
     EDITOR = "em";
+    # MC_XDG_OPEN = "xdg-open";
     # RUST_SRC_PATH = "${pkgs.fenix.complete.rust-src}/lib/rustlib/src/rust/library";
   };
 }

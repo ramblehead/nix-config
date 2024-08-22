@@ -44,6 +44,7 @@
     restic
 
     # Orthodox Commanders
+    file # Used by mc
     mc
     # far2l
 
