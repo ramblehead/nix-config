@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
+  # config,
   pkgs,
   lib,
   ...
@@ -16,24 +16,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelParams = let
-    # nproc = "${toString (builtins.length (builtins.match "processor" (builtins.readFile /proc/cpuinfo)))}";
-    nproc = 12;
-  in [
-    # "default_hugepagesz=1G"
-    "hugepagesz=1G"
-    "hugepages=${toString nproc}"
-  ];
+  # enables support for SANE scanners
+  hardware.sane.enable = true;
 
-  hardware.sane.enable = true; # enables support for SANE scanners
-
+  # Enable GPU support at initrd stage
   hardware.amdgpu.initrd.enable = true;
-  # hardware.amdgpu.opencl.enable = true;
-  # hardware.amdgpu.amdvlk.enable = true;
-  # hardware.amdgpu.amdvlk.supportExperimental.enable = true;
-  # hardware.amdgpu.amdvlk.support32Bit.enable = true;
-
-  # hardware.enableRedistributableFirmware = true;
 
   hardware.opengl = {
     enable = true;
@@ -41,84 +28,45 @@
     # driSupport32Bit = true;
     # setLdLibraryPath = true;
 
-    # package = pkgs.linuxKernel.packages.linux_zen.amdgpu-pro;
-    # package = (config.boot.kernelPackages.rocm-opencl-icd);
-    # package = (config.boot.kernelPackages.amdgpu-pro);
-    # package32 = pkgs.linuxKernel.packages.linux_zen.amdgpu-pro;
-    # extraPackages = with pkgs; [
-    #   rocmPackages.clr
-    #   rocm-opencl-icd
-    #   rocm-opencl-runtime
-    #   rocmPackages.clr
-    #   rocmPackages.clr.icd
-    # ];
-
     extraPackages = with pkgs; [
       rocmPackages_5.clr.icd
-      # rocmPackages_5.clr
+      rocmPackages_5.clr
       rocmPackages_5.rocm-runtime
       rocmPackages_5.rocm-core
 
       rocmPackages_5.rocblas
       rocmPackages_5.hipblas
 
-      # rocmPackages_5.llvm.lld
-      # rocmPackages_5.llvm.llvm
-      # rocmPackages_5.llvm.libc
-      # rocmPackages_5.llvm.libcxx
-      # rocmPackages_5.llvm.libcxxabi
-      # rocmPackages_5.rocm-smi
-
-      # rocmPackages_5.hipcc
-
-      ocl-icd
-      # khronos-ocl-icd-loader
-      # rocm-opencl-icd
-      # rocm-opencl-runtime
+      # ocl-icd
     ];
   };
 
-  # hardware.opengl = {
-  #   enable = true;
-  #   driSupport = true;
-  #   driSupport32Bit = true;
-
-  #   extraPackages = with pkgs; [
-  #     rocm-opencl-icd
-  #     rocm-opencl-runtime
-  #     rocmPackages.rocm-runtime
-  #     amdvlk
-  #   ];
-
-  #   extraPackages32 = with pkgs; [
-  #     driversi686Linux.amdvlk
-  #   ];
-  # };
-
-  # systemd.tmpfiles.rules = let
-  #   rocmEnv = pkgs.symlinkJoin {
-  #     name = "rocm-combined";
-  #     paths = with pkgs.rocmPackages_5; [
-  #       rocblas
-  #       hipblas
-  #       clr
-  #     ];
-  #   };
-  # in [
-  #   "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
-  # ];
-
-  # This is necesery because many programs hard-code the path to hip.
-  systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages_5.clr}"
+  systemd.tmpfiles.rules = let
+    rocmEnv = pkgs.symlinkJoin {
+      name = "rocm-combined";
+      paths = with pkgs.rocmPackages_5; [
+        rocblas
+        hipblas
+        clr
+      ];
+    };
+  in [
+    "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
   ];
+
+  # # This is necesery because many programs hard-code the path to hip.
+  # systemd.tmpfiles.rules = [
+  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages_5.clr}"
+  # ];
 
   # As of ROCm 4.5, AMD has disabled OpenCL on Polaris based cards. So this is
   # needed if you have a 500 series card.
   environment.variables.ROC_ENABLE_PRE_VEGA = "1";
 
-  networking.hostName = "vostok"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "vostok";
+
+  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -257,8 +205,6 @@
     gnomeExtensions.appindicator
   ];
 
-  # environment.variables.EDITOR = "micro";
-  # environment.variables.EDITOR = "nvim";
   environment.variables.XCURSOR_THEME = "Adwaita";
   environment.variables.PATH = lib.mkAfter "/etc/profiles/per-user/root/bin";
 

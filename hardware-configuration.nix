@@ -4,7 +4,7 @@
 {
   config,
   lib,
-  pkgs,
+  # pkgs,
   modulesPath,
   ...
 }: {
@@ -12,11 +12,25 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  # boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
+  # boot.kernelParams = let
+  #   nproc = 12;
+  # in [
+  #   # "default_hugepagesz=1G"
+  #   "hugepagesz=1G"
+  #   "hugepages=${toString nproc}"
+  # ];
+
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "xhci_pci"
+    "ahci"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
+
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd" "msr" "amdgpu"];
-  # boot.kernelModules = ["kvm-amd" "msr" "amdgpu-pro"];
   boot.extraModprobeConfig = ''
     options msr allow_writes=on
   '';
@@ -37,13 +51,15 @@
     {device = "/dev/disk/by-uuid/92c5cdfe-4dbf-4cab-a898-f9f3ef5abe4a";}
   ];
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted
+  # networking (the default) this is the recommended approach. When using
+  # systemd-networkd it's still possible to use this option, but it's
+  # recommended to use it in conjunction with explicit per-interface
+  # declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp4s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
