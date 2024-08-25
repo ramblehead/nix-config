@@ -8,7 +8,7 @@
 in {
   setupMc = lib.hm.dag.entryAfter ["writeBoundary"] ''
     readonly MC_CONF="${config.home.homeDirectory}/.config/mc"
-    run mv -v "$MC_CONF" "\${MC_CONF}.$(date "+%Y%m%dT%H%M%S%3N%z")"
+    run mv -v "$MC_CONF" "''${MC_CONF}.$(date "+%Y%m%dT%H%M%S%3N%z")"
     run mkdir -p "$MC_CONF"
     run cp -n "${dotfiles}/.config/mc/ini" "$MC_CONF"
     run chmod ug+w "$MC_CONF/ini"
