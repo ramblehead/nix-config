@@ -7,6 +7,14 @@
   ...
 }: {
   home.packages = with pkgs; [
+    # Credentials and Infosecurity
+    # /b/{
+
+    keepassxc
+    openssl
+
+    # /b/}
+
     # Terminal
     # /b/{
 
@@ -72,7 +80,5 @@
     gtk3
 
     # /b/}
-
-    openssl
   ];
 }

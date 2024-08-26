@@ -30,7 +30,9 @@
     # Fenix provides profiles of rust toolchains.
     # see https://rust-lang.github.io/rustup/concepts/profiles.html
     fenix = {
-      url = "github:nix-community/fenix";
+      # Nightly branch
+      # url = "github:nix-community/fenix";
+      url = "github:nix-community/fenix/monthly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

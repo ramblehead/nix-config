@@ -76,6 +76,13 @@
 
     # /b/}
 
+    # Documents and Scanned Documents
+    # /b/{
+
+    ghostscript
+
+    # /b/}
+
     # Misc
     fastfetch
     cowsay
