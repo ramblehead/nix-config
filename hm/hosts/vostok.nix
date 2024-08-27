@@ -62,7 +62,7 @@
 
     # /b/}
 
-    # Cryptocurrency
+    # Cryptocurrencies
     # /b/{
 
     bitcoin
