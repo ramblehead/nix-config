@@ -78,10 +78,10 @@
           home-manager.useUserPackages = true;
 
           home-manager.users.rh = import ./hm/users/rh_nix.nix;
-          home-manager.users.root = import ./hm/users/root.nix;
 
           home-manager.sharedModules = [
             ./hm/hosts/vostok.nix
+            ./hm/users/root.nix
           ];
 
           # Optionally, use home-manager.extraSpecialArgs to pass
