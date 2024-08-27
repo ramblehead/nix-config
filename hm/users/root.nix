@@ -78,7 +78,7 @@
 
     # /b/}
 
-    # Documents and Scanned Documents
+    # Print and Scanned Documents
     # /b/{
 
     ghostscript
