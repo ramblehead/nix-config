@@ -46,6 +46,8 @@
     # Orthodox Commanders
     file # Used by mc
     mc
+    ncdu
+    dust
     # far2l
 
     # Text editors and software development tools
