@@ -53,7 +53,10 @@
 
     nixosConfigurations.vostok = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
+      specialArgs = {
+        inherit inputs;
+        inherit flake-root;
+      };
       modules = [
         ({
           config,
@@ -67,7 +70,7 @@
           ];
         })
 
-        ./configuration.nix
+        ./nixos/hosts/vostok/configuration.nix
 
         # make home-manager as a module of nixos
         # so that home-manager configuration will be deployed
@@ -78,11 +81,11 @@
           home-manager.useUserPackages = true;
 
           home-manager.users.rh = import ./hm/users/rh_nix.nix;
+          # home-manager.users.root = import ./hm/users/root.nix;
 
-          home-manager.sharedModules = [
-            ./hm/hosts/vostok.nix
-            ./hm/users/root.nix
-          ];
+          # home-manager.sharedModules = [
+          #   ./hm/hosts/vostok.nix
+          # ];
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix

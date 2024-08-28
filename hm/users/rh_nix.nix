@@ -1,18 +1,7 @@
 {
   config,
   pkgs,
-  # self,
-  # inputs,
   ...
-  # }: let
-  #   inherit (inputs) dotfiles;
-  #   dotfilesLib = (import ./lib/dotfiles.nix) {
-  #     inherit self;
-  #     inherit config;
-  #     inherit inputs;
-  #   };
-  #   inherit (dotfilesLib) deduceRuntimePath;
-  # in {
 }: {
   imports = [
     ./rh.nix
@@ -25,12 +14,14 @@
       vi = "nvim";
       vim = "nvim";
     };
+    sessionVariables = {
+      PATH = "${config.home.homeDirectory}/.local/bin:$PATH";
+      EDITOR = "em";
+    };
   };
 
-  home.sessionVariables = {
-    PATH = "${config.home.homeDirectory}/.local/bin:$PATH";
-    EDITOR = "em";
-    # MC_XDG_OPEN = "xdg-open";
-    # RUST_SRC_PATH = "${pkgs.fenix.complete.rust-src}/lib/rustlib/src/rust/library";
-  };
+  # home.sessionVariables = {
+  #   MC_XDG_OPEN = "xdg-open";
+  #   RUST_SRC_PATH = "${pkgs.fenix.complete.rust-src}/lib/rustlib/src/rust/library";
+  # };
 }

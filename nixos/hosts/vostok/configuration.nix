@@ -4,7 +4,9 @@
 {
   # config,
   pkgs,
+  inputs,
   lib,
+  flake-root,
   ...
 }: {
   imports = [
@@ -144,9 +146,9 @@
     isNormalUser = true;
     description = "ramblehead";
     extraGroups = ["networkmanager" "wheel" "scanner" "lp"];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
+    # packages = with pkgs; [
+    #   #  thunderbird
+    # ];
   };
 
   # Allow unfree packages
@@ -156,54 +158,128 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    chromium
-    telegram-desktop
-    google-chrome
+  environment.systemPackages = let
+    utils-cli = (import (flake-root + /hm/programs/rh-packages/utils-cli.nix)) {
+      inherit pkgs;
+      inherit inputs;
+    };
 
-    hack-font
+    utils-gui = (import (flake-root + /hm/programs/rh-packages/utils-gui.nix)) {
+      inherit pkgs;
+      inherit inputs;
+    };
+  in
+    utils-cli.packages
+    ++ utils-gui.packages
+    ++ (with pkgs; [
+      # Shells and terminals
+      # /b/{
 
-    hunspell
-    hunspellDicts.ru-ru
-    # hunspellDicts.en-us
-    hunspellDicts.en-us-large
-    # hunspellDicts.en-gb-ise
-    hunspellDicts.en-gb-large
+      alacritty
 
-    # Equivalent of the apt-get build-dep
-    gcc
-    gnumake
-    pkg-config
-    autoconf
-    automake
-    libtool
-    cmake
-    python3
+      # /b/}
 
-    # PulseAudio Volume Control
-    pavucontrol
-    wl-clipboard
+      # Text Editors and Software Development Tools
+      # /b/{
 
-    clinfo
-    radeontop
-    opencl-info
-    rocmPackages_5.rocminfo
-    # linuxKernel.packages.linux_zen.amdgpu-pro
+      (emacs.override {
+        withNativeCompilation = true;
+        withPgtk = true;
+        # withGTK3 = true;
+      })
+      emacsPackages.vterm
+      emacsPackages.clang-format
 
-    gnome.gnome-tweaks
-    gnomeExtensions.arcmenu
-    gnomeExtensions.date-menu-formatter
-    gnomeExtensions.dash-to-panel
-    gnomeExtensions.gtk4-desktop-icons-ng-ding
-    gnomeExtensions.caffeine
-    gnomeExtensions.clipboard-indicator
-    # gnomeExtensions.vitals
-    # gnomeExtensions.noannoyance-fork
-    gnomeExtensions.steal-my-focus-window
-    gnomeExtensions.system-monitor-next
-    # Old tray icons, e.g. Telegram
-    gnomeExtensions.appindicator
-  ];
+      # /b/}
+
+      # Rust
+      # /b/{
+
+      (fenix.complete.withComponents [
+        "cargo"
+        "clippy"
+        "rust-src"
+        "rustc"
+        "rustfmt"
+      ])
+      rust-analyzer-nightly
+
+      # /b/}
+
+      # Equivalent of the apt-get build-dep
+      # /b/{
+
+      gcc
+      gnumake
+      pkg-config
+      autoconf
+      automake
+      libtool
+      cmake
+      python3
+
+      # /b/}
+
+      # Cryptocurrencies
+      # /b/{
+
+      bitcoin
+      monero-cli
+      monero-gui
+      p2pool
+      xmrig
+
+      # /b/}
+
+      # Infosecurity
+      # /b/{
+
+      openssl
+
+      # /b/}
+
+      # GUI
+      # /b/{
+
+      wl-clipboard
+      gtk3
+
+      # /b/}
+
+      chromium
+      telegram-desktop
+      google-chrome
+
+      hunspell
+      hunspellDicts.ru-ru
+      # hunspellDicts.en-us
+      hunspellDicts.en-us-large
+      # hunspellDicts.en-gb-ise
+      hunspellDicts.en-gb-large
+
+      # PulseAudio Volume Control
+      pavucontrol
+      wl-clipboard
+
+      clinfo
+      radeontop
+      opencl-info
+      rocmPackages_5.rocminfo
+
+      gnome.gnome-tweaks
+      gnomeExtensions.arcmenu
+      gnomeExtensions.date-menu-formatter
+      gnomeExtensions.dash-to-panel
+      gnomeExtensions.gtk4-desktop-icons-ng-ding
+      gnomeExtensions.caffeine
+      gnomeExtensions.clipboard-indicator
+      # gnomeExtensions.vitals
+      # gnomeExtensions.noannoyance-fork
+      gnomeExtensions.steal-my-focus-window
+      gnomeExtensions.system-monitor-next
+      # Old tray icons, e.g. Telegram
+      gnomeExtensions.appindicator
+    ]);
 
   environment.variables.XCURSOR_THEME = "Adwaita";
   environment.variables.PATH = lib.mkAfter "/etc/profiles/per-user/root/bin";

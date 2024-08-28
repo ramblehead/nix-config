@@ -7,22 +7,14 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # Credentials and Infosecurity
-    # /b/{
-
-    keepassxc
-    openssl
-
-    # /b/}
-
-    # Terminal
+    # Shells and terminals
     # /b/{
 
     alacritty
 
     # /b/}
 
-    # Emacs
+    # Text Editors and Software Development Tools
     # /b/{
 
     (emacs.override {
@@ -54,11 +46,12 @@
 
     gcc
     gnumake
+    pkg-config
     autoconf
     automake
     libtool
-    pkg-config
     cmake
+    python3
 
     # /b/}
 
@@ -70,6 +63,13 @@
     monero-gui
     p2pool
     xmrig
+
+    # /b/}
+
+    # Infosecurity
+    # /b/{
+
+    openssl
 
     # /b/}
 
