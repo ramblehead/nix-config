@@ -5,6 +5,7 @@
   lib,
   inputs,
   flake-root,
+  isNixOS ? false,
   ...
 }: let
   # inherit (inputs) dotfiles;
@@ -22,6 +23,19 @@ in {
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
+
+  programs.bash = lib.mkIf isNixOS {
+    enable = true;
+    shellAliases = {
+      mc = "source ${pkgs.mc}/libexec/mc/mc-wrapper.sh";
+      vi = "nvim";
+      vim = "nvim";
+    };
+    sessionVariables = {
+      PATH = "${config.home.homeDirectory}/.local/bin:$PATH";
+      EDITOR = "em";
+    };
+  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.

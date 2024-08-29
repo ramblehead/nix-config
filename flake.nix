@@ -80,7 +80,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.rh = import ./hm/users/rh_nix.nix;
+          home-manager.users.rh = import ./hm/users/rh.nix;
           # home-manager.users.root = import ./hm/users/root.nix;
 
           # home-manager.sharedModules = [
@@ -93,6 +93,7 @@
             inherit self;
             inherit inputs;
             inherit flake-root;
+            isNixOS = true;
           };
         }
 
