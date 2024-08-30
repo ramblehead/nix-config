@@ -48,6 +48,8 @@
     inputs.helix.packages."${pkgs.system}".helix
     treefmt2
     hack-font
+    jetbrains-mono
+    fira-code
     ripgrep
     # semgrep # can be used used via lsp-mode
 
