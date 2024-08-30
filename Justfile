@@ -81,6 +81,10 @@ fmt:
 path:
   echo $PATH | sed -e 's/:/\n/g'
 
+# Build font information cache files
+cache-fonts:
+  fc-cache -f -v 
+
 # Initialise root (global) home-manager
 hm-init-host *hostname:
   sudo -i nix run home-manager/release-24.05 -- init --switch ${PWD}

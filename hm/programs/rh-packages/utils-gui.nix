@@ -10,6 +10,18 @@
 
     # /b/}
 
+    # Fonts
+    # /b/{
+
+    hack-font
+    vistafonts
+    tamsyn
+    jetbrains-mono
+    fira-code
+    iosevka
+
+    # /b/}
+
     # Embedded systems
     # /b/{
 
