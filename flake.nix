@@ -48,14 +48,14 @@
     home-manager,
     ...
   } @ inputs: rec {
-    flake-root = ./.;
+    flakeRoot = ./.;
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
     nixosConfigurations.vostok = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
         inherit inputs;
-        inherit flake-root;
+        inherit flakeRoot;
       };
       modules = [
         ({
@@ -81,18 +81,14 @@
           home-manager.useUserPackages = true;
 
           home-manager.users.rh = import ./hm/users/rh.nix;
-          # home-manager.users.root = import ./hm/users/root.nix;
-
-          # home-manager.sharedModules = [
-          #   ./hm/hosts/vostok.nix
-          # ];
+          home-manager.users.root = import ./hm/users/root.nix;
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
           home-manager.extraSpecialArgs = {
             inherit self;
             inherit inputs;
-            inherit flake-root;
+            inherit flakeRoot;
             isNixOS = true;
           };
         }
@@ -120,7 +116,7 @@
       extraSpecialArgs = {
         inherit self;
         inherit inputs;
-        inherit flake-root;
+        inherit flakeRoot;
       };
     };
 
@@ -142,7 +138,7 @@
       extraSpecialArgs = {
         inherit self;
         inherit inputs;
-        inherit flake-root;
+        inherit flakeRoot;
       };
     };
 
@@ -159,7 +155,7 @@
       extraSpecialArgs = {
         inherit self;
         inherit inputs;
-        inherit flake-root;
+        inherit flakeRoot;
       };
     };
   };

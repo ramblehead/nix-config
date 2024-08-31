@@ -3,7 +3,7 @@
   pkgs,
   inputs,
   lib,
-  flake-root,
+  flakeRoot,
   ...
 }: let
   inherit (inputs.nixgl.packages."${pkgs.system}") nixGLIntel;
@@ -57,17 +57,17 @@ in {
   ];
 
   home.activation = let
-    nix = (import (flake-root + /hm/programs/nix/setup-debian.nix)) {
+    nix = (import (flakeRoot + /hm/programs/nix/setup-debian.nix)) {
       inherit pkgs;
       inherit lib;
     };
 
-    sudo = (import (flake-root + /hm/programs/sudo/setup-debian.nix)) {
+    sudo = (import (flakeRoot + /hm/programs/sudo/setup-debian.nix)) {
       inherit pkgs;
       inherit lib;
     };
 
-    mc = (import (flake-root + /hm/programs/mc/setup-debian.nix)) {
+    mc = (import (flakeRoot + /hm/programs/mc/setup-debian.nix)) {
       inherit pkgs;
       inherit lib;
     };

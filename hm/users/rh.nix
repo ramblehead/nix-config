@@ -4,12 +4,12 @@
   self,
   lib,
   inputs,
-  flake-root,
+  flakeRoot,
   isNixOS ? false,
   ...
 }: let
   # inherit (inputs) dotfiles;
-  dotfilesLib = (import (flake-root + /lib/dotfiles.nix)) {
+  dotfilesLib = (import (flakeRoot + /lib/dotfiles.nix)) {
     inherit self;
     inherit config;
     inherit inputs;
@@ -74,43 +74,43 @@ in {
 
     ".inputrc".source =
       config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath (flake-root + /dotfiles/.inputrc));
+      (deduceRuntimePath (flakeRoot + /dotfiles/.inputrc));
 
     ".config/git".source =
       config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath (flake-root + /dotfiles/.config/git));
+      (deduceRuntimePath (flakeRoot + /dotfiles/.config/git));
 
     ".config/emacs".source =
       config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath (flake-root + /dotfiles/.config/emacs));
+      (deduceRuntimePath (flakeRoot + /dotfiles/.config/emacs));
 
     ".local/bin/em".source =
       config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath (flake-root + /dotfiles/.local/bin/em));
+      (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/em));
 
     ".config/zellij".source =
       config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath (flake-root + /dotfiles/.config/zellij));
+      (deduceRuntimePath (flakeRoot + /dotfiles/.config/zellij));
 
     ".config/alacritty".source =
       config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath (flake-root + /dotfiles/.config/alacritty));
+      (deduceRuntimePath (flakeRoot + /dotfiles/.config/alacritty));
 
     ".local/bin/zj".source =
       config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath (flake-root + /dotfiles/.local/bin/zj));
+      (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/zj));
 
     ".local/bin/clip2output".source =
       config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath (flake-root + /dotfiles/.local/bin/clip2output));
+      (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/clip2output));
 
     ".local/bin/file2clip".source =
       config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath (flake-root + /dotfiles/.local/bin/file2clip));
+      (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/file2clip));
   };
 
   home.activation = let
-    mc = (import (flake-root + /hm/programs/mc/setup-home.nix)) {
+    mc = (import (flakeRoot + /hm/programs/mc/setup-home.nix)) {
       inherit config;
       inherit pkgs;
       inherit lib;

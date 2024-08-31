@@ -1,19 +1,31 @@
 {
+  config,
   pkgs,
+  self,
+  lib,
   inputs,
-  flake-root,
+  flakeRoot,
+  isNixOS ? false,
   ...
-}: {
+}: let
+  # inherit (inputs) dotfiles;
+  dotfilesLib = (import (flakeRoot + /lib/dotfiles.nix)) {
+    inherit self;
+    inherit config;
+    inherit inputs;
+  };
+  inherit (dotfilesLib) deduceRuntimePath;
+in {
   home.username = "root";
   home.homeDirectory = "/root";
 
   home.packages = let
-    utils-cli = (import (flake-root + /hm/programs/rh-packages/utils-cli.nix)) {
+    utils-cli = (import (flakeRoot + /hm/programs/rh-packages/utils-cli.nix)) {
       inherit pkgs;
       inherit inputs;
     };
   in
-    utils-cli.packages;
+    lib.mkIf (! isNixOS) utils-cli.packages;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -28,6 +40,24 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".local/bin/clip2output".source =
+      ../../dotfiles/.local/bin/clip2output;
+    # flakeRoot + /dotfiles/.local/bin/clip2output;
+
+    # ".local/bin/file2clip".source =
+    #   flakeRoot + /dotfiles/.local/bin/file2clip;
+  };
+
+  home.activation = let
+    mc = (import (flakeRoot + /hm/programs/mc/setup-home.nix)) {
+      inherit config;
+      inherit pkgs;
+      inherit lib;
+      inherit inputs;
+    };
+  in {
+    inherit (mc) setupMc;
   };
 
   # Home Manager can also manage your environment variables through

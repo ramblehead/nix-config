@@ -45,8 +45,6 @@ clean:
     --profile /nix/var/nix/profiles/system  \
     --older-than 7d
   sudo nixos-rebuild boot
-  # Remove auto GC-roots
-  sudo rm -vf /nix/var/nix/gcroots/auto/*
 
 # remove all generations
 clean-all:

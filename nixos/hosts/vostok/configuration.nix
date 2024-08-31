@@ -6,7 +6,7 @@
   pkgs,
   inputs,
   lib,
-  flake-root,
+  flakeRoot,
   ...
 }: {
   imports = [
@@ -159,12 +159,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = let
-    utils-cli = (import (flake-root + /hm/programs/rh-packages/utils-cli.nix)) {
+    utils-cli = (import (flakeRoot + /hm/programs/rh-packages/utils-cli.nix)) {
       inherit pkgs;
       inherit inputs;
     };
 
-    utils-gui = (import (flake-root + /hm/programs/rh-packages/utils-gui.nix)) {
+    utils-gui = (import (flakeRoot + /hm/programs/rh-packages/utils-gui.nix)) {
       inherit pkgs;
       inherit inputs;
     };
@@ -282,7 +282,7 @@
     ]);
 
   environment.variables.XCURSOR_THEME = "Adwaita";
-  environment.variables.PATH = lib.mkAfter "/etc/profiles/per-user/root/bin";
+  # environment.variables.PATH = lib.mkAfter "/etc/profiles/per-user/root/bin";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
