@@ -40,17 +40,10 @@ in {
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-
-    ".local/bin/clip2output".source =
-      ../../dotfiles/.local/bin/clip2output;
-    # flakeRoot + /dotfiles/.local/bin/clip2output;
-
-    # ".local/bin/file2clip".source =
-    #   flakeRoot + /dotfiles/.local/bin/file2clip;
   };
 
   home.activation = let
-    mc = (import (flakeRoot + /hm/programs/mc/setup-home.nix)) {
+    mc = (import (flakeRoot + /hm/programs/mc/setup-root-home.nix)) {
       inherit config;
       inherit pkgs;
       inherit lib;
