@@ -5,7 +5,6 @@
   # config,
   pkgs,
   inputs,
-  lib,
   flakeRoot,
   ...
 }: {
@@ -133,6 +132,14 @@
   services.gnome = {
     gnome-remote-desktop.enable = true;
     games.enable = true;
+  };
+
+  programs.bash = {
+    shellAliases = {
+      mc = "source ${pkgs.mc}/libexec/mc/mc-wrapper.sh";
+      vi = "nvim";
+      vim = "nvim";
+    };
   };
 
   # Enable CUPS to print documents.
@@ -307,6 +314,13 @@
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;
+  # };
+
+  # system.activationScripts = {
+  #   myScript.text = ''
+  #     # DRY_RUN=''${DRY_RUN:-false}
+  #     mkdir -p /etc/mycustomdir
+  #   '';
   # };
 
   # List services that you want to enable:
