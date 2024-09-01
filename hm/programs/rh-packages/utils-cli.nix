@@ -23,6 +23,7 @@
     dust # a better ncdu
     rclone # command-line program to manage files on cloud storage
     restic # backup program
+    ripgrep # Fast version of grep
 
     # /b/}
 
@@ -43,12 +44,23 @@
     git
     gitui
     just
+    treefmt2
     neovim
     # micro
     inputs.helix.packages."${pkgs.system}".helix
-    treefmt2
-    ripgrep
     # semgrep # can be used used via lsp-mode
+
+    # /b/}
+
+    # Spell Checkers
+    # /b/{
+
+    hunspell
+    hunspellDicts.ru-ru
+    # hunspellDicts.en-us
+    hunspellDicts.en-us-large
+    # hunspellDicts.en-gb-ise
+    hunspellDicts.en-gb-large
 
     # /b/}
 

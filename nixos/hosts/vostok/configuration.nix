@@ -274,13 +274,6 @@
       telegram-desktop
       google-chrome
 
-      hunspell
-      hunspellDicts.ru-ru
-      # hunspellDicts.en-us
-      hunspellDicts.en-us-large
-      # hunspellDicts.en-gb-ise
-      hunspellDicts.en-gb-large
-
       # PulseAudio Volume Control
       pavucontrol
       wl-clipboard

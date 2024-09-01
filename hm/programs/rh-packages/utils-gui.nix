@@ -10,6 +10,27 @@
 
     # /b/}
 
+    # Office Applications
+    # /b/{
+
+    libreoffice-fresh
+    onlyoffice-bin_latest
+    # softmaker-office - in-product purchase
+    dia # Gnome Diagram drawing software
+
+    # /b/}
+
+    # Images and Drawing
+    # /b/{
+
+    mypaint # painting app for artists
+    pinta # Drawing/editing program modeled after Paint.NET
+    libsForQt5.kolourpaint # Easy-to-use paint program
+    gimp-with-plugins # The GNU Image Manipulation Program
+    # krita # Painting and animation application
+
+    # /b/}
+
     # Fonts
     # /b/{
 
