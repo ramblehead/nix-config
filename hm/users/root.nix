@@ -7,15 +7,7 @@
   flakeRoot,
   isNixOS ? false,
   ...
-}: let
-  # inherit (inputs) dotfiles;
-  dotfilesLib = (import (flakeRoot + /lib/dotfiles.nix)) {
-    inherit self;
-    inherit config;
-    inherit inputs;
-  };
-  inherit (dotfilesLib) deduceRuntimePath;
-in {
+}: {
   home.username = "root";
   home.homeDirectory = "/root";
 
