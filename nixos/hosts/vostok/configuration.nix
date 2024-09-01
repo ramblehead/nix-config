@@ -100,19 +100,39 @@
     extraOptions = "experimental-features = nix-command flakes";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  # services.xserver.videoDrivers = [ "amdgpu-pro" ];
+  services.xserver = {
+    # Enable the X11 windowing system.
+    enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+    # Enable the GNOME Desktop Environment.
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    options = "numpad:microsoft";
-    variant = "";
+    desktopManager.gnome = {
+      enable = true;
+      extraGSettingsOverridePackages = [pkgs.gnome.mutter];
+      extraGSettingsOverrides = ''
+        [org.gnome.mutter]
+        experimental-features=['scale-monitor-framebuffer']
+      '';
+    };
+
+    # Configure keymap in X11
+    xkb = {
+      layout = "us";
+      options = "numpad:microsoft";
+      variant = "";
+    };
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    # libinput.enable = true;
+  };
+
+  services.gnome = {
+    gnome-remote-desktop.enable = true;
+    games.enable = true;
   };
 
   # Enable CUPS to print documents.
@@ -137,9 +157,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rh = {
@@ -295,7 +312,6 @@
   # List services that you want to enable:
 
   services.openssh.enable = true;
-  services.gnome.gnome-remote-desktop.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.enable = true;

@@ -16,9 +16,18 @@
     hack-font
     vistafonts
     tamsyn
-    jetbrains-mono
-    fira-code
-    iosevka
+
+    nerdfonts
+    # (nerdfonts.override {
+    #   fonts = [
+    #     # symbols icon only
+    #     "NerdFontsSymbolsOnly"
+    #     # Characters
+    #     "FiraCode"
+    #     "JetBrainsMono"
+    #     "Iosevka"
+    #   ];
+    # })
 
     # /b/}
 
