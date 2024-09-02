@@ -35,7 +35,7 @@
     pinta # Drawing/editing program modeled after Paint.NET
     gimp-with-plugins # The GNU Image Manipulation Program
     # libsForQt5.kolourpaint # Easy-to-use paint program from KDE
-    # krita # Painting and animation application
+    krita # Painting and animation application
 
     # /b/}
 

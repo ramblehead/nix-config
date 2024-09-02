@@ -12,7 +12,7 @@
   home.homeDirectory = "/root";
 
   home.packages = let
-    utils-cli = (import (flakeRoot + /hm/programs/rh-packages/utils-cli.nix)) {
+    utils-cli = (import (flakeRoot + /software/selections/utils-cli.nix)) {
       inherit pkgs;
       inherit inputs;
     };

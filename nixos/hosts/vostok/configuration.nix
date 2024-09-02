@@ -183,12 +183,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = let
-    utils-cli = (import (flakeRoot + /hm/programs/rh-packages/utils-cli.nix)) {
+    utils-cli = (import (flakeRoot + /software/selections/utils-cli.nix)) {
       inherit pkgs;
       inherit inputs;
     };
 
-    utils-gui = (import (flakeRoot + /hm/programs/rh-packages/utils-gui.nix)) {
+    utils-gui = (import (flakeRoot + /software/selections/utils-gui.nix)) {
       inherit pkgs;
       inherit inputs;
     };
