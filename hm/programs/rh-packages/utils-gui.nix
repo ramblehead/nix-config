@@ -20,6 +20,14 @@
 
     # /b/}
 
+    # Project Management
+    # /b/{
+
+    planner # Project management tool for the GNOME desktop
+    treesheets # Free Form Data Organizer
+
+    # /b/}
+
     # Images and Drawing
     # /b/{
 
