@@ -30,7 +30,7 @@
   ];
 
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd" "msr" "amdgpu"];
+  boot.kernelModules = ["kvm-amd" "msr"];
   boot.extraModprobeConfig = ''
     options msr allow_writes=on
   '';
