@@ -57,6 +57,14 @@ in {
       })
       emacsPackages.vterm
 
+      # Office Applications
+      # /b/{
+
+      onlyoffice-bin_latest
+      dia # Gnome Diagram drawing software
+
+      # /b/}
+
       # (fenix.complete.withComponents [
       #   "cargo"
       #   "clippy"

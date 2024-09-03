@@ -116,3 +116,4 @@ hm-switch-user *username:
 hm-switch:
   @just hm-switch-host
   @just hm-switch-user
+  @just cache-rebuild
