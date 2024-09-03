@@ -79,12 +79,13 @@ fmt:
 path:
   echo $PATH | sed -e 's/:/\n/g'
 
-# Build font information cache files
-cache-fonts:
-  fc-cache -f -v 
+# Re-build system caches - font, icons etc.
+cache-rebuild:
+  fc-cache -f -v
+  command -v kbuildsycoca5 >/dev/null 2>&1 && kbuildsycoca5 --noincremental
 
 # Copy current user monitor settings to GDM user
-update-gdm-monitors:
+gdm-monitors-update:
   # see https://gitlab.gnome.org/GNOME/gdm/-/issues/699#note_1215577
   sudo cp ~/.config/monitors.xml ~gdm/.config/monitors.xml
   sudo chown gdm:gdm ~gdm/.config/monitors.xml
