@@ -159,6 +159,16 @@
     ++ utils-gui.packages
     ++ crypto.packages
     ++ (with pkgs; [
+      # Office Applications
+      # /b/{
+
+      libreoffice-fresh
+      onlyoffice-bin_latest
+      # softmaker-office # In-product purchase
+      dia # Gnome Diagram drawing software
+
+      # /b/}
+
       # Shells and terminals
       # /b/{
 
@@ -214,11 +224,10 @@
 
       # /b/}
 
-      # GUI
+      # Embedded systems
       # /b/{
 
-      wl-clipboard
-      gtk3
+      rpi-imager
 
       # /b/}
 
@@ -226,8 +235,8 @@
       telegram-desktop
       google-chrome
 
-      # PulseAudio Volume Control
-      pavucontrol
+      pavucontrol # PulseAudio Volume Control
+      gtk3
       wl-clipboard
 
       gnome.gnome-tweaks

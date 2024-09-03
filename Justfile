@@ -93,7 +93,7 @@ gdm-monitors-update:
 # Initialise root (global) home-manager
 hm-init-host *hostname:
   sudo -i nix run home-manager/release-24.05 -- init --switch ${PWD}
-  @just hm-root-switch {{hostname}}
+  @just hm-switch-host {{hostname}}
 
 # Switch host (root - global) home-manager
 hm-switch-host *hostname:
@@ -111,3 +111,8 @@ hm-init-user *username:
 # Switch user home-manager
 hm-switch-user *username:
   UN={{username}}; home-manager switch --flake "$PWD${UN:+#}$UN"
+
+# Run `hm-init-user` an `hm-switch-user`
+hm-switch:
+  @just hm-switch-host
+  @just hm-switch-user
