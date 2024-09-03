@@ -5,19 +5,19 @@
   lib,
   inputs,
   flakeRoot,
-  isNixOS ? false,
+  # isNixOS ? false,
   ...
 }: {
   home.username = "root";
   home.homeDirectory = "/root";
 
-  home.packages = let
-    utils-cli = (import (flakeRoot + /software/selections/utils-cli.nix)) {
-      inherit pkgs;
-      inherit inputs;
-    };
-  in
-    lib.mkIf (! isNixOS) utils-cli.packages;
+  # home.packages = let
+  #   utils-cli = (import (flakeRoot + /software/selections/utils-cli.nix)) {
+  #     inherit pkgs;
+  #     inherit inputs;
+  #   };
+  # in
+  #   lib.mkIf (! isNixOS) utils-cli.packages;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -35,7 +35,7 @@
   };
 
   home.activation = let
-    mc = (import (flakeRoot + /hm/programs/mc/setup-root-home.nix)) {
+    mc = (import (flakeRoot + /hm/programs/mc/setup-nw-home.nix)) {
       inherit config;
       inherit pkgs;
       inherit lib;

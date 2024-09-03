@@ -24,37 +24,50 @@ in {
 
   nixGL.prefix = "${nixGLIntel}/bin/nixGLIntel";
 
-  home.packages = with pkgs; [
-    # nixgl.nixGLIntel
-    # nixgl.auto.nixGLDefault
-    # nixgl.nixVulkanIntel
-    nixGLIntel
+  home.packages = let
+    utils-cli = (import (flakeRoot + /software/selections/utils-cli.nix)) {
+      inherit pkgs;
+      inherit inputs;
+    };
 
-    # (config.lib.nixGL.wrap wayland)
-    # (config.lib.nixGL.wrap gnome.gdm)
-    # (config.lib.nixGL.wrap gnome.gnome-shell)
+    utils-gui = (import (flakeRoot + /software/selections/utils-gui.nix)) {
+      inherit pkgs;
+      inherit inputs;
+    };
+  in
+    utils-cli.packages
+    ++ utils-gui.packages
+    ++ (with pkgs; [
+      # nixgl.nixGLIntel
+      # nixgl.auto.nixGLDefault
+      # nixgl.nixVulkanIntel
+      nixGLIntel
 
-    # Install via cargo to avoid glibc issues
-    (config.lib.nixGL.wrap alacritty)
+      # (config.lib.nixGL.wrap wayland)
+      # (config.lib.nixGL.wrap gnome.gdm)
+      # (config.lib.nixGL.wrap gnome.gnome-shell)
 
-    (emacs.override {
-      withNativeCompilation = true;
-      # withPgtk = true;
-      withGTK3 = true;
-    })
-    emacsPackages.vterm
+      # Install via cargo to avoid glibc issues
+      (config.lib.nixGL.wrap alacritty)
 
-    # (fenix.complete.withComponents [
-    #   "cargo"
-    #   "clippy"
-    #   "rust-src"
-    #   "rustc"
-    #   "rustfmt"
-    # ])
-    # rust-analyzer-nightly
+      (emacs.override {
+        withNativeCompilation = true;
+        # withPgtk = true;
+        withGTK3 = true;
+      })
+      emacsPackages.vterm
 
-    wl-clipboard
-  ];
+      # (fenix.complete.withComponents [
+      #   "cargo"
+      #   "clippy"
+      #   "rust-src"
+      #   "rustc"
+      #   "rustfmt"
+      # ])
+      # rust-analyzer-nightly
+
+      wl-clipboard
+    ]);
 
   home.activation = let
     nix = (import (flakeRoot + /hm/programs/nix/setup-debian.nix)) {
