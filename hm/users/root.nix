@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  self,
+  # self,
   lib,
   inputs,
   flakeRoot,
