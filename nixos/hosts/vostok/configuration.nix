@@ -64,6 +64,7 @@
     displayManager.gdm = {
       enable = true;
       wayland = true;
+      autoSuspend = false;
     };
 
     desktopManager.gnome = {
@@ -85,6 +86,62 @@
     # Enable touchpad support (enabled default in most desktopManager).
     # libinput.enable = true;
   };
+
+  systemd.tmpfiles.rules = let
+    monitorsXml = inputs.dotfiles + /hosts/vostok/.config/monitors-gdm.xml;
+  in [
+    "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsXml}"
+  ];
+
+  # systemd.tmpfiles.rules = let
+  #   monitorsXmlContent = builtins.readFile ./dotfiles/.config/monitors.xml;
+  #   monitorsConfig = pkgs.writeText "gdm_monitors.xml" monitorsXmlContent;
+  # in [
+  #   "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsConfig}"
+  # ];
+
+  # systemd.tmpfiles.rules = [
+  #   ''f+ /run/gdm/.config/monitors.xml - gdm gdm - <monitors version="2"><configuration><logicalmonitor><x>0</x><y>0</y><scale>2</scale><primary>yes</primary><monitor><monitorspec><connector>Virtual-1</connector><vendor>unknown</vendor><product>unknown</product><serial>unknown</serial></monitorspec><mode><width>4112</width><height>2572</height><rate>60.005760192871094</rate></mode></monitor></logicalmonitor></configuration></monitors>''
+  # ];
+
+  # systemd.tmpfiles.rules = let
+  #   # monitorsXmlContent = builtins.readFile ./dotfiles/.config/monitors.xml;
+  #   monitorsXmlContent = ''
+  #     <monitors version="2">
+  #       <configuration>
+  #         <logicalmonitor>
+  #           <x>0</x>
+  #           <y>0</y>
+  #           <scale>1.25</scale>
+  #           <primary>yes</primary>
+  #           <monitor>
+  #             <monitorspec>
+  #               <connector>DP-1</connector>
+  #               <vendor>AUS</vendor>
+  #               <product>ASUS VG289</product>
+  #               <serial>0x00023626</serial>
+  #             </monitorspec>
+  #             <mode>
+  #               <width>3840</width>
+  #               <height>2160</height>
+  #               <rate>59.997</rate>
+  #             </mode>
+  #           </monitor>
+  #         </logicalmonitor>
+  #         <disabled>
+  #           <monitorspec>
+  #             <connector>HDMI-1</connector>
+  #             <vendor>GSM</vendor>
+  #             <product>LG TV</product>
+  #             <serial>0x01010101</serial>
+  #           </monitorspec>
+  #         </disabled>
+  #       </configuration>
+  #     </monitors>
+  #   '';
+  # in [
+  #   "f+ /run/gdm/.config/monitors.xml - gdm gdm - ${monitorsXmlContent}"
+  # ];
 
   services.gnome = {
     gnome-remote-desktop.enable = true;

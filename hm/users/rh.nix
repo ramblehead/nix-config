@@ -53,6 +53,10 @@ in {
     # '')
   ];
 
+  home.file.".config/monitors.xml".source =
+    config.lib.file.mkOutOfStoreSymlink (deduceRuntimePath
+      (flakeRoot + /dotfiles/hosts/vostok/.config/monitors.xml));
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
