@@ -15,11 +15,10 @@
     inherit inputs;
   };
   inherit (dotfilesLib) deduceRuntimePath;
-
-  hostname =
-    if config ? networking
-    then config.networking.hostName
-    else builtins.getEnv "HOSTNAME";
+  # hostname =
+  #   if config ? networking
+  #   then config.networking.hostName
+  #   else builtins.getEnv "HOSTNAME";
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -64,60 +63,61 @@ in {
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  home.file =
-    lib.mkIf (hostname == "vostok") {
-      ".config/monitors.xml".source =
-        config.lib.file.mkOutOfStoreSymlink (deduceRuntimePath
-          (flakeRoot + "/dotfiles/hosts/vostok/.config/monitors.xml"));
-    }
-    // {
-      # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-      # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-      # # symlink to the Nix store copy.
-      # ".screenrc".source = dotfiles/screenrc;
+  # home.file =
+  #   (lib.mkIf (hostname == "vostok") {
+  #     ".config/monitors.xml".source =
+  #       config.lib.file.mkOutOfStoreSymlink (deduceRuntimePath
+  #         (flakeRoot + "/dotfiles/hosts/vostok/.config/monitors.xml"));
+  #   }) //
 
-      # # You can also set the file content immediately.
-      # ".gradle/gradle.properties".text = ''
-      #   org.gradle.console=verbose
-      #   org.gradle.daemon.idletimeout=3600000
-      # '';
+  home.file = {
+    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
+    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
+    # # symlink to the Nix store copy.
+    # ".screenrc".source = dotfiles/screenrc;
 
-      ".inputrc".source =
-        config.lib.file.mkOutOfStoreSymlink
-        (deduceRuntimePath (flakeRoot + /dotfiles/.inputrc));
+    # # You can also set the file content immediately.
+    # ".gradle/gradle.properties".text = ''
+    #   org.gradle.console=verbose
+    #   org.gradle.daemon.idletimeout=3600000
+    # '';
 
-      ".config/git".source =
-        config.lib.file.mkOutOfStoreSymlink
-        (deduceRuntimePath (flakeRoot + /dotfiles/.config/git));
+    ".inputrc".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.inputrc));
 
-      ".config/emacs".source =
-        config.lib.file.mkOutOfStoreSymlink
-        (deduceRuntimePath (flakeRoot + /dotfiles/.config/emacs));
+    ".config/git".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.config/git));
 
-      ".local/bin/em".source =
-        config.lib.file.mkOutOfStoreSymlink
-        (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/em));
+    ".config/emacs".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.config/emacs));
 
-      ".config/zellij".source =
-        config.lib.file.mkOutOfStoreSymlink
-        (deduceRuntimePath (flakeRoot + /dotfiles/.config/zellij));
+    ".local/bin/em".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/em));
 
-      ".config/alacritty".source =
-        config.lib.file.mkOutOfStoreSymlink
-        (deduceRuntimePath (flakeRoot + /dotfiles/.config/alacritty));
+    ".config/zellij".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.config/zellij));
 
-      ".local/bin/zj".source =
-        config.lib.file.mkOutOfStoreSymlink
-        (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/zj));
+    ".config/alacritty".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.config/alacritty));
 
-      ".local/bin/clip2output".source =
-        config.lib.file.mkOutOfStoreSymlink
-        (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/clip2output));
+    ".local/bin/zj".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/zj));
 
-      ".local/bin/file2clip".source =
-        config.lib.file.mkOutOfStoreSymlink
-        (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/file2clip));
-    };
+    ".local/bin/clip2output".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/clip2output));
+
+    ".local/bin/file2clip".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/file2clip));
+  };
 
   home.activation = let
     mc = (import (flakeRoot + /hm/programs/mc/setup-home.nix)) {
