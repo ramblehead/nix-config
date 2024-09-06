@@ -139,9 +139,6 @@
     # ];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:

@@ -53,14 +53,16 @@
 
     nixosConfigurations.vostok = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+
       specialArgs = {
         inherit inputs;
         inherit flakeRoot;
       };
+
       modules = [
         ({
-          config,
-          pkgs,
+          # config,
+          # pkgs,
           inputs,
           ...
         }: {
@@ -68,6 +70,8 @@
             (import ./overlays/mc)
             inputs.fenix.overlays.default
           ];
+
+          nixpkgs.config.allowUnfree = true;
         })
 
         ./nixos/hosts/vostok/configuration.nix
