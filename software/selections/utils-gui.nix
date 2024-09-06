@@ -19,13 +19,22 @@
 
     # /b/}
 
+    # Office Applications
+    # /b/{
+
+    # softmaker-office # In-product purchase
+    onlyoffice-bin_latest
+    dia # Gnome Diagram drawing software
+
+    # /b/}
+
     # Images and Drawing
     # /b/{
 
-    mypaint # painting app for artists
     pinta # Drawing/editing program modeled after Paint.NET
     gimp-with-plugins # The GNU Image Manipulation Program
     # libsForQt5.kolourpaint # Easy-to-use paint program from KDE
+    mypaint # painting app for artists
     krita # Painting and animation application
 
     # /b/}

@@ -170,9 +170,6 @@
       # /b/{
 
       libreoffice-fresh
-      onlyoffice-bin_latest
-      # softmaker-office # In-product purchase
-      dia # Gnome Diagram drawing software
 
       # /b/}
 
