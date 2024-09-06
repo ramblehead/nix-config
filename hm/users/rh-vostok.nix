@@ -19,9 +19,7 @@ in {
     (flakeRoot + /hm/platforms/nixos.nix)
   ];
 
-  home.file = {
-    ".config/monitors.xml".source =
-      config.lib.file.mkOutOfStoreSymlink (deduceRuntimePath
-        (flakeRoot + "/dotfiles/hosts/vostok/.config/monitors.xml"));
-  };
+  ".config/monitors.xml".source =
+    config.lib.file.mkOutOfStoreSymlink (deduceRuntimePath
+      (flakeRoot + "/dotfiles/hosts/vostok/.config/monitors.xml"));
 }
