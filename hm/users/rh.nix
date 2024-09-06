@@ -5,20 +5,14 @@
   lib,
   inputs,
   flakeRoot,
-  isNixOS ? false,
   ...
 }: let
-  # inherit (inputs) dotfiles;
   dotfilesLib = (import (flakeRoot + /lib/dotfiles.nix)) {
     inherit self;
     inherit config;
     inherit inputs;
   };
   inherit (dotfilesLib) deduceRuntimePath;
-  # hostname =
-  #   if config ? networking
-  #   then config.networking.hostName
-  #   else builtins.getEnv "HOSTNAME";
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -27,14 +21,6 @@ in {
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
-
-  programs.bash = lib.mkIf isNixOS {
-    enable = true;
-    sessionVariables = {
-      PATH = "${config.home.homeDirectory}/.local/bin:$PATH";
-      EDITOR = "em";
-    };
-  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -56,19 +42,6 @@ in {
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
-  # home.file.".config/monitors.xml".source =
-  #   config.lib.file.mkOutOfStoreSymlink (deduceRuntimePath
-  #     (flakeRoot + /dotfiles/hosts/vostok/.config/monitors.xml));
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  # home.file =
-  #   (lib.mkIf (hostname == "vostok") {
-  #     ".config/monitors.xml".source =
-  #       config.lib.file.mkOutOfStoreSymlink (deduceRuntimePath
-  #         (flakeRoot + "/dotfiles/hosts/vostok/.config/monitors.xml"));
-  #   }) //
 
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in

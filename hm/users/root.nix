@@ -5,7 +5,6 @@
   lib,
   inputs,
   flakeRoot,
-  # isNixOS ? false,
   ...
 }: {
   home.username = "root";

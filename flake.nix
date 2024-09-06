@@ -90,7 +90,7 @@
             inherit self;
             inherit inputs;
             inherit flakeRoot;
-            isNixOS = true;
+            # isNixOS = true;
           };
         }
 
@@ -118,7 +118,6 @@
         inherit self;
         inherit inputs;
         inherit flakeRoot;
-        isNixOS = false;
       };
     };
 
@@ -141,7 +140,6 @@
         inherit self;
         inherit inputs;
         inherit flakeRoot;
-        isNixOS = false;
       };
     };
 
