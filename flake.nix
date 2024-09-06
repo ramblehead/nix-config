@@ -145,7 +145,7 @@
       };
     };
 
-    homeConfigurations."rh" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."rh@qt-dl1" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         config.allowUnfree = true;
