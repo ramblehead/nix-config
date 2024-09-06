@@ -80,7 +80,8 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.rh = import ./hm/users/rh.nix;
+          # home-manager.users.rh = import ./hm/users/rh.nix;
+          home-manager.users.rh = import ./hm/users/rh-vostok.nix;
           home-manager.users.root = import ./hm/users/root.nix;
 
           # Optionally, use home-manager.extraSpecialArgs to pass
