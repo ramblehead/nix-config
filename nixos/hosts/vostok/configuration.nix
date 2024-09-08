@@ -129,6 +129,16 @@
     #media-session.enable = true;
   };
 
+  # security.pam.loginLimits = ''
+  #   * hard data unlimited
+  #   * soft data unlimited
+  # '';
+
+  security.pam.loginLimits = ''
+    * hard data 25165824  # 24 GB in KB
+    * soft data 25165824  # 24 GB in KB
+  '';
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rh = {
     isNormalUser = true;
@@ -154,6 +164,11 @@
       inherit inputs;
     };
 
+    publishing = (import (flakeRoot + /software/selections/publishing.nix)) {
+      inherit pkgs;
+      inherit inputs;
+    };
+
     crypto = (import (flakeRoot + /software/selections/cryptocurrency.nix)) {
       inherit pkgs;
       inherit inputs;
@@ -161,13 +176,13 @@
   in
     utils-cli.packages
     ++ utils-gui.packages
+    ++ publishing
     ++ crypto.packages
     ++ (with pkgs; [
       # Office and Documents
       # /b/{
 
       libreoffice-fresh
-      texliveFull
 
       # /b/}
 

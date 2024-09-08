@@ -39,7 +39,6 @@
 
     pinta # Drawing/editing program modeled after Paint.NET
     dia # Gnome Diagram drawing software
-    ipe # Editor for drawing figures with LaTeX integration
     gimp-with-plugins # The GNU Image Manipulation Program
     # libsForQt5.kolourpaint # Easy-to-use paint program from KDE
     mypaint # painting app for artists
