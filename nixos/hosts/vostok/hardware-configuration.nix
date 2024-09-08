@@ -36,16 +36,56 @@
   '';
   boot.extraModulePackages = [];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/0749f0e8-db4b-4293-8bc8-b696a0d6a6a6";
-    fsType = "ext4";
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/0749f0e8-db4b-4293-8bc8-b696a0d6a6a6";
+      fsType = "ext4";
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-uuid/4615-9F26";
+      fsType = "vfat";
+      options = ["fmask=0022" "dmask=0022"];
+    };
+
+    "/mnt/keeper-b" = {
+      device = "/dev/disk/by-uuid/CE0CE0B90CE09E29";
+      fsType = "ntfs";
+      options = [
+        "locale=ru_RU.utf8"
+        "uid=rh"
+        "gid=users"
+        "fmask=0113"
+        "dmask=0002"
+      ];
+    };
+
+    "/mnt/keeper-s" = {
+      device = "/dev/disk/by-uuid/384A0B0F4A0ACA18";
+      fsType = "ntfs";
+      options = [
+        "locale=ru_RU.utf8"
+        "uid=rh"
+        "gid=users"
+        "fmask=0113"
+        "dmask=0002"
+      ];
+    };
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/4615-9F26";
-    fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
-  };
+  # UUID=CE0CE0B90CE09E29                     /mnt/keeper-b             ntfs    locale=ru_RU.utf8,uid=rh,gid=rh,fmask=0113,dmask=0002 0 1
+  # UUID=384A0B0F4A0ACA18                     /mnt/keeper-s             ntfs    locale=ru_RU.utf8,uid=rh,gid=rh,fmask=0113,dmask=0002 0 1
+
+  # fileSystems."/" = {
+  #   device = "/dev/disk/by-uuid/0749f0e8-db4b-4293-8bc8-b696a0d6a6a6";
+  #   fsType = "ext4";
+  # };
+
+  # fileSystems."/boot" = {
+  #   device = "/dev/disk/by-uuid/4615-9F26";
+  #   fsType = "vfat";
+  #   options = ["fmask=0022" "dmask=0022"];
+  # };
 
   swapDevices = [
     {device = "/dev/disk/by-uuid/92c5cdfe-4dbf-4cab-a898-f9f3ef5abe4a";}
@@ -60,6 +100,7 @@
   # networking.interfaces.enp4s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

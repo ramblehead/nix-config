@@ -10,6 +10,13 @@
 
     # /b/}
 
+    # Internet files exchange
+    # /b/{
+
+    deluge # Torrent client
+
+    # /b/}
+
     # Project Management
     # /b/{
 

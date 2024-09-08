@@ -163,10 +163,11 @@
     ++ utils-gui.packages
     ++ crypto.packages
     ++ (with pkgs; [
-      # Office Applications
+      # Office and Documents
       # /b/{
 
       libreoffice-fresh
+      texliveFull
 
       # /b/}
 
@@ -252,6 +253,7 @@
       gnomeExtensions.steal-my-focus-window
       gnomeExtensions.system-monitor-next
       # Old tray icons, e.g. Telegram
+      libappindicator
       gnomeExtensions.appindicator
     ]);
 
