@@ -98,6 +98,11 @@
     games.enable = true;
   };
 
+  # Can use e.g ."xdg-mime query default text/plain" to test
+  xdg.mime.defaultApplications = {
+    "text/plain" = "emacs.desktop";
+  };
+
   programs.bash = {
     shellAliases = {
       mc = "source ${pkgs.mc}/libexec/mc/mc-wrapper.sh";
@@ -134,6 +139,7 @@
   #   * soft data unlimited
   # '';
 
+  # The limists are set mostly for xmrig
   security.pam.loginLimits = [
     {
       domain = "*"; # Apply to all users
