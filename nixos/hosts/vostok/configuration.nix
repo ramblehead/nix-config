@@ -134,10 +134,20 @@
   #   * soft data unlimited
   # '';
 
-  security.pam.loginLimits = ''
-    * hard data 25165824  # 24 GB in KB
-    * soft data 25165824  # 24 GB in KB
-  '';
+  security.pam.loginLimits = [
+    {
+      domain = "*"; # Apply to all users
+      type = "hard"; # Hard limit
+      item = "data"; # Data segment size
+      value = "25165824"; # 24GB in KB
+    }
+    {
+      domain = "*"; # Apply to all users
+      type = "soft"; # Soft limit
+      item = "data"; # Data segment size
+      value = "25165824"; # 24GB in KB
+    }
+  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rh = {
@@ -176,7 +186,7 @@
   in
     utils-cli.packages
     ++ utils-gui.packages
-    ++ publishing
+    ++ publishing.packages
     ++ crypto.packages
     ++ (with pkgs; [
       # Office and Documents
