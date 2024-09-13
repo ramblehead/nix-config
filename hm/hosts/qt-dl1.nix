@@ -34,9 +34,15 @@ in {
       inherit pkgs;
       inherit inputs;
     };
+
+    database = (import (flakeRoot + /software/selections/database.nix)) {
+      inherit pkgs;
+      inherit inputs;
+    };
   in
     utils-cli.packages
     ++ utils-gui.packages
+    ++ database
     ++ (with pkgs; [
       # nixgl.nixGLIntel
       # nixgl.auto.nixGLDefault
