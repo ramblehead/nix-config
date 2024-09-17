@@ -123,16 +123,22 @@
     openFirewall = true;
     extraConfig = ''
       workgroup = WORKGROUP
-      server string = smbnix
-      netbios name = smbnix
-      security = user
-      #use sendfile = yes
-      #max protocol = smb2
+      server string = vostok (NixOS)
+      netbios name = vostok
+      # security = user
+      # use sendfile = yes
+      min protocol = SMB2_10
+      max protocol = SMB3
+      protocol = SMB3
       # note: localhost is the ipv6 localhost ::1
-      hosts allow = 192.168.0. 127.0.0.1 localhost
-      hosts deny = 0.0.0.0/0
+      # hosts allow = 192.168.0. 127.0.0.1 localhost
+      # hosts deny = 0.0.0.0/0
       guest account = nobody
       map to guest = bad user
+      usershare allow guests = yes
+      usershare max shares = 100
+      server role = standalone server
+      # obey pam restrictions = no
     '';
     shares = {
       public = {
@@ -142,8 +148,8 @@
         "guest ok" = "yes";
         "create mask" = "0644";
         "directory mask" = "0755";
-        "force user" = "username";
-        "force group" = "groupname";
+        "force user" = "rh";
+        "force group" = "users";
       };
       private = {
         path = "/mnt/Shares/Private";
@@ -152,10 +158,26 @@
         "guest ok" = "no";
         "create mask" = "0644";
         "directory mask" = "0755";
-        "force user" = "username";
-        "force group" = "groupname";
+        "force user" = "rh";
+        "force group" = "users";
+      };
+      keeper-b = {
+        "path" = "/mnt/keeper-b";
+        "browsable" = "yes";
+        "guest ok" = "yes";
+        "guest only" = "yes";
+        "read only" = "yes";
+        "force create mode" = "0666";
+        "force directory mode" = "0777";
+        "force user" = "rh";
+        "force group" = "users";
       };
     };
+  };
+
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
   };
 
   # Enable sound with pipewire.
