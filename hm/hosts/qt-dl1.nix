@@ -42,7 +42,7 @@ in {
   in
     utils-cli.packages
     ++ utils-gui.packages
-    ++ database
+    ++ database.packages
     ++ (with pkgs; [
       # nixgl.nixGLIntel
       # nixgl.auto.nixGLDefault
