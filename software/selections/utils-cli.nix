@@ -69,6 +69,7 @@
 
     wget
     curl
+    sshfs
 
     # /b/}
 

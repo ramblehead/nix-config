@@ -81,8 +81,8 @@ path:
 
 # Re-build system caches - font, icons etc.
 cache-rebuild:
-  fc-cache -f -v
   command -v kbuildsycoca5 >/dev/null 2>&1 && kbuildsycoca5 --noincremental
+  fc-cache -f -v
 
 # Copy current user monitor settings to GDM user
 gdm-monitors-update:
@@ -116,4 +116,4 @@ hm-switch-user *username:
 hm-switch:
   @just hm-switch-host
   @just hm-switch-user
-  # @just cache-rebuild
+  @just cache-rebuild
