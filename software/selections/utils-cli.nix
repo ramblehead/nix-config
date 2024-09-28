@@ -103,6 +103,8 @@
     # /b/{
 
     cowsay
+    plantuml
+    ditaa
 
     # /b/}
 

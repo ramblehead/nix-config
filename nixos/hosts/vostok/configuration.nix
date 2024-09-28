@@ -222,7 +222,7 @@
   users.users.rh = {
     isNormalUser = true;
     description = "ramblehead";
-    extraGroups = ["networkmanager" "wheel" "scanner" "lp"];
+    extraGroups = ["networkmanager" "wheel" "scanner" "lp" "docker"];
     # packages = with pkgs; [
     #   #  thunderbird
     # ];
@@ -372,6 +372,7 @@
 
   # List services that you want to enable:
 
+  virtualisation.docker.enable = true;
   services.openssh.enable = true;
 
   # Open ports in the firewall.
