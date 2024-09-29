@@ -92,19 +92,10 @@
 
     # /b/}
 
-    # Print and Scanned Documents
-    # /b/{
-
-    ghostscript
-
-    # /b/}
-
     # Misc
     # /b/{
 
     cowsay
-    plantuml
-    ditaa
 
     # /b/}
 
