@@ -63,6 +63,10 @@ in {
       })
       emacsPackages.vterm
 
+      # Native KDE Dolphin in current Debian 12 is leaking memory
+      # and hungs. The following installation seems to fix it.
+      libsForQt5.dolphin
+
       # (fenix.complete.withComponents [
       #   "cargo"
       #   "clippy"
