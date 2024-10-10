@@ -77,9 +77,10 @@
     # /b/{
 
     nil # Yet another language server for Nix
+    nix-direnv # Control individual project environments
     alejandra # The Uncompromising Nix Code Formatter
 
-    # Generate Nix fetcher calls from repository URLs.
+    # Generate Nix fetcher calls from repository URLs
     # Use example:
     #   $ nurl https://github.com/nix-community/patsh v0.2.0 2>/dev/null
     #   fetchFromGitHub {
