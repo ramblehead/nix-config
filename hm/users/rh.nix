@@ -19,8 +19,9 @@ in {
   home.username = "rh";
   home.homeDirectory = "/home/rh";
 
-  # link the configuration file in current directory to the specified location in home directory
-  # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
+  # link the configuration file in current directory to the specified location
+  # in home directory home.file.".config/i3/wallpaper.jpg".source =
+  # ./wallpaper.jpg;
 
   # Control individual project environments
   programs.direnv = {
@@ -38,8 +39,8 @@ in {
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
+    # # parentheses. Maybe you want to install Nerd Fonts with a limited number
+    # # of fonts?
     # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
     # # You can also create simple shell scripts directly inside your
@@ -52,8 +53,8 @@ in {
 
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
+    # # the Nix store. Activating the configuration will then make '~/.screenrc'
+    # # a symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
 
     # # You can also set the file content immediately.
