@@ -77,7 +77,6 @@
     # /b/{
 
     nil # Yet another language server for Nix
-    nix-direnv # Control individual project environments
     alejandra # The Uncompromising Nix Code Formatter
 
     # Generate Nix fetcher calls from repository URLs
