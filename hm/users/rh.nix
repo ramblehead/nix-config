@@ -67,6 +67,10 @@ in {
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flakeRoot + /dotfiles/.inputrc));
 
+    ".hunspell_personal".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.hunspell_personal));
+
     ".config/git".source =
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flakeRoot + /dotfiles/.config/git));
