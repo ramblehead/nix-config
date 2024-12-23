@@ -218,11 +218,16 @@
     }
   ];
 
+  # Debian compatibility group to simplify backup.
+  users.groups.rh = {
+    gid = 1000;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rh = {
     isNormalUser = true;
     description = "ramblehead";
-    extraGroups = ["networkmanager" "wheel" "scanner" "lp" "docker"];
+    extraGroups = ["rh" "networkmanager" "wheel" "scanner" "lp" "docker"];
     # packages = with pkgs; [
     #   #  thunderbird
     # ];
@@ -331,6 +336,7 @@
       chromium
       telegram-desktop
       google-chrome
+      microsoft-edge
 
       pavucontrol # PulseAudio Volume Control
       gtk3
@@ -350,6 +356,7 @@
       # Old tray icons, e.g. Telegram
       libappindicator
       gnomeExtensions.appindicator
+      gnomeExtensions.systemstatsplus
     ]);
 
   environment.variables.XCURSOR_THEME = "Adwaita";
