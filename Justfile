@@ -18,6 +18,7 @@ update:
 update-input input:
   nix flake lock --update-input {{input}}
 
+# sudo nixos-rebuild switch --flake .
 rebuild:
   sudo nixos-rebuild switch --flake .
 
