@@ -117,68 +117,68 @@
   # services.printing.drivers = [ pkgs.hplipWithPlugin pkgs.hplip ];
   # services.printing.logLevel = "debug";
 
-  services.samba = {
-    enable = true;
-    securityType = "user";
-    openFirewall = true;
-    extraConfig = ''
-      workgroup = WORKGROUP
-      server string = vostok (NixOS)
-      netbios name = vostok
-      # security = user
-      # use sendfile = yes
-      min protocol = SMB2_10
-      max protocol = SMB3
-      protocol = SMB3
-      # note: localhost is the ipv6 localhost ::1
-      # hosts allow = 192.168.0. 127.0.0.1 localhost
-      # hosts deny = 0.0.0.0/0
-      guest account = nobody
-      map to guest = bad user
-      usershare allow guests = yes
-      usershare max shares = 100
-      server role = standalone server
-      # obey pam restrictions = no
-    '';
-    shares = {
-      public = {
-        path = "/mnt/Shares/Public";
-        browseable = "yes";
-        "read only" = "no";
-        "guest ok" = "yes";
-        "create mask" = "0644";
-        "directory mask" = "0755";
-        "force user" = "rh";
-        "force group" = "users";
-      };
-      private = {
-        path = "/mnt/Shares/Private";
-        browseable = "yes";
-        "read only" = "no";
-        "guest ok" = "no";
-        "create mask" = "0644";
-        "directory mask" = "0755";
-        "force user" = "rh";
-        "force group" = "users";
-      };
-      keeper-b = {
-        "path" = "/mnt/keeper-b";
-        "browsable" = "yes";
-        "guest ok" = "yes";
-        "guest only" = "yes";
-        "read only" = "yes";
-        "force create mode" = "0666";
-        "force directory mode" = "0777";
-        "force user" = "rh";
-        "force group" = "users";
-      };
-    };
-  };
+  # services.samba = {
+  #   enable = true;
+  #   securityType = "user";
+  #   openFirewall = true;
+  #   extraConfig = ''
+  #     workgroup = WORKGROUP
+  #     server string = vostok (NixOS)
+  #     netbios name = vostok
+  #     # security = user
+  #     # use sendfile = yes
+  #     min protocol = SMB2_10
+  #     max protocol = SMB3
+  #     protocol = SMB3
+  #     # note: localhost is the ipv6 localhost ::1
+  #     # hosts allow = 192.168.0. 127.0.0.1 localhost
+  #     # hosts deny = 0.0.0.0/0
+  #     guest account = nobody
+  #     map to guest = bad user
+  #     usershare allow guests = yes
+  #     usershare max shares = 100
+  #     server role = standalone server
+  #     # obey pam restrictions = no
+  #   '';
+  #   shares = {
+  #     public = {
+  #       path = "/mnt/Shares/Public";
+  #       browseable = "yes";
+  #       "read only" = "no";
+  #       "guest ok" = "yes";
+  #       "create mask" = "0644";
+  #       "directory mask" = "0755";
+  #       "force user" = "rh";
+  #       "force group" = "users";
+  #     };
+  #     private = {
+  #       path = "/mnt/Shares/Private";
+  #       browseable = "yes";
+  #       "read only" = "no";
+  #       "guest ok" = "no";
+  #       "create mask" = "0644";
+  #       "directory mask" = "0755";
+  #       "force user" = "rh";
+  #       "force group" = "users";
+  #     };
+  #     keeper-b = {
+  #       "path" = "/mnt/keeper-b";
+  #       "browsable" = "yes";
+  #       "guest ok" = "yes";
+  #       "guest only" = "yes";
+  #       "read only" = "yes";
+  #       "force create mode" = "0666";
+  #       "force directory mode" = "0777";
+  #       "force user" = "rh";
+  #       "force group" = "users";
+  #     };
+  #   };
+  # };
 
-  services.samba-wsdd = {
-    enable = true;
-    openFirewall = true;
-  };
+  # services.samba-wsdd = {
+  #   enable = true;
+  #   openFirewall = true;
+  # };
 
   # Enable sound with pipewire.
   sound.enable = true;
