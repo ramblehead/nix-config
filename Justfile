@@ -55,8 +55,8 @@ clean-all:
   # Remove auto GC-roots
   sudo rm -vf /nix/var/nix/gcroots/auto/*
 
+# Garbage collect all unused nix store entries
 gc:
-  # Garbage collect all unused nix store entries
   sudo nix store gc --debug
   nix store gc --debug
   sudo nix-collect-garbage --delete-old
