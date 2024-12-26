@@ -334,8 +334,8 @@
 
       # yandex-browser
       chromium
-      onedrive
-      onedrivegui
+      # onedrive
+      # onedrivegui
       telegram-desktop
       google-chrome
       microsoft-edge
