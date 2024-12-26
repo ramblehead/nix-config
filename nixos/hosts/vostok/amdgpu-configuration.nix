@@ -26,7 +26,7 @@
   # needed if you have a 500 series card.
   environment.variables.ROC_ENABLE_PRE_VEGA = "1";
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     # driSupport = true;
     # driSupport32Bit = true;
@@ -48,7 +48,6 @@
   environment.systemPackages = with pkgs; [
     clinfo
     radeontop
-    opencl-info
     rocmPackages_5.rocminfo
   ];
 }
