@@ -93,7 +93,7 @@ gdm-monitors-update:
 
 # Initialise root (global) home-manager
 hm-init-host *hostname:
-  sudo -i nix run home-manager/release-24.05 -- init --switch ${PWD}
+  sudo -i nix run home-manager/release-24.11 -- init --switch ${PWD}
   @just hm-switch-host {{hostname}}
 
 # Switch host (root - global) home-manager
