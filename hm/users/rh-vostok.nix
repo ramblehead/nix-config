@@ -1,11 +1,11 @@
 {
   config,
   self,
+  lib,
   inputs,
   flakeRoot,
   ...
 }: let
-  # inherit (inputs) dotfiles;
   dotfilesLib = (import (flakeRoot + /lib/dotfiles.nix)) {
     inherit self;
     inherit config;
@@ -14,10 +14,18 @@
   inherit (dotfilesLib) deduceRuntimePath;
 in {
   imports = [
-    # Include the results of the hardware scan.
     ./rh.nix
     (flakeRoot + /hm/platforms/nixos.nix)
   ];
+
+  home.activation = {
+    backupExistingMonitorsXml = lib.hm.dag.entryBefore ["linkGeneration"] ''
+      if [ -e "${config.home.homeDirectory}/.config/monitors.xml" ]; then
+        run mv -f "${config.home.homeDirectory}/.config/monitors.xml" \
+           "${config.home.homeDirectory}/.config/monitors.xml~"
+      fi
+    '';
+  };
 
   home.file = {
     ".config/monitors.xml".source =
