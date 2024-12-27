@@ -98,6 +98,14 @@
     games.enable = true;
   };
 
+  # see https://discourse.nixos.org/t/configuring-remote-desktop-access-with-gnome-remote-desktop/48023/3
+  # # Disable the GNOME3/GDM auto-suspend feature that cannot be disabled in GUI!
+  # # If no user is logged in, the machine will power down after 20 minutes.
+  # systemd.targets.sleep.enable = false;
+  # systemd.targets.suspend.enable = false;
+  # systemd.targets.hibernate.enable = false;
+  # systemd.targets.hybrid-sleep.enable = false;
+
   # Can use e.g ."xdg-mime query default text/plain" to test
   xdg.mime.defaultApplications = {
     "text/plain" = "emacs.desktop";
@@ -119,14 +127,13 @@
 
   services.samba = {
     enable = true;
-    securityType = "user";
     openFirewall = true;
     settings = {
       global = {
         workgroup = "WORKGROUP";
         "server string" = "vostok (NixOS)";
         "netbios name" = "vostok";
-        # security = "user";
+        security = "user";
         # "use sendfile" = "yes";
         "min protocol" = "SMB2_10";
         "max protocol" = "SMB3";
@@ -335,6 +342,9 @@
       # /b/{
 
       gnome-tweaks
+      libappindicator
+      # gnome-remote-desktop
+
       gnomeExtensions.arcmenu
       gnomeExtensions.date-menu-formatter
       gnomeExtensions.dash-to-panel
@@ -346,9 +356,7 @@
       gnomeExtensions.steal-my-focus-window
       gnomeExtensions.system-monitor-next
       # Old tray icons, e.g. Telegram
-      libappindicator
       gnomeExtensions.appindicator
-      gnomeExtensions.systemstatsplus
 
       # /b/}
 
@@ -401,7 +409,11 @@
     37888 # P2Pool mini p2p port
   ];
 
-  # networking.firewall.allowedUDPPorts = [ 3389 3390 ];
+  networking.firewall.allowedUDPPorts = [
+    3389 # Default port used by Microsoft's RDP
+    3390 # Alternative to 3389 for RDP
+  ];
+
   # networking.firewall.allowedUDPPorts = [ ... ];
 
   # This value determines the NixOS release from which the default
