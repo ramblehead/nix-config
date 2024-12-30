@@ -92,6 +92,10 @@
     serviceConfig = {
       ExecStart = /home/rh/clouds/utils/system/bin/box-backup;
       Type = "oneshot";
+      Environment = [
+        "HOME=/home/rh/"
+        "PATH=/run/current-system/sw/bin"
+      ];
     };
   };
 
