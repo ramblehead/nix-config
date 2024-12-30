@@ -49,6 +49,7 @@
     # micro
     inputs.helix.packages."${pkgs.system}".helix
     # semgrep # can be used used via lsp-mode
+    shellcheck # shell script static analysis tool
 
     # /b/}
 
