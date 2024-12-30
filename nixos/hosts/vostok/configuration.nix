@@ -87,6 +87,29 @@
     # libinput.enable = true;
   };
 
+  systemd.services.box-backup = {
+    description = "Box Backup Service";
+    serviceConfig = {
+      ExecStart = /home/rh/clouds/utils/system/bin/box-backup;
+      Type = "oneshot";
+    };
+  };
+
+  systemd.timers.box-backup = {
+    description = "Box Backup Timer";
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      # Run daily at midnight
+      OnCalendar = "*-*-* 00:00:00";
+
+      # Add a random delay of up to 10 minutes for running missed events
+      RandomizedDelaySec = "10min";
+
+      # Ensure missed events run on the next boot
+      Persistent = true;
+    };
+  };
+
   systemd.tmpfiles.rules = let
     monitorsXml = inputs.dotfiles + /hosts/vostok/.config/monitors-gdm.xml;
   in [
