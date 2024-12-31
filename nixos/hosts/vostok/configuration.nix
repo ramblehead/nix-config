@@ -261,11 +261,6 @@
     isNormalUser = true;
     description = "ramblehead";
     extraGroups = ["rh" "networkmanager" "wheel" "scanner" "lp" "docker"];
-    openssh = {
-      authorizedKeys.keys = [
-        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCoN6tKVyQFvxe+IW3S+AL6YMCA+PWCIE2Jsw+WzNAlrubRNmDymsbI8mhMxcaWus6z/yW/8o4kcSXxOPptZu8SalACgPG0Yd54vbWTXd7y11SSRvlPfLSe+NdPi/cpxWXgUpnANPgvMmbkEGDBa7Ty2+oxawceHuyWEzxJoihZa8NIe0uIFme6W0HvFUxUut3P11vnfAg9Ibs8A3lQOEY0AMk1QKhWQ1Gxq60gGPgRWv2Qwr+ekfa0hoVKtY/KIdowTgcZSNE50Z84nC+EA/jxj4Y9SRy6Ym78dtY2IsPX8smFSL2C+goAKOvlbNNIfnulrRnsDWghISMYWhEVd6t10HWlQk2g58IJeOqxgrIfxGYZSYcjqZFEGtBxQRbEYSyU+YEnGAic9N5ny1yqs0Yr76iAhWynpgKJAzO2voZM2H4s0aCU8Zrcrh1LQNV5KRPmINuJkJXeE8WKn0nbDJeYjqWw7GK6vSiv+Fl+aqH9t/CWKHIUl1dx5YfM6a7ZvOV8TWPNxFuiZXGYIsf7nRRmDVRe8rUhcU7jOXilueP/tWs6oL/oZYRas8/TzdBxjbHFTZ2x6uTyeTmaT3YnOxmu/8k3SClXs5ese+ZU2NkK9N40AP3Jm9V3jEDrVEtWtjpNMYhUAfcSnkA04QaypQD+IHF4m8Xqgw7sJN8w+mZnKQ== ramblehead@github.com"
-      ];
-    };
     # packages = with pkgs; [
     #   #  thunderbird
     # ];
