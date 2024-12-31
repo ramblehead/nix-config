@@ -39,7 +39,8 @@
     };
 
     dotfiles = {
-      url = "git+file:./dotfiles";
+      # url = "git+file:./dotfiles";
+      url = "git+file:///home/rh/box/nix-config/dotfiles";
       flake = false;
     };
   };

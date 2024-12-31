@@ -24,11 +24,11 @@
         "rev": "facbda3e813c36d318b9de3046384896c5ad92f7",
         "revCount": 89,
         "type": "git",
-        "url": "file:./dotfiles"
+        "url": "file:///home/rh/box/nix-config/dotfiles"
       },
       "original": {
         "type": "git",
-        "url": "file:./dotfiles"
+        "url": "file:///home/rh/box/nix-config/dotfiles"
       }
     },
     "fenix": {
