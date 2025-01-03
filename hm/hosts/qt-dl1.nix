@@ -45,15 +45,15 @@
       # and hungs. The following installation seems to fix it.
       libsForQt5.dolphin
 
-      (fenix.complete.withComponents [
-        "cargo"
-        "clippy"
-        "rust-src"
-        "rustc"
-        "rustfmt"
-      ])
+      # (fenix.complete.withComponents [
+      #   "cargo"
+      #   "clippy"
+      #   "rust-src"
+      #   "rustc"
+      #   "rustfmt"
+      # ])
 
-      rust-analyzer-nightly
+      # rust-analyzer-nightly
 
       wl-clipboard
     ]);
