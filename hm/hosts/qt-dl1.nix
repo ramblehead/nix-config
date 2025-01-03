@@ -31,11 +31,6 @@
     ++ utils-gui.packages
     ++ database.packages
     ++ (with pkgs; [
-      # (config.lib.nixGL.wrap wayland)
-      # (config.lib.nixGL.wrap gnome.gdm)
-      # (config.lib.nixGL.wrap gnome.gnome-shell)
-
-      # Install via cargo to avoid glibc issues
       (config.lib.nixGL.wrap alacritty)
 
       (emacs.override {
@@ -43,20 +38,22 @@
         # withPgtk = true;
         withGTK3 = true;
       })
+
       emacsPackages.vterm
 
       # Native KDE Dolphin in current Debian 12 is leaking memory
       # and hungs. The following installation seems to fix it.
       libsForQt5.dolphin
 
-      # (fenix.complete.withComponents [
-      #   "cargo"
-      #   "clippy"
-      #   "rust-src"
-      #   "rustc"
-      #   "rustfmt"
-      # ])
-      # rust-analyzer-nightly
+      (fenix.complete.withComponents [
+        "cargo"
+        "clippy"
+        "rust-src"
+        "rustc"
+        "rustfmt"
+      ])
+
+      rust-analyzer-nightly
 
       wl-clipboard
     ]);
