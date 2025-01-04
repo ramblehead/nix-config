@@ -326,6 +326,42 @@
       # Rust
       # /b/{
 
+      # (rust-bin.stable.latest.default.override {
+      #   extensions = [
+      #     # for x86_64-unknown-linux-gnu
+      #     "rust"
+      #     "rust-docs"
+      #     "rust-src"
+      #     "clippy"
+      #     "cargo"
+      #     "rust-analysis"
+      #     "rust-analyzer"
+      #     "rust-std"
+      #     "rustc-docs"
+      #     "rustfmt"
+      #     # "clippy-preview"
+      #     # "llvm-bitcode-linker"
+      #     # "llvm-bitcode-linker-preview"
+      #     # "llvm-tools"
+      #     # "llvm-tools-preview"
+      #     # "reproducible-artifacts"
+      #     # "rls"
+      #     # "rls-preview"
+      #     # "rust-analyzer-preview"
+      #     # "rustc-dev"
+      #     # "rustfmt-preview"
+      #   ];
+      #   # targets = [
+      #   #   "x86_64-unknown-linux-gnu" # Standard 64-bit Linux.
+      #   #   "x86_64-apple-darwin" # 64-bit macOS.
+      #   #   "x86_64-pc-windows-gnu" # 64-bit Windows with GNU toolchain.
+      #   #   "wasm32-unknown-unknown" # WebAssembly without any OS.
+      #   #   "aarch64-unknown-linux-gnu" # 64-bit ARM Linux.
+      #   #   "i686-unknown-linux-gnu" # 32-bit Linux.
+      #   #   "armv7-unknown-linux-gnueabihf" # 32-bit ARM Linux with hard float.
+      #   # ];
+      # })
+
       (fenix.complete.withComponents [
         "cargo"
         "clippy"
@@ -333,6 +369,7 @@
         "rustc"
         "rustfmt"
       ])
+
       rust-analyzer-nightly
 
       # /b/}

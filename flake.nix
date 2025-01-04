@@ -39,11 +39,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Pure and reproducible packaging of binary distributed rust toolchains.
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # # Pure and reproducible packaging of binary distributed rust toolchains.
+    # rust-overlay = {
+    #   url = "github:oxalica/rust-overlay";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     dotfiles = {
       # url = "git+file:./dotfiles";
@@ -79,6 +79,7 @@
           nixpkgs.overlays = [
             (import ./overlays/mc)
             inputs.fenix.overlays.default
+            # inputs.rust-overlay.overlays.default
           ];
 
           nixpkgs.config.allowUnfree = true;
@@ -118,7 +119,7 @@
         system = "x86_64-linux";
         overlays = [
           (import ./overlays/mc)
-          inputs.fenix.overlays.default
+          # inputs.fenix.overlays.default
         ];
         config.allowUnfree = true;
       };
