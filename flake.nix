@@ -54,6 +54,7 @@
 
   outputs = {
     self,
+    nixpkgs-unstable,
     nixpkgs,
     home-manager,
     ...
@@ -136,13 +137,18 @@
       };
     };
 
-    homeConfigurations."qt-dl1" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."qt-dl1" = home-manager.lib.homeManagerConfiguration (let
+      pkgs-unstable = import nixpkgs-unstable {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
+    in {
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         overlays = [
           (import ./overlays/mc)
           inputs.fenix.overlays.default
-          inputs.rust-overlay.overlays.default
+          # inputs.rust-overlay.overlays.default
         ];
         config.allowUnfree = true;
       };
@@ -154,10 +160,11 @@
 
       extraSpecialArgs = {
         inherit self;
+        inherit pkgs-unstable;
         inherit inputs;
         inherit flakeRoot;
       };
-    };
+    });
 
     homeConfigurations."rh@qt-dl1" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {

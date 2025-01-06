@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   inputs,
   lib,
   flakeRoot,
@@ -19,6 +20,7 @@
 
     utils-gui = (import (flakeRoot + /software/selections/utils-gui.nix)) {
       inherit pkgs;
+      inherit pkgs-unstable;
       inherit inputs;
     };
 
@@ -45,16 +47,17 @@
       # and hungs. The following installation seems to fix it.
       libsForQt5.dolphin
 
-      # (fenix.complete.withComponents [
-      #   "rustc"
-      #   "cargo"
-      #   "rust-src"
-      #   "clippy"
-      #   "rustfmt"
-      #   "rust-docs"
-      #   # "rust-analysis"
-      #   # "rust-analyzer"
-      # ])
+      # (fenix.stable.withComponents [
+      (fenix.complete.withComponents [
+        "rustc"
+        "cargo"
+        "rust-src"
+        "clippy"
+        "rustfmt"
+        "rust-docs"
+        "rust-analysis"
+        "rust-analyzer"
+      ])
 
       # (rust-bin.stable.latest.default.override {
       #   extensions = [
@@ -92,7 +95,7 @@
       #   # ];
       # })
 
-      rust-analyzer-nightly
+      # rust-analyzer-nightly
 
       wl-clipboard
     ]);

@@ -1,14 +1,8 @@
 {
   pkgs,
+  pkgs-unstable,
   inputs,
-}: let
-  inherit (inputs) nixpkgs-unstable;
-
-  pkgs-unstable = import nixpkgs-unstable {
-    system = "x86_64-linux";
-    config.allowUnfree = true;
-  };
-in {
+}: {
   packages = with pkgs; [
     # Infosecurity
     # /b/{

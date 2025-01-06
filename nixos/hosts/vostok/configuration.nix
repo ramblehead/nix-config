@@ -4,6 +4,7 @@
 {
   # config,
   pkgs,
+  pkgs-unstable,
   inputs,
   flakeRoot,
   ...
@@ -278,6 +279,7 @@
 
     utils-gui = (import (flakeRoot + /software/selections/utils-gui.nix)) {
       inherit pkgs;
+      inherit pkgs-unstable;
       inherit inputs;
     };
 
@@ -363,11 +365,12 @@
       # })
 
       (fenix.complete.withComponents [
-        "cargo"
-        "clippy"
-        "rust-src"
         "rustc"
+        "cargo"
+        "rust-src"
+        "clippy"
         "rustfmt"
+        "rust-docs"
       ])
 
       rust-analyzer-nightly
