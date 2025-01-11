@@ -260,6 +260,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rh = {
     isNormalUser = true;
+    # group = "rh"; # Default is "users"
     description = "ramblehead";
     extraGroups = ["rh" "networkmanager" "wheel" "scanner" "lp" "docker"];
     # packages = with pkgs; [
