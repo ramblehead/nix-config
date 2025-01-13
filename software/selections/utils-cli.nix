@@ -32,7 +32,7 @@
 
     tmux # Terminal Multiplexer
     zellij # New user-friendly terminal multiplexer
-    xonsh # Python-based full-featured and cross-platform shell
+    # xonsh # Python-based full-featured and cross-platform shell
     # zoxide # cd command replacement with intelligent auto-completion
     eza # ls command replacement with tree output
 

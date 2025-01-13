@@ -99,6 +99,10 @@ in {
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/tmx));
 
+    ".tmux.conf".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.tmux.conf));
+
     ".local/bin/clip2output".source =
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/clip2output));
