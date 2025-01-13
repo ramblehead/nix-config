@@ -88,6 +88,14 @@
     # libinput.enable = true;
   };
 
+  # see https://discourse.nixos.org/t/configuring-remote-desktop-access-with-gnome-remote-desktop/48023/3
+  # # Disable the GNOME3/GDM auto-suspend feature that cannot be disabled in GUI!
+  # # If no user is logged in, the machine will power down after 20 minutes.
+  # systemd.targets.sleep.enable = false;
+  # systemd.targets.suspend.enable = false;
+  # systemd.targets.hibernate.enable = false;
+  # systemd.targets.hybrid-sleep.enable = false;
+
   systemd.services.box-backup = {
     description = "Box Backup Service";
     serviceConfig = {
@@ -126,13 +134,12 @@
     games.enable = true;
   };
 
-  # see https://discourse.nixos.org/t/configuring-remote-desktop-access-with-gnome-remote-desktop/48023/3
-  # # Disable the GNOME3/GDM auto-suspend feature that cannot be disabled in GUI!
-  # # If no user is logged in, the machine will power down after 20 minutes.
-  # systemd.targets.sleep.enable = false;
-  # systemd.targets.suspend.enable = false;
-  # systemd.targets.hibernate.enable = false;
-  # systemd.targets.hybrid-sleep.enable = false;
+  # TODO: remove this systemd wantedBy after the upstream issue has
+  #       been resolved.
+  # see https://github.com/NixOS/nixpkgs/issues/361163#issuecomment-2567342119
+  systemd.services.gnome-remote-desktop = {
+    wantedBy = ["graphical.target"];
+  };
 
   # Can use e.g ."xdg-mime query default text/plain" to test
   xdg.mime.defaultApplications = {
@@ -411,7 +418,6 @@
 
       gnome-tweaks
       libappindicator
-      # gnome-remote-desktop
 
       gnomeExtensions.arcmenu
       gnomeExtensions.date-menu-formatter
