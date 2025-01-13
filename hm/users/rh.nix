@@ -95,6 +95,10 @@ in {
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/zj));
 
+    ".local/bin/tmx".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/tmx));
+
     ".local/bin/clip2output".source =
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/clip2output));

@@ -62,11 +62,19 @@
     flakeRoot = ./.;
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
-    nixosConfigurations.vostok = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.vostok = nixpkgs.lib.nixosSystem (let
       system = "x86_64-linux";
+
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in {
+      inherit system;
 
       specialArgs = {
         inherit inputs;
+        inherit pkgs-unstable;
         inherit flakeRoot;
       };
 
@@ -96,7 +104,6 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          # home-manager.users.rh = import ./hm/users/rh.nix;
           home-manager.users.rh = import ./hm/users/rh-vostok.nix;
           home-manager.users.root = import ./hm/users/root.nix;
 
@@ -110,9 +117,10 @@
           };
         }
 
+        # List current system packages in /etc/current-system-packages
         ./lib/current-system-packages.nix
       ];
-    };
+    });
 
     homeConfigurations."rh-krancher" = home-manager.lib.homeManagerConfiguration {
       # pkgs = nixpkgs.legacyPackages.x86_64-linux;
