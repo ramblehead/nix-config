@@ -47,8 +47,8 @@
       # and hungs. The following installation seems to fix it.
       libsForQt5.dolphin
 
-      # (fenix.stable.withComponents [
-      (fenix.complete.withComponents [
+      # (fenix.complete.withComponents [
+      (fenix.stable.withComponents [
         "rustc"
         "cargo"
         "rust-src"
@@ -58,6 +58,8 @@
         "rust-analysis"
         "rust-analyzer"
       ])
+
+      cargo-run-bin
 
       # (rust-bin.stable.latest.default.override {
       #   extensions = [
