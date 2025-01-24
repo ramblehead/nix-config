@@ -24,6 +24,9 @@
     rclone # command-line program to manage files on cloud storage
     restic # backup program
     ripgrep # Fast version of grep
+    # zoxide # cd command replacement with intelligent auto-completion
+    eza # ls command replacement with tree output
+    fd # fast and user-friendly alternative to find
 
     # /b/}
 
@@ -33,8 +36,6 @@
     tmux # Terminal Multiplexer
     zellij # New user-friendly terminal multiplexer
     # xonsh # Python-based full-featured and cross-platform shell
-    # zoxide # cd command replacement with intelligent auto-completion
-    eza # ls command replacement with tree output
 
     # /b/}
 
@@ -47,7 +48,7 @@
     treefmt2
     neovim
     # micro
-    inputs.helix.packages."${pkgs.system}".helix
+    # inputs.helix.packages."${pkgs.system}".helix
     # semgrep # can be used used via lsp-mode
     shellcheck # shell script static analysis tool
 
