@@ -442,9 +442,12 @@
       google-chrome
       microsoft-edge
 
-      pavucontrol # PulseAudio Volume Control
       gtk3
       wl-clipboard
+
+      pavucontrol # PulseAudio Volume Control
+      gsmartcontrol # SMART tool for modern HDD and SSD
+      gparted # Graphical disk partitioning tool
     ]);
 
   environment.variables.XCURSOR_THEME = "Adwaita";
