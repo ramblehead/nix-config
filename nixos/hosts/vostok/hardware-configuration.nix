@@ -49,6 +49,11 @@
     };
 
     "/mnt/keeper-b" = {
+      device = "/dev/disk/by-uuid/30d7ed20-5c07-4e1a-ae62-ff4fbc8a69cb";
+      fsType = "ext4";
+    };
+
+    "/mnt/keeper-m" = {
       device = "/dev/disk/by-uuid/CE0CE0B90CE09E29";
       fsType = "ntfs";
       options = [
