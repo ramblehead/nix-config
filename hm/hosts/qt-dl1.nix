@@ -47,8 +47,8 @@
       # and hungs. The following installation seems to fix it.
       libsForQt5.dolphin
 
-      # (fenix.complete.withComponents [
-      (fenix.stable.withComponents [
+      # (fenix.stable.withComponents [
+      (fenix.complete.withComponents [
         "rustc"
         "cargo"
         "rust-src"
