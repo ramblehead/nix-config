@@ -41,6 +41,11 @@ dev:
   nix develop
 
 # remove all generations older than 7 days
+# clean-hm:
+#   home-manager expire-generations 7d
+#   sudo home-manager expire-generations 7d
+
+# remove all generations older than 7 days
 clean:
   sudo nix profile wipe-history \
     --profile /nix/var/nix/profiles/system  \
