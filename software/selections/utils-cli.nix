@@ -19,6 +19,7 @@
     # far2l # has a potential to takeover mc when more developed/stable
     zip
     unzip
+    rar
     file # Used by mc
     ncdu # du with TUI interface
     dust # a better ncdu

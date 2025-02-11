@@ -434,6 +434,13 @@
 
       # /b/}
 
+      # Games
+      # /b/{
+
+      dgen-sdl
+
+      # /b/}
+
       # yandex-browser
       chromium
       onedrive
