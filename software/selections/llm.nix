@@ -2,5 +2,7 @@
   pkgs,
   inputs,
 }: {
-  packages = with pkgs; [];
+  packages = with pkgs; [
+    ollama
+  ];
 }

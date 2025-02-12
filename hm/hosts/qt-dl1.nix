@@ -28,10 +28,16 @@
       inherit pkgs;
       inherit inputs;
     };
+
+    llm = (import (flakeRoot + /software/selections/llm.nix)) {
+      inherit pkgs;
+      inherit inputs;
+    };
   in
     utils-cli.packages
     ++ utils-gui.packages
     ++ database.packages
+    ++ llm.packages
     ++ (with pkgs; [
       (config.lib.nixGL.wrap alacritty)
 
