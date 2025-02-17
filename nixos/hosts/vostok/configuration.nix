@@ -331,6 +331,8 @@
       emacsPackages.vterm
       emacsPackages.clang-format
 
+      zed-editor
+
       # /b/}
 
       # Rust
