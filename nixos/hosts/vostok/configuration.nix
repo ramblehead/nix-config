@@ -334,7 +334,8 @@
       zed-editor
       jetbrains.rust-rover
       code-cursor
-      aider-chat
+      # aider-chat
+      pkgs-unstable.aider-chat
 
       # /b/}
 
