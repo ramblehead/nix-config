@@ -332,6 +332,10 @@
       emacsPackages.clang-format
 
       zed-editor
+      jetbrains.rust-rover
+      code-cursor
+      # aider-chat
+      pkgs-unstable.aider-chat
 
       # /b/}
 
@@ -418,8 +422,17 @@
       # Gnome
       # /b/{
 
+      dconf-editor
       gnome-tweaks
-      libappindicator
+      raider # Permanently delete your files (also named File Shredder)
+      # libappindicator
+
+      gtk3
+      wl-clipboard
+
+      pavucontrol # PulseAudio Volume Control
+      gsmartcontrol # SMART tool for modern HDD and SSD
+      gparted # Graphical disk partitioning tool
 
       gnomeExtensions.arcmenu
       gnomeExtensions.date-menu-formatter
@@ -431,15 +444,14 @@
       # gnomeExtensions.noannoyance-fork
       gnomeExtensions.steal-my-focus-window
       gnomeExtensions.system-monitor-next
-      # Old tray icons, e.g. Telegram
-      gnomeExtensions.appindicator
+      gnomeExtensions.appindicator # Old tray icons, e.g. Telegram
 
       # /b/}
 
       # Games
       # /b/{
 
-      dgen-sdl
+      dgen-sdl # Multi‐platform Genesis/Mega Drive Emulator
 
       # /b/}
 
@@ -450,13 +462,6 @@
       telegram-desktop
       google-chrome
       microsoft-edge
-
-      gtk3
-      wl-clipboard
-
-      pavucontrol # PulseAudio Volume Control
-      gsmartcontrol # SMART tool for modern HDD and SSD
-      gparted # Graphical disk partitioning tool
     ]);
 
   environment.variables.XCURSOR_THEME = "Adwaita";
