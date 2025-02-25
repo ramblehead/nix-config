@@ -3,6 +3,6 @@
   inputs,
 }: {
   packages = with pkgs; [
-    ollama
+    # ollama
   ];
 }
