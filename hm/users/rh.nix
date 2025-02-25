@@ -67,13 +67,13 @@ in {
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flakeRoot + /dotfiles/.inputrc));
 
-    ".config/direnv/direnv.toml".source =
-      config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath (flakeRoot + /dotfiles/direnv/direnv.toml));
-
     ".hunspell_personal".source =
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flakeRoot + /dotfiles/.hunspell_personal));
+
+    ".config/direnv/direnv.toml".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.config/direnv/direnv.toml));
 
     ".config/git".source =
       config.lib.file.mkOutOfStoreSymlink
