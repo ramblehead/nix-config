@@ -48,6 +48,7 @@
       })
 
       emacsPackages.vterm
+      pkgs-unstable.aider-chat
 
       # Native KDE Dolphin in current Debian 12 is leaking memory
       # and hungs. The following installation seems to fix it.
