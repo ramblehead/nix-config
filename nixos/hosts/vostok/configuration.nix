@@ -391,7 +391,7 @@
 
       # /b/}
 
-      # Equivalent of the apt-get build-dep
+      # Equivalent of the apt install build-essential
       # /b/{
 
       gcc
