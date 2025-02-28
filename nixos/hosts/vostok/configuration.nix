@@ -275,6 +275,24 @@
     # ];
   };
 
+  services.ollama = {
+    enable = true;
+    package = pkgs-unstable.ollama;
+    # Optional: load models on startup
+    # loadModels = [ ... ];
+    # Optional: enable GPU acceleration
+    # acceleration = "rocm"; # or "cuda" for NVIDIA GPUs
+    # environmentVariables = {
+    #   HCC_AMDGPU_TARGET = "gfx1030"; # used to be necessary, but doesn't seem to anymore
+    # };
+    # rocmOverrideGfx = "10.3.0";
+    # Optional: set environment variables
+    # environmentVariables = {
+    #   OLLAMA_MODELS = "/path/to/models";
+    #   OLLAMA_HOST = "0.0.0.0:11434"; # Make Ollama accessible outside of localhost
+    # };
+  };
+
   programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
@@ -425,7 +443,7 @@
       dconf-editor
       gnome-tweaks
       raider # Permanently delete your files (also named File Shredder)
-      # libappindicator
+      libappindicator
 
       gtk3
       wl-clipboard
@@ -462,6 +480,7 @@
       telegram-desktop
       google-chrome
       microsoft-edge
+      # pkgs-unstable.ollama
     ]);
 
   environment.variables.XCURSOR_THEME = "Adwaita";
