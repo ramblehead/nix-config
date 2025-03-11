@@ -58,8 +58,12 @@
     nixpkgs,
     home-manager,
     ...
-  } @ inputs: rec {
+  } @ inputs: let
+    # Root directory of the flake (current folder), used to reference files and
+    # subdirectories from other modules in a way that follows the flake's file
+    # structure.
     flakeRoot = ./.;
+  in {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
     nixosConfigurations.vostok = nixpkgs.lib.nixosSystem (let
