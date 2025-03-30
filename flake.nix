@@ -25,10 +25,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    helix = {
-      url = "github:helix-editor/helix/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # helix = {
+    #   url = "github:helix-editor/helix/master";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Fenix provides profiles of rust toolchains.
     # see https://rust-lang.github.io/rustup/concepts/profiles.html

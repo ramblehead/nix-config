@@ -474,14 +474,16 @@
 
       # /b/}
 
-      # yandex-browser
-      chromium
       onedrive
       onedrivegui
       telegram-desktop
+      # pkgs-unstable.ollama
+
+      chromium
       google-chrome
       microsoft-edge
-      # pkgs-unstable.ollama
+      tor-browser
+      # yandex-browser
     ]);
 
   environment.variables.XCURSOR_THEME = "Adwaita";
