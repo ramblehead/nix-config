@@ -269,7 +269,7 @@
     isNormalUser = true;
     # group = "rh"; # Default is "users"
     description = "ramblehead";
-    extraGroups = ["rh" "networkmanager" "wheel" "scanner" "lp" "docker"];
+    extraGroups = ["rh" "networkmanager" "wheel" "scanner" "lp" "docker" "libvirtd"];
     # packages = with pkgs; [
     #   #  thunderbird
     # ];
@@ -478,6 +478,7 @@
       onedrivegui
       telegram-desktop
       # pkgs-unstable.ollama
+      gnome-boxes
 
       chromium
       google-chrome
@@ -509,9 +510,16 @@
   virtualisation.docker.enable = true;
   services.openssh.enable = true;
 
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+  users.groups.libvirtd.members = ["rh"];
+
   # Open ports in the firewall.
-  networking.firewall.enable = true;
-  networking.firewall.allowPing = true;
+  networking.firewall = {
+    enable = true;
+    allowPing = true;
+  };
 
   networking.firewall.allowedTCPPorts = [
     3389 # Default port used by Microsoft's RDP
