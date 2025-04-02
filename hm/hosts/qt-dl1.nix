@@ -68,6 +68,7 @@
       ])
 
       cargo-run-bin
+      cargo-deb
 
       # (rust-bin.stable.latest.default.override {
       #   extensions = [
