@@ -471,6 +471,7 @@
       # /b/{
 
       dgen-sdl # Multi‐platform Genesis/Mega Drive Emulator
+      uqm # Remake of Star Control II
 
       # /b/}
 
