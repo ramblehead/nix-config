@@ -66,16 +66,13 @@
     desktopManager.gnome = {
       # Enable the GNOME Desktop Environment.
       enable = true;
-      extraGSettingsOverridePackages = [
-        pkgs.gnome.gnome-desktop
-        pkgs.mutter
-      ];
+      extraGSettingsOverridePackages = [pkgs.mutter];
       extraGSettingsOverrides = ''
         [org.gnome.mutter]
         experimental-features=['scale-monitor-framebuffer']
 
-        # Configure window titlebar buttons
         [org.gnome.desktop.wm.preferences]
+        # Configure window titlebar buttons
         button-layout='appmenu:minimize,maximize,close'
       '';
     };
@@ -190,6 +187,20 @@
     hunspellDicts.en-us-large
     # hunspellDicts.en-gb-ise
     hunspellDicts.en-gb-large
+
+    # /b/}
+
+    # Equivalent of the apt install build-essential
+    # /b/{
+
+    gcc
+    gnumake
+    pkg-config
+    autoconf
+    automake
+    libtool
+    cmake
+    python3
 
     # /b/}
 
