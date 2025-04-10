@@ -66,10 +66,17 @@
     desktopManager.gnome = {
       # Enable the GNOME Desktop Environment.
       enable = true;
-      extraGSettingsOverridePackages = [pkgs.mutter];
+      extraGSettingsOverridePackages = [
+        pkgs.gnome.gnome-desktop
+        pkgs.mutter
+      ];
       extraGSettingsOverrides = ''
         [org.gnome.mutter]
         experimental-features=['scale-monitor-framebuffer']
+
+        # Configure window titlebar buttons
+        [org.gnome.desktop.wm.preferences]
+        button-layout='appmenu:minimize,maximize,close'
       '';
     };
 
