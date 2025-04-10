@@ -1,22 +1,26 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  # config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-df0c7e18-d73c-4c95-b37f-28a23c4b3fcc".device = "/dev/disk/by-uuid/df0c7e18-d73c-4c95-b37f-28a23c4b3fcc";
-  networking.hostName = "arilou"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  networking.hostName = "arilou";
+
+  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -43,17 +47,47 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  nix = {
+    package = pkgs.nixVersions.stable;
+    extraOptions = "experimental-features = nix-command flakes";
+  };
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver = {
+    # Enable the X11 windowing system.
+    enable = true;
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    displayManager.gdm = {
+      # Enable the GNOME Desktop Environment.
+      enable = true;
+      wayland = true;
+      autoSuspend = false;
+    };
+
+    desktopManager.gnome = {
+      # Enable the GNOME Desktop Environment.
+      enable = true;
+      extraGSettingsOverridePackages = [pkgs.mutter];
+      extraGSettingsOverrides = ''
+        [org.gnome.mutter]
+        experimental-features=['scale-monitor-framebuffer']
+      '';
+    };
+
+    # Configure keymap in X11
+    xkb = {
+      layout = "us";
+      options = "numpad:microsoft";
+      variant = "";
+    };
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    # libinput.enable = true;
+  };
+
+  programs.bash = {
+    shellAliases = {
+      mc = "source ${pkgs.mc}/libexec/mc/mc-wrapper.sh";
+    };
   };
 
   # Enable CUPS to print documents.
@@ -82,25 +116,60 @@
   users.users.rh = {
     isNormalUser = true;
     description = "ramblehead";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    # Basic Utils
+    # /b/{
+
     git
+    raider # Permanently delete your files (also named File Shredder)
+
+    # /b/}
+
+    # Text Editors and Software Development Tools
+    # /b/{
+
+    (emacs.override {
+      withNativeCompilation = true;
+      withPgtk = true;
+      # withGTK3 = true;
+    })
+
+    emacsPackages.vterm
+    emacsPackages.clang-format
+
+    # /b/}
+
+    # Gnome
+    # /b/{
+
+    dconf-editor
+    gnome-tweaks
+    raider # Permanently delete your files (also named File Shredder)
+    gparted # Graphical disk partitioning tool
+
+    # /b/}
+
+    # Internet
+    # /b/{
+
+    google-chrome
+    tor-browser
+
+    # /b/}
   ];
+
+  environment.variables.XCURSOR_THEME = "Adwaita";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -128,5 +197,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }
