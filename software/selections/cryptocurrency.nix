@@ -3,7 +3,7 @@
   inputs,
 }: {
   packages = with pkgs; [
-    # monero
+    # bitcoin
     # /b/{
 
     bitcoin

@@ -128,16 +128,38 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # Basic Utils
+    # System information, monitors and benchmarking
     # /b/{
 
-    git
+    fastfetch # Fetching and prettily-displaying system information
+    htop # Better top
+    btop # Better htop
+
+    # /b/}
+
+    # Files management and backup
+    # /b/{
+
     raider # Permanently delete your files (also named File Shredder)
+    mc
+    zip
+    unzip
+    rar
+    file # Used by mc
+    ncdu # du with TUI interface
+    dust # a better ncdu
+    ripgrep # Fast version of grep
+    fd # fast and user-friendly alternative to find
 
     # /b/}
 
     # Text Editors and Software Development Tools
     # /b/{
+
+    git
+    just
+    treefmt2
+    shellcheck # shell script static analysis tool
 
     (emacs.override {
       withNativeCompilation = true;
@@ -147,6 +169,20 @@
 
     emacsPackages.vterm
     emacsPackages.clang-format
+
+    hack-font
+
+    # /b/}
+
+    # Spell Checkers
+    # /b/{
+
+    hunspell
+    hunspellDicts.ru-ru
+    # hunspellDicts.en-us
+    hunspellDicts.en-us-large
+    # hunspellDicts.en-gb-ise
+    hunspellDicts.en-gb-large
 
     # /b/}
 
@@ -165,6 +201,25 @@
 
     google-chrome
     tor-browser
+
+    # /b/}
+
+    # Nix-related
+    # /b/{
+
+    nil # Yet another language server for Nix
+    alejandra # The Uncompromising Nix Code Formatter
+
+    # Generate Nix fetcher calls from repository URLs
+    # Use example:
+    #   $ nurl https://github.com/nix-community/patsh v0.2.0 2>/dev/null
+    #   fetchFromGitHub {
+    #     owner = "nix-community";
+    #     repo = "patsh";
+    #     rev = "v0.2.0";
+    #     hash = "sha256-7HXJspebluQeejKYmVA7sy/F3dtU1gc4eAbKiPexMMA=";
+    #   }
+    nurl
 
     # /b/}
   ];
