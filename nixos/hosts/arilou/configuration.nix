@@ -88,6 +88,8 @@
     # libinput.enable = true;
   };
 
+  programs.dconf.enable = true;
+
   programs.bash = {
     shellAliases = {
       mc = "source ${pkgs.mc}/libexec/mc/mc-wrapper.sh";
