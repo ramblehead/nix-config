@@ -72,7 +72,6 @@
         experimental-features=['scale-monitor-framebuffer']
 
         [org.gnome.desktop.wm.preferences]
-        # Configure window titlebar buttons
         button-layout='appmenu:minimize,maximize,close'
       '';
     };
@@ -87,8 +86,6 @@
     # Enable touchpad support (enabled default in most desktopManager).
     # libinput.enable = true;
   };
-
-  programs.dconf.enable = true;
 
   programs.bash = {
     shellAliases = {
