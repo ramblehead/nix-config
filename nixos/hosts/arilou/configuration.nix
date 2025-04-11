@@ -52,6 +52,9 @@
     extraOptions = "experimental-features = nix-command flakes";
   };
 
+  services.qemuGuest.enable = true;
+  services.spice-vdagentd.enable = true;
+
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
