@@ -6,7 +6,7 @@
     # SQL
     # /b/{
 
-    dbeaver-bin # GUI for various SQL databases
+    # dbeaver-bin # GUI for various SQL databases
     sqlitebrowser # DB Browser for SQLite
 
     # /b/}

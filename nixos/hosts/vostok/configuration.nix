@@ -65,7 +65,7 @@
     displayManager.gdm = {
       enable = true;
       wayland = true;
-      autoSuspend = false;
+      # autoSuspend = false;
     };
 
     desktopManager.gnome = {
@@ -101,6 +101,8 @@
     serviceConfig = {
       ExecStart = /home/rh/clouds/utils/system/bin/box-backup;
       Type = "oneshot";
+      User = "rh";
+      Group = "users";
       Environment = [
         "HOME=/home/rh/"
         "PATH=/run/current-system/sw/bin"
