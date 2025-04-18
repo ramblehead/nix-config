@@ -318,6 +318,7 @@
 
     crypto = (import (flakeRoot + /software/selections/cryptocurrency.nix)) {
       inherit pkgs;
+      inherit pkgs-unstable;
       inherit inputs;
     };
   in

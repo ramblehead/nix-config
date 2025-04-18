@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-unstable,
   inputs,
 }: {
   packages = with pkgs; [
@@ -17,6 +18,14 @@
     monero-gui
     p2pool
     xmrig
+
+    # /b/}
+
+    # solana
+    # /b/{
+
+    pkgs-unstable.solana-cli
+    pkgs-unstable.anchor
 
     # /b/}
   ];
