@@ -295,6 +295,23 @@
   #   # };
   # };
 
+  services.grafana = {
+    enable = true;
+    settings = {
+      server = {
+        # Listening Address
+        http_addr = "127.0.0.1";
+        # and Port
+        http_port = 3000;
+        # Grafana needs to know on which domain and URL it's running
+        # domain = "your.domain";
+        # # Not needed if it is `https://your.domain/`
+        # root_url = "https://your.domain/grafana/";
+        # serve_from_sub_path = true;
+      };
+    };
+  };
+
   programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
@@ -321,11 +338,17 @@
       inherit pkgs-unstable;
       inherit inputs;
     };
+
+    database = (import (flakeRoot + /software/selections/database.nix)) {
+      inherit pkgs;
+      inherit inputs;
+    };
   in
     utils-cli.packages
     ++ utils-gui.packages
     ++ publishing.packages
     ++ crypto.packages
+    ++ database.packages
     ++ (with pkgs; [
       # Office and Documents
       # /b/{
