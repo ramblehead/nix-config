@@ -346,9 +346,9 @@
   in
     utils-cli.packages
     ++ utils-gui.packages
+    ++ database.packages
     ++ publishing.packages
     ++ crypto.packages
-    ++ database.packages
     ++ (with pkgs; [
       # Office and Documents
       # /b/{
@@ -372,14 +372,16 @@
         withPgtk = true;
         # withGTK3 = true;
       })
+
       emacsPackages.vterm
       emacsPackages.clang-format
+
+      pkgs-unstable.aider-chat
 
       zed-editor
       jetbrains.rust-rover
       code-cursor
       # aider-chat
-      pkgs-unstable.aider-chat
 
       # /b/}
 
