@@ -367,14 +367,14 @@
       # Text Editors and Software Development Tools
       # /b/{
 
-      (emacs.override {
+      (pkgs-unstable.emacs.override {
         withNativeCompilation = true;
         withPgtk = true;
         # withGTK3 = true;
       })
 
-      emacsPackages.vterm
-      emacsPackages.clang-format
+      pkgs-unstable.emacsPackages.vterm
+      pkgs-unstable.emacsPackages.clang-format
 
       pkgs-unstable.aider-chat
 
@@ -387,6 +387,21 @@
 
       # Rust
       # /b/{
+
+      # (fenix.stable.withComponents [
+      (fenix.complete.withComponents [
+        "rustc"
+        "cargo"
+        "rust-src"
+        "clippy"
+        "rustfmt"
+        "rust-docs"
+        "rust-analysis"
+        "rust-analyzer"
+      ])
+
+      cargo-run-bin
+      cargo-deb
 
       # (rust-bin.stable.latest.default.override {
       #   extensions = [
@@ -423,16 +438,6 @@
       #   #   "armv7-unknown-linux-gnueabihf" # 32-bit ARM Linux with hard float.
       #   # ];
       # })
-
-      (fenix.complete.withComponents [
-        "rustc"
-        "cargo"
-        "rust-src"
-        "clippy"
-        "rustfmt"
-        "rust-docs"
-        "rust-analyzer"
-      ])
 
       # rust-analyzer-nightly
 
