@@ -3,11 +3,12 @@
   inputs,
 }: {
   packages = with pkgs; [
-    # SQL
+    # SQLite
     # /b/{
 
     # dbeaver-bin # GUI for various SQL databases
     sqlitebrowser # DB Browser for SQLite
+    sqlite
 
     # /b/}
   ];
