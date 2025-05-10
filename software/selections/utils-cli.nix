@@ -3,12 +3,13 @@
   inputs,
 }: {
   packages = with pkgs; [
-    # System information, monitors and benchmarking
+    # System information, monitors, control and benchmarking
     # /b/{
 
     fastfetch # Fetching and prettily-displaying system information
     htop # Better top
     btop # Better htop
+    systemctl-tui # TUI for dystemd
 
     # /b/}
 
@@ -36,7 +37,7 @@
     # /b/{
 
     tmux # Terminal Multiplexer
-    zellij # New user-friendly terminal multiplexer
+    # zellij # New user-friendly terminal multiplexer
     # xonsh # Python-based full-featured and cross-platform shell
 
     # /b/}
