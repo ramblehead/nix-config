@@ -537,6 +537,7 @@
       onedrive
       onedrivegui
       telegram-desktop
+      whatsapp-for-linux
       # pkgs-unstable.ollama
       gnome-boxes
 
