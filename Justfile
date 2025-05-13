@@ -45,6 +45,9 @@ dev:
 #   home-manager expire-generations 7d
 #   sudo home-manager expire-generations 7d
 
+hm-news:
+  home-manager news --flake "$PWD#$(hostname)"
+
 # remove all generations older than 7 days
 clean:
   sudo nix profile wipe-history \
