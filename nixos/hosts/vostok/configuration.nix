@@ -271,7 +271,15 @@
     isNormalUser = true;
     # group = "rh"; # Default is "users"
     description = "ramblehead";
-    extraGroups = ["rh" "networkmanager" "wheel" "scanner" "lp" "docker" "libvirtd"];
+    extraGroups = [
+      "rh"
+      "networkmanager"
+      "wheel"
+      "scanner"
+      "lp"
+      "docker"
+      "libvirtd"
+    ];
     # packages = with pkgs; [
     #   #  thunderbird
     # ];
@@ -295,21 +303,39 @@
   #   # };
   # };
 
+  # see https://wiki.nixos.org/wiki/Grafana
+  #     https://nixos.wiki/wiki/Grafana
   services.grafana = {
     enable = true;
     settings = {
       server = {
-        # Listening Address
         http_addr = "127.0.0.1";
-        # and Port
         http_port = 3000;
-        # Grafana needs to know on which domain and URL it's running
-        # domain = "your.domain";
-        # # Not needed if it is `https://your.domain/`
-        # root_url = "https://your.domain/grafana/";
-        # serve_from_sub_path = true;
       };
     };
+
+    # see https://github.com/NixOS/nixpkgs/blob/d44a276324b63ff7ca4254b7ea51d5bac7eb6c64/pkgs/servers/monitoring/grafana/plugins/plugins.nix
+    declarativePlugins = with pkgs.grafanaPlugins; [
+      frser-sqlite-datasource
+    ];
+
+    # provision = {
+    #   enable = true;
+    #   datasources.settings = {
+    #     # deleteDatasources = [
+    #     #   {
+    #     #     name = "SQLite";
+    #     #     orgId = 1;
+    #     #   }
+    #     # ];
+    #     # datasources = [
+    #     #   {
+    #     #     name = "SQLite";
+    #     #     type = "frser-sqlite-datasource";
+    #     #   }
+    #     # ];
+    #   };
+    # };
   };
 
   programs.firefox.enable = true;
@@ -346,9 +372,9 @@
   in
     utils-cli.packages
     ++ utils-gui.packages
+    ++ database.packages
     ++ publishing.packages
     ++ crypto.packages
-    ++ database.packages
     ++ (with pkgs; [
       # Office and Documents
       # /b/{
@@ -367,24 +393,41 @@
       # Text Editors and Software Development Tools
       # /b/{
 
-      (emacs.override {
+      (pkgs-unstable.emacs.override {
         withNativeCompilation = true;
         withPgtk = true;
         # withGTK3 = true;
       })
-      emacsPackages.vterm
-      emacsPackages.clang-format
+
+      pkgs-unstable.emacsPackages.vterm
+      pkgs-unstable.emacsPackages.clang-format
+
+      pkgs-unstable.aider-chat
 
       zed-editor
       jetbrains.rust-rover
       code-cursor
       # aider-chat
-      pkgs-unstable.aider-chat
 
       # /b/}
 
       # Rust
       # /b/{
+
+      # (fenix.stable.withComponents [
+      (fenix.complete.withComponents [
+        "rustc"
+        "cargo"
+        "rust-src"
+        "clippy"
+        "rustfmt"
+        "rust-docs"
+        "rust-analysis"
+        "rust-analyzer"
+      ])
+
+      cargo-run-bin
+      cargo-deb
 
       # (rust-bin.stable.latest.default.override {
       #   extensions = [
@@ -421,16 +464,6 @@
       #   #   "armv7-unknown-linux-gnueabihf" # 32-bit ARM Linux with hard float.
       #   # ];
       # })
-
-      (fenix.complete.withComponents [
-        "rustc"
-        "cargo"
-        "rust-src"
-        "clippy"
-        "rustfmt"
-        "rust-docs"
-        "rust-analyzer"
-      ])
 
       # rust-analyzer-nightly
 
@@ -504,6 +537,7 @@
       onedrive
       onedrivegui
       telegram-desktop
+      whatsapp-for-linux
       # pkgs-unstable.ollama
       gnome-boxes
 
