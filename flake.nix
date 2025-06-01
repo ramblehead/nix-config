@@ -30,6 +30,12 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
+    # A graphical app store for Nix
+    nix-software-center = {
+      url = "github:snowfallorg/nix-software-center";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Fenix provides profiles of rust toolchains.
     # see https://rust-lang.github.io/rustup/concepts/profiles.html
     fenix = {

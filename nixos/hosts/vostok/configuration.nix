@@ -376,17 +376,24 @@
     ++ publishing.packages
     ++ crypto.packages
     ++ (with pkgs; [
-      # Office and Documents
-      # /b/{
-
-      libreoffice-fresh
-
-      # /b/}
-
       # Shells and terminals
       # /b/{
 
       alacritty
+
+      # /b/}
+
+      # Nix-related
+      # /b/{
+
+      inputs.nix-software-center.packages."${pkgs.system}".nix-software-center
+
+      # /b/}
+
+      # Office and Documents
+      # /b/{
+
+      libreoffice-fresh
 
       # /b/}
 
