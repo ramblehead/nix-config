@@ -340,6 +340,10 @@
 
   programs.firefox.enable = true;
 
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   "yandex-browser-stable-24.7.1.1120-1"
+  # ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = let
