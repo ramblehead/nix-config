@@ -577,11 +577,12 @@
   #   '';
   # };
 
-  # List services that you want to enable:
-
   virtualisation.docker.enable = true;
   services.openssh.enable = true;
 
+  # TODO: fix annoying firmware bug:
+  # https://github.com/NixOS/nixpkgs/issues/378894
+  # https://discourse.nixos.org/t/cannot-boot-qemu-due-to-unable-to-find-efi-firmware/64034
   programs.virt-manager.enable = true;
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
