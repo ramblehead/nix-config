@@ -518,6 +518,7 @@
 
       gtk3
       wl-clipboard
+      adwaita-icon-theme
 
       pavucontrol # PulseAudio Volume Control
       gsmartcontrol # SMART tool for modern HDD and SSD
