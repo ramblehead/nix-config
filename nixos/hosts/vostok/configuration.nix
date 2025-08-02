@@ -101,10 +101,10 @@
     serviceConfig = {
       ExecStart = /home/rh/clouds/utils/system/bin/box-backup;
       Type = "oneshot";
-      TimeoutStartSec = 600; # 10 mins
-      # Service remains in an "active" state in systemd’s view even after
-      # the ExecStart command finishes and the process exits.
-      RemainAfterExit = true;
+      TimeoutStartSec = "30min";
+      # # Service remains in an "active" state in systemd’s view even after
+      # # the ExecStart command finishes and the process exits.
+      # RemainAfterExit = true;
       User = "rh";
       Group = "users";
       Environment = [
