@@ -96,15 +96,20 @@
   # systemd.targets.hibernate.enable = false;
   # systemd.targets.hybrid-sleep.enable = false;
 
-  systemd.services.box-backup = {
+  systemd.services.od-sumrak_box = {
     description = "Box Backup Service";
     serviceConfig = {
-      ExecStart = /home/rh/clouds/utils/system/bin/box-backup;
+      ExecStart = /home/rh/clouds/admin/od-sumrak_box/system/bin/backup;
       Type = "oneshot";
       TimeoutStartSec = "30min";
+      TimeoutStopSec = "5min";
       # # Service remains in an "active" state in systemd’s view even after
       # # the ExecStart command finishes and the process exits.
       # RemainAfterExit = true;
+      Restart = "on-failure";
+      RestartSec = 60;
+      KillMode = "process";
+      KillSignal = "SIGTERM";
       User = "rh";
       Group = "users";
       Environment = [
@@ -114,7 +119,7 @@
     };
   };
 
-  systemd.timers.box-backup = {
+  systemd.timers.od-sumrak_box = {
     description = "Box Backup Timer";
     wantedBy = ["timers.target"];
     timerConfig = {
