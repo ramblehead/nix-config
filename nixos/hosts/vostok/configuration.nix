@@ -101,7 +101,7 @@
     serviceConfig = {
       ExecStart = /home/rh/clouds/admin/od-sumrak_box/system/bin/backup;
       Type = "oneshot";
-      TimeoutStartSec = "30min";
+      TimeoutStartSec = "45min";
       TimeoutStopSec = "5min";
       # # Service remains in an "active" state in systemd’s view even after
       # # the ExecStart command finishes and the process exits.
