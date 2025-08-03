@@ -97,7 +97,7 @@
   # systemd.targets.hybrid-sleep.enable = false;
 
   systemd.services.od-sumrak_box = {
-    description = "Box Backup Service";
+    description = "od-sumrak Box Backup Service";
     serviceConfig = {
       ExecStart = /home/rh/clouds/admin/od-sumrak_box/system/bin/backup;
       Type = "oneshot";
@@ -120,7 +120,7 @@
   };
 
   systemd.timers.od-sumrak_box = {
-    description = "Box Backup Timer";
+    description = "od-sumrak Box Backup Timer";
     wantedBy = ["timers.target"];
     timerConfig = {
       # Run daily at midnight
