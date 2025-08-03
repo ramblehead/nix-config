@@ -106,8 +106,8 @@
       # # Service remains in an "active" state in systemd’s view even after
       # # the ExecStart command finishes and the process exits.
       # RemainAfterExit = true;
-      Restart = "on-failure";
-      RestartSec = 60;
+      # Restart = "on-failure";
+      # RestartSec = 60;
       KillMode = "process";
       KillSignal = "SIGTERM";
       User = "rh";
