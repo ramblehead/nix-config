@@ -96,7 +96,7 @@
   # systemd.targets.hibernate.enable = false;
   # systemd.targets.hybrid-sleep.enable = false;
 
-  systemd.services.od-sumrak_box = {
+  systemd.services.od-sumrak_box-backup = {
     description = "od-sumrak Box Backup Service";
     serviceConfig = {
       ExecStart = /home/rh/clouds/admin/od-sumrak_box/system/bin/backup;
@@ -119,7 +119,7 @@
     };
   };
 
-  systemd.timers.od-sumrak_box = {
+  systemd.timers.od-sumrak_box-backup = {
     description = "od-sumrak Box Backup Timer";
     wantedBy = ["timers.target"];
     timerConfig = {
