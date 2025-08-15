@@ -96,11 +96,20 @@
   # systemd.targets.hibernate.enable = false;
   # systemd.targets.hybrid-sleep.enable = false;
 
-  systemd.services.box-backup = {
-    description = "Box Backup Service";
+  systemd.services.od-sumrak_box-backup = {
+    description = "od-sumrak Box Backup Service";
     serviceConfig = {
-      ExecStart = /home/rh/clouds/utils/system/bin/box-backup;
+      ExecStart = /home/rh/clouds/admin/od-sumrak_box/system/bin/backup;
       Type = "oneshot";
+      TimeoutStartSec = "45min";
+      TimeoutStopSec = "5min";
+      # # Service remains in an "active" state in systemd’s view even after
+      # # the ExecStart command finishes and the process exits.
+      # RemainAfterExit = true;
+      # Restart = "on-failure";
+      # RestartSec = 60;
+      KillMode = "process";
+      KillSignal = "SIGTERM";
       User = "rh";
       Group = "users";
       Environment = [
@@ -110,8 +119,8 @@
     };
   };
 
-  systemd.timers.box-backup = {
-    description = "Box Backup Timer";
+  systemd.timers.od-sumrak_box-backup = {
+    description = "od-sumrak Box Backup Timer";
     wantedBy = ["timers.target"];
     timerConfig = {
       # Run daily at midnight
@@ -577,11 +586,12 @@
   #   '';
   # };
 
-  # List services that you want to enable:
-
   virtualisation.docker.enable = true;
   services.openssh.enable = true;
 
+  # TODO: fix annoying firmware bug:
+  # https://github.com/NixOS/nixpkgs/issues/378894
+  # https://discourse.nixos.org/t/cannot-boot-qemu-due-to-unable-to-find-efi-firmware/64034
   programs.virt-manager.enable = true;
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;

@@ -7,6 +7,9 @@
   inherit (inputs) dotfiles;
 in {
   setupMc = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    readonly MC_USER=$(whoami)
+    run mkdir --parents "''${TMPDIR-/tmp}/mc-$MC_USER"
+
     readonly MC_CONF="${config.home.homeDirectory}/.config/mc"
     # run mv -v "$MC_CONF" "''${MC_CONF}.$(date "+%Y%m%dT%H%M%S%3N%z")"
     run rm -rf "''${MC_CONF}~"
