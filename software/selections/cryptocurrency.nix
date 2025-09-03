@@ -24,8 +24,8 @@
     # solana
     # /b/{
 
-    pkgs-unstable.solana-cli
-    pkgs-unstable.anchor
+    # pkgs-unstable.solana-cli
+    # pkgs-unstable.anchor
 
     # /b/}
   ];
