@@ -22,8 +22,8 @@
     nixgl = {
       url = "github:nix-community/nixGL";
       inputs.flake-utils.follows = "flake-utils";
-      # inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # helix = {
