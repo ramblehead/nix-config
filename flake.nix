@@ -5,13 +5,11 @@
     # e.g. flake-utils.lib.eachDefaultSystem (system: ...)
     flake-utils.url = "github:numtide/flake-utils";
 
-    # NixOS official package source, using the nixos-24.11 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with
@@ -33,11 +31,11 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    # A graphical app store for Nix
-    nix-software-center = {
-      url = "github:snowfallorg/nix-software-center";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # # A graphical app store for Nix
+    # nix-software-center = {
+    #   url = "github:snowfallorg/nix-software-center";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Fenix provides profiles of rust toolchains.
     # see https://rust-lang.github.io/rustup/concepts/profiles.html

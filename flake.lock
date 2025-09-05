@@ -3,11 +3,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1755281687,
+        "lastModified": 1757089874,
         "narHash": "sha256-KpruR+XPQqnkxeO6n2jv4XR0PUEp0Ieqb6ImkaoSczc=",
         "ref": "refs/heads/main",
-        "rev": "d3d4c47bee8f5d4b3ba2df852b75283fa811946f",
-        "revCount": 165,
+        "rev": "c98c1e95a2c79133ccb1b5f9aefd9c52901e1ee1",
+        "revCount": 166,
         "type": "git",
         "url": "file:///home/rh/box/nix-config/dotfiles"
       },
@@ -63,39 +63,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1747688870,
-        "narHash": "sha256-ypL9WAZfmJr5V70jEVzqGjjQzF0uCkz+AFQF7n9NmNc=",
+        "lastModified": 1756679287,
+        "narHash": "sha256-Xd1vOeY9ccDf5VtVK12yM0FS6qqvfUop8UQlxEB+gTQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d5f1f641b289553927b3801580598d200a501863",
+        "rev": "07fc025fe10487dd80f2ec694f1cd790e752d0e8",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-24.11",
+        "ref": "release-25.05",
         "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "nix-software-center": {
-      "inputs": {
-        "nixos-appstream-data": "nixos-appstream-data",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "utils": "utils"
-      },
-      "locked": {
-        "lastModified": 1730517716,
-        "narHash": "sha256-hq3jlW5lyT2RkWhJ2/Oo+dt9FXtJ47zDDBBk8A8abMo=",
-        "owner": "snowfallorg",
-        "repo": "nix-software-center",
-        "rev": "216eb549f1ec222c2877d2194f2987527954f2c4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "snowfallorg",
-        "repo": "nix-software-center",
         "type": "github"
       }
     },
@@ -123,44 +101,18 @@
         "type": "github"
       }
     },
-    "nixos-appstream-data": {
-      "inputs": {
-        "flake-utils": [
-          "nix-software-center",
-          "utils"
-        ],
-        "nixpkgs": [
-          "nix-software-center",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1712858390,
-        "narHash": "sha256-XE7gr+zU3N4SHPAhsgk8cVAFp1iBg+Lxxp3y4dUF1vE=",
-        "owner": "korfuri",
-        "repo": "nixos-appstream-data",
-        "rev": "0465d42a4433faa63b7a5eb0b8d397937c9fc13a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "korfuri",
-        "ref": "flake",
-        "repo": "nixos-appstream-data",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1751274312,
-        "narHash": "sha256-/bVBlRpECLVzjV19t5KMdMFWSwKLtb5RyXdjz3LJT+g=",
+        "lastModified": 1757020766,
+        "narHash": "sha256-PLoSjHRa2bUbi1x9HoXgTx2AiuzNXs54c8omhadyvp0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "50ab793786d9de88ee30ec4e4c24fb4236fc2674",
+        "rev": "fe83bbdde2ccdc2cb9573aa846abe8363f79a97a",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-24.11",
+        "ref": "nixos-25.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -187,7 +139,6 @@
         "fenix": "fenix",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
-        "nix-software-center": "nix-software-center",
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"
@@ -222,39 +173,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_2": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "utils": {
-      "inputs": {
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1689068808,
-        "narHash": "sha256-6ixXo3wt24N/melDWjq70UuHQLxGV8jZvooRanIHXw0=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "919d646de7be200f3bf08cb76ae1f09402b6f9b4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     }

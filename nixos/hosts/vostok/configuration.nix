@@ -234,7 +234,7 @@
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -400,7 +400,7 @@
       # Nix-related
       # /b/{
 
-      inputs.nix-software-center.packages."${pkgs.system}".nix-software-center
+      # inputs.nix-software-center.packages."${pkgs.system}".nix-software-center
 
       # /b/}
 
@@ -569,7 +569,7 @@
       # yandex-browser
     ]);
 
-  environment.variables.XCURSOR_THEME = "Adwaita";
+  # environment.variables.XCURSOR_THEME = "Adwaita";
   # environment.variables.PATH = lib.mkAfter "/etc/profiles/per-user/root/bin";
 
   # Some programs need SUID wrappers, can be configured further or are

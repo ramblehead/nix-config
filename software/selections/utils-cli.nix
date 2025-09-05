@@ -48,7 +48,7 @@
     git
     gitui
     just
-    treefmt2
+    treefmt
     neovim
     # micro
     # inputs.helix.packages."${pkgs.system}".helix

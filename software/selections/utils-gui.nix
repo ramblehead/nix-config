@@ -3,73 +3,62 @@
   pkgs-unstable,
   inputs,
 }: {
-  packages = with pkgs; [
-    # Infosecurity
-    # /b/{
+  packages = with pkgs;
+    [
+      # Infosecurity
+      # /b/{
 
-    keepassxc
+      keepassxc
 
-    # /b/}
+      # /b/}
 
-    # Internet files exchange
-    # /b/{
+      # Internet files exchange
+      # /b/{
 
-    deluge # Torrent client
+      deluge # Torrent client
 
-    # /b/}
+      # /b/}
 
-    # Project Management
-    # /b/{
+      # Project Management
+      # /b/{
 
-    planner # Project management tool for the GNOME desktop
-    treesheets # Free Form Data Organizer
-    obsidian # Knowledge base on top of a local folder of plain Markdown files
+      planner # Project management tool for the GNOME desktop
+      treesheets # Free Form Data Organizer
+      obsidian # Knowledge base on top of a local folder of plain Markdown files
 
-    # /b/}
+      # /b/}
 
-    # Office Applications
-    # /b/{
+      # Office Applications
+      # /b/{
 
-    # softmaker-office # In-product purchase
-    # onlyoffice-bin_latest
+      # softmaker-office # In-product purchase
+      # onlyoffice-bin_latest
 
-    # /b/}
+      # /b/}
 
-    # Images and Drawing
-    # /b/{
+      # Images and Drawing
+      # /b/{
 
-    pinta # Drawing/editing program modeled after Paint.NET
-    dia # Gnome Diagram drawing software
-    # pkgs-unstable.yed # yEd - graph editor
-    gimp-with-plugins # The GNU Image Manipulation Program
-    # libsForQt5.kolourpaint # Easy-to-use paint program from KDE
-    # mypaint # painting app for artists
-    krita # Painting and animation application
+      pinta # Drawing/editing program modeled after Paint.NET
+      dia # Gnome Diagram drawing software
+      # pkgs-unstable.yed # yEd - graph editor
+      gimp-with-plugins # The GNU Image Manipulation Program
+      # libsForQt5.kolourpaint # Easy-to-use paint program from KDE
+      # mypaint # painting app for artists
+      krita # Painting and animation application
 
-    # /b/}
+      # /b/}
 
-    # Fonts
-    # /b/{
+      # Fonts
+      # /b/{
 
-    hack-font
-    vistafonts
-    tamsyn
+      hack-font
+      vistafonts
+      tamsyn
 
-    nerdfonts
-    # (nerdfonts.override {
-    #   fonts = [
-    #     # symbols icon only
-    #     "NerdFontsSymbolsOnly"
-    #     # Characters
-    #     "FiraCode"
-    #     "JetBrainsMono"
-    #     "Iosevka"
-    #   ];
-    # })
-
-    # /b/}
-  ];
-  # ++ builtins.filter lib.attrsets.isDerivation (
-  #   builtins.attrValues pkgs.nerd-fonts
-  # );
+      # /b/}
+    ]
+    ++ builtins.filter lib.attrsets.isDerivation (
+      builtins.attrValues pkgs.nerd-fonts
+    );
 }
