@@ -2,6 +2,9 @@
 # https://github.com/kamadorueda/alejandra for good Nix practices.
 # https://github.com/juspay/nix-dev-home
 
+# nix-collect-garbage -d
+# nix-store --verify --repair
+
 # Default command when 'just' is run without arguments
 default:
   @just --list

@@ -20,9 +20,12 @@
     };
 
     nixgl = {
-      url = "github:nix-community/nixGL";
+      # This commit seems to break my setup:
+      # https://github.com/nix-community/nixGL/pull/190
+      url = "github:nix-community/nixGL/d47b0db35dfa693c10f7c378043dcc6121d3f4ec";
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # helix = {
