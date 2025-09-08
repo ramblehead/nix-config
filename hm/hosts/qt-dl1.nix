@@ -26,6 +26,7 @@
 
     database = (import (flakeRoot + /software/selections/database.nix)) {
       inherit pkgs;
+      inherit pkgs-unstable;
       inherit inputs;
     };
 
