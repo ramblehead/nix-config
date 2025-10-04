@@ -423,12 +423,11 @@
       pkgs-unstable.emacsPackages.vterm
       pkgs-unstable.emacsPackages.clang-format
 
-      pkgs-unstable.aider-chat
-
-      zed-editor
-      jetbrains.rust-rover
-      code-cursor
+      # zed-editor
+      # jetbrains.rust-rover
+      # code-cursor
       # aider-chat
+      pkgs-unstable.aider-chat
 
       # /b/}
 
@@ -550,7 +549,7 @@
       # Games
       # /b/{
 
-      dgen-sdl # Multi‐platform Genesis/Mega Drive Emulator
+      dgen-sdl # Multiplatform Genesis/Mega Drive Emulator
       uqm # Remake of Star Control II
 
       # /b/}
@@ -559,6 +558,7 @@
       onedrivegui
       telegram-desktop
       whatsapp-for-linux
+      teams-for-linux
       # pkgs-unstable.ollama
       gnome-boxes
 
