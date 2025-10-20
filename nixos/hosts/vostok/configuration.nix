@@ -414,6 +414,8 @@
       # Text Editors and Software Development Tools
       # /b/{
 
+      git
+
       (pkgs-unstable.emacs.override {
         withNativeCompilation = true;
         withPgtk = true;
