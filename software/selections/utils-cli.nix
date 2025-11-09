@@ -21,6 +21,7 @@
     zip
     unzip
     rar
+    p7zip
     file # Used by mc
     ncdu # du with TUI interface
     dust # a better ncdu
