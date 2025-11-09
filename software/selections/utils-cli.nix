@@ -46,7 +46,6 @@
     # Text Editors and Software Development Tools
     # /b/{
 
-    git
     gitui
     just
     treefmt
