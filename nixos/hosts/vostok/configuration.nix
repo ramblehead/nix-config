@@ -19,6 +19,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Run unpatched dynamic binaries on NixOS.
+  # see https://github.com/nix-community/nix-ld
+  programs.nix-ld.enable = true;
+
   # enables support for SANE scanners
   hardware.sane.enable = true;
 
