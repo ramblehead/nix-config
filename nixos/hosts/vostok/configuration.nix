@@ -15,11 +15,11 @@
     ./amdgpu-configuration.nix
   ];
 
-  # Bootloader.
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Run unpatched dynamic binaries on NixOS.
+  # Run unpatched dynamic binaries on NixOS
   # see https://github.com/nix-community/nix-ld
   programs.nix-ld.enable = true;
 
@@ -28,7 +28,7 @@
 
   networking.hostName = "vostok";
 
-  # Enables wireless support via wpa_supplicant.
+  # Enables wireless support via wpa_supplicant
   # networking.wireless.enable = true;
 
   # Configure network proxy if necessary
@@ -38,10 +38,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
+  # Set your time zone
   time.timeZone = "Europe/London";
 
-  # Select internationalisation properties.
+  # Select internationalisation properties
   i18n.defaultLocale = "en_GB.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -88,7 +88,7 @@
       variant = "";
     };
 
-    # Enable touchpad support (enabled default in most desktopManager).
+    # Enable touchpad support (enabled default in most desktopManager)
     # libinput.enable = true;
   };
 
