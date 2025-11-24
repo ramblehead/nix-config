@@ -6,7 +6,9 @@
     # System information, monitors, control and benchmarking
     # /b/{
 
-    fastfetch # Fetching and prettily-displaying system information
+    # Fetching and prettily-displaying system information (screenfetch, neofetch)
+    fastfetch
+
     htop # Better top
     btop # Better htop
     systemctl-tui # TUI for dystemd
