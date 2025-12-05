@@ -513,7 +513,8 @@
       cmake
 
       python314
-      python314Packages.uv
+      uv
+      poetry
 
       # /b/}
 
