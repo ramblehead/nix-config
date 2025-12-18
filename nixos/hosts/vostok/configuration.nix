@@ -23,6 +23,12 @@
   # see https://github.com/nix-community/nix-ld
   programs.nix-ld.enable = true;
 
+  # Quickly locate the package providing a certain file in nixpkgs
+  programs.command-not-found.enable = false;
+  programs.nix-index.enableZshIntegration = false;
+  programs.nix-index.enableBashIntegration = true;
+  programs.nix-index.enable = true;
+
   # enables support for SANE scanners
   hardware.sane.enable = true;
 
@@ -495,7 +501,7 @@
 
       # /b/}
 
-      # Equivalent of the apt install build-essential
+      # Equivalent of the apt install build-essential and min python
       # /b/{
 
       gcc
@@ -505,7 +511,10 @@
       automake
       libtool
       cmake
-      python3
+
+      python314
+      uv
+      poetry
 
       # /b/}
 
