@@ -566,7 +566,7 @@
 
       # dgen-sdl # Multiplatform Sega Genesis/Mega Drive Emulator
       # mednafen # Portable, CLI-driven, SDL+OpenGL-based, multi-system emulator
-      retroarch-full # Multi-platform emulator frontend for libretro cores (e.g Sega)
+      pkgs-unstable.retroarch-full # Multi-platform emulator frontend for libretro cores (e.g Sega)
       uqm # Remake of Star Control II
 
       # /b/}
