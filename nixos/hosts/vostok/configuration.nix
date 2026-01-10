@@ -4,8 +4,8 @@
 {
   # config,
   pkgs,
-  pkgs-unstable,
   inputs,
+  pkgs-unstable,
   flakeRoot,
   ...
 }: {
@@ -178,10 +178,29 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.drivers = [pkgs.hplipWithPlugin];
-  # services.printing.drivers = [ pkgs.hplipWithPlugin pkgs.hplip ];
-  # services.printing.logLevel = "debug";
+  services.printing = {
+    enable = true;
+    drivers = [pkgs.hplipWithPlugin];
+    # drivers = [ pkgs.hplipWithPlugin pkgs.hplip ];
+    # logLevel = "debug";
+
+    # # Sharing
+    # listenAddresses = ["*:631"];
+    # allowFrom = ["all"];
+    # browsing = true;
+    # defaultShared = true;
+    # openFirewall = true;
+  };
+
+  # services.avahi = {
+  #   enable = true;
+  #   nssmdns = true;
+  #   openFirewall = true;
+  #   publish = {
+  #     enable = true;
+  #     userServices = true;
+  #   };
+  # };
 
   services.samba = {
     enable = true;
