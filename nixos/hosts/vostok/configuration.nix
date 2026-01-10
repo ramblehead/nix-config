@@ -71,22 +71,6 @@
     # Enable the X11 windowing system.
     enable = true;
 
-    # Enable the GNOME Desktop Environment.
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
-      # autoSuspend = false;
-    };
-
-    desktopManager.gnome = {
-      enable = true;
-      extraGSettingsOverridePackages = [pkgs.mutter];
-      extraGSettingsOverrides = ''
-        [org.gnome.mutter]
-        experimental-features=['scale-monitor-framebuffer']
-      '';
-    };
-
     # Configure keymap in X11
     xkb = {
       layout = "us";
@@ -96,6 +80,22 @@
 
     # Enable touchpad support (enabled default in most desktopManager)
     # libinput.enable = true;
+  };
+
+  # Enable the GNOME Desktop Environment.
+  services.displayManager.gdm = {
+    enable = true;
+    wayland = true;
+    autoSuspend = false;
+  };
+
+  services.desktopManager.gnome = {
+    enable = true;
+    extraGSettingsOverridePackages = [pkgs.mutter];
+    extraGSettingsOverrides = ''
+      [org.gnome.mutter]
+      experimental-features=['scale-monitor-framebuffer']
+    '';
   };
 
   # see https://discourse.nixos.org/t/configuring-remote-desktop-access-with-gnome-remote-desktop/48023/3
@@ -153,6 +153,8 @@
   services.gnome = {
     gnome-remote-desktop.enable = true;
     games.enable = true;
+    gnome-keyring.enable = true;
+    gcr-ssh-agent.enable = true;
   };
 
   # TODO: remove this systemd wantedBy after the upstream issue has
@@ -574,7 +576,7 @@
       onedrive
       onedrivegui
       telegram-desktop
-      whatsapp-for-linux
+      wasistlos
       teams-for-linux
       # pkgs-unstable.ollama
       gnome-boxes
