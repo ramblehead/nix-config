@@ -5,11 +5,7 @@
     # e.g. flake-utils.lib.eachDefaultSystem (system: ...)
     flake-utils.url = "github:numtide/flake-utils";
 
-    # Temporary roll-back until 25.11 updates CUPS to 2.4.16;
-    # Current CUPS 2.4.15 does not work with browsers for printing
-    # colour-ups for Aelita.
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs.url = "github:NixOS/nixpkgs/c8cfcd6ccd422e41cc631a0b73ed4d5a925c393d";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
