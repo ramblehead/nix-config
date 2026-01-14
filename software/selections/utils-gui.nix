@@ -22,8 +22,8 @@
       # Project Management
       # /b/{
 
-      planner # Project management tool for the GNOME desktop
-      treesheets # Free Form Data Organizer
+      # planner # Project management tool for the GNOME desktop
+      # treesheets # Free Form Data Organizer
       obsidian # Knowledge base on top of a local folder of plain Markdown files
 
       # /b/}
@@ -53,7 +53,7 @@
       # /b/{
 
       hack-font
-      vistafonts
+      vista-fonts
       tamsyn
 
       # /b/}

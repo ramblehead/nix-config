@@ -4,8 +4,8 @@
 {
   # config,
   pkgs,
-  pkgs-unstable,
   inputs,
+  pkgs-unstable,
   flakeRoot,
   ...
 }: {
@@ -71,22 +71,6 @@
     # Enable the X11 windowing system.
     enable = true;
 
-    # Enable the GNOME Desktop Environment.
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
-      # autoSuspend = false;
-    };
-
-    desktopManager.gnome = {
-      enable = true;
-      extraGSettingsOverridePackages = [pkgs.mutter];
-      extraGSettingsOverrides = ''
-        [org.gnome.mutter]
-        experimental-features=['scale-monitor-framebuffer']
-      '';
-    };
-
     # Configure keymap in X11
     xkb = {
       layout = "us";
@@ -96,6 +80,22 @@
 
     # Enable touchpad support (enabled default in most desktopManager)
     # libinput.enable = true;
+  };
+
+  # Enable the GNOME Desktop Environment.
+  services.displayManager.gdm = {
+    enable = true;
+    wayland = true;
+    autoSuspend = false;
+  };
+
+  services.desktopManager.gnome = {
+    enable = true;
+    extraGSettingsOverridePackages = [pkgs.mutter];
+    extraGSettingsOverrides = ''
+      [org.gnome.mutter]
+      experimental-features=['scale-monitor-framebuffer']
+    '';
   };
 
   # see https://discourse.nixos.org/t/configuring-remote-desktop-access-with-gnome-remote-desktop/48023/3
@@ -153,6 +153,8 @@
   services.gnome = {
     gnome-remote-desktop.enable = true;
     games.enable = true;
+    gnome-keyring.enable = true;
+    gcr-ssh-agent.enable = true;
   };
 
   # TODO: remove this systemd wantedBy after the upstream issue has
@@ -176,10 +178,29 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.drivers = [pkgs.hplipWithPlugin];
-  # services.printing.drivers = [ pkgs.hplipWithPlugin pkgs.hplip ];
-  # services.printing.logLevel = "debug";
+  services.printing = {
+    enable = true;
+    drivers = [pkgs.hplipWithPlugin];
+    # drivers = [ pkgs.hplipWithPlugin pkgs.hplip ];
+    # logLevel = "debug";
+
+    # # Sharing
+    # listenAddresses = ["*:631"];
+    # allowFrom = ["all"];
+    # browsing = true;
+    # defaultShared = true;
+    # openFirewall = true;
+  };
+
+  # services.avahi = {
+  #   enable = true;
+  #   nssmdns = true;
+  #   openFirewall = true;
+  #   publish = {
+  #     enable = true;
+  #     userServices = true;
+  #   };
+  # };
 
   services.samba = {
     enable = true;
@@ -566,7 +587,7 @@
 
       # dgen-sdl # Multiplatform Sega Genesis/Mega Drive Emulator
       # mednafen # Portable, CLI-driven, SDL+OpenGL-based, multi-system emulator
-      retroarch-full # Multi-platform emulator frontend for libretro cores (e.g Sega)
+      pkgs-unstable.retroarch-full # Multi-platform emulator frontend for libretro cores (e.g Sega)
       uqm # Remake of Star Control II
 
       # /b/}
@@ -574,7 +595,7 @@
       onedrive
       onedrivegui
       telegram-desktop
-      whatsapp-for-linux
+      wasistlos
       teams-for-linux
       # pkgs-unstable.ollama
       gnome-boxes

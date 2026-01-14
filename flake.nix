@@ -5,11 +5,11 @@
     # e.g. flake-utils.lib.eachDefaultSystem (system: ...)
     flake-utils.url = "github:numtide/flake-utils";
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with
@@ -62,8 +62,8 @@
 
   outputs = {
     self,
-    nixpkgs-unstable,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     ...
   } @ inputs: let
@@ -101,6 +101,33 @@
             (import ./overlays/mc)
             inputs.fenix.overlays.default
             # inputs.rust-overlay.overlays.default
+
+            # (final: prev: {
+            #   cups = pkgs-unstable.cups;
+            #   hplipWithPlugin = pkgs-unstable.hplipWithPlugin;
+            # })
+
+            # (final: prev: {
+            #   gtksourceview5 = prev.gtksourceview5.overrideAttrs (old: {
+            #     # Option A: Disable tests completely (fastest, usually safe)
+            #     doCheck = false;
+
+            #     # Option B: Keep tests but give them much more time (if you want to verify)
+            #     # preCheck = old.preCheck or "" + ''
+            #     #   export MESON_TEST_TIMEOUT_MULTIPLIER=10
+            #     # '';
+            #   });
+            # })
+
+            # (final: prev: {
+            #   cups = prev.cups.overrideAttrs (old: rec {
+            #     version = "2.4.14";
+            #     src = prev.fetchurl {
+            #       url = "https://github.com/OpenPrinting/cups/releases/download/v${version}/cups-${version}-source.tar.gz";
+            #       hash = "sha256-ZgKIAg3W95yveZgRxMGjIHpIaJiZrCCTlZ1wo73Ldpk=";
+            #     };
+            #   });
+            # })
           ];
 
           nixpkgs.config.allowUnfree = true;
