@@ -5,6 +5,9 @@
     # e.g. flake-utils.lib.eachDefaultSystem (system: ...)
     flake-utils.url = "github:numtide/flake-utils";
 
+    # This should be removed after dropping Debian Bookworm desctop
+    nixpkgs-25_05.url = "github:NixOS/nixpkgs/nixos-25.05";
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -245,6 +248,11 @@
     };
 
     homeConfigurations."qt-dl1" = home-manager.lib.homeManagerConfiguration (let
+      pkgs-25_05 = import inputs.nixpkgs-25_05 {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
+
       pkgs-unstable = import nixpkgs-unstable {
         system = "x86_64-linux";
         config.allowUnfree = true;
@@ -267,6 +275,7 @@
 
       extraSpecialArgs = {
         inherit self;
+        inherit pkgs-25_05;
         inherit pkgs-unstable;
         inherit inputs;
         inherit flakeRoot;

@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-25_05,
   pkgs-unstable,
   inputs,
   lib,
@@ -54,8 +55,8 @@
 
       # Native KDE Dolphin in current Debian 12 is leaking memory
       # and hungs. The following installation seems to fix it.
-      libsForQt5.dolphin
-      libsForQt5.gwenview
+      pkgs-25_05.libsForQt5.dolphin
+      pkgs-25_05.libsForQt5.gwenview
 
       # (fenix.stable.withComponents [
       (fenix.complete.withComponents [
