@@ -8,10 +8,10 @@
   flakeRoot,
   ...
 }: {
-  nixGL.packages = inputs.nixgl.packages;
-  nixGL.defaultWrapper = "mesa";
-  #nixGL.offloadWrapper = "nvidiaPrime";
-  nixGL.installScripts = ["mesa"];
+  targets.genericLinux.nixGL.packages = inputs.nixgl.packages;
+  targets.genericLinux.nixGL.defaultWrapper = "mesa";
+  # targets.genericLinux.nixGL.offloadWrapper = "nvidiaPrime";
+  targets.genericLinux.nixGL.installScripts = ["mesa"];
 
   home.packages = let
     utils-cli = (import (flakeRoot + /software/selections/utils-cli.nix)) {
