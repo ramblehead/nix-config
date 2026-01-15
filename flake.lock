@@ -3,11 +3,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1768415706,
+        "lastModified": 1768469312,
         "narHash": "sha256-ntnmQ+/vFS7utn+y3ZknkYPv4X1QCGV+PKHxx1Fj1BY=",
         "ref": "refs/heads/main",
-        "rev": "3db6f99a74e7f01a741d5d34ac57a0c7cc4742fe",
-        "revCount": 178,
+        "rev": "c097733ce43b0f9ad71bb157fedc7d7bcc3fb52a",
+        "revCount": 179,
         "type": "git",
         "url": "file:///home/rh/box/nix-config/dotfiles"
       },
