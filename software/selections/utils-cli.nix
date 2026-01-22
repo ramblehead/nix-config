@@ -19,7 +19,7 @@
     # /b/{
 
     mc
-    # far2l # has a potential to takeover mc when more developed/stable
+    far2l # has a potential to takeover mc when more developed/stable
     zip
     unzip
     rar
