@@ -425,6 +425,7 @@
       # /b/{
 
       alacritty
+      wezterm
 
       # /b/}
 
