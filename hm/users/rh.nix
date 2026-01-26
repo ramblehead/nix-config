@@ -87,6 +87,10 @@ in {
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/em));
 
+    ".local/bin/zj".source =
+      config.lib.file.mkOutOfStoreSymlink
+      (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/zj));
+
     ".config/zellij".source =
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flakeRoot + /dotfiles/.config/zellij));
@@ -98,10 +102,6 @@ in {
     ".config/wezterm".source =
       config.lib.file.mkOutOfStoreSymlink
       (deduceRuntimePath (flakeRoot + /dotfiles/.config/wezterm));
-
-    ".local/bin/zj".source =
-      config.lib.file.mkOutOfStoreSymlink
-      (deduceRuntimePath (flakeRoot + /dotfiles/.local/bin/zj));
 
     ".local/bin/tmux".source =
       config.lib.file.mkOutOfStoreSymlink

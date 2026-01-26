@@ -42,6 +42,7 @@
     ++ llm.packages
     ++ (with pkgs; [
       (config.lib.nixGL.wrap alacritty)
+      (config.lib.nixGL.wrap wezterm)
 
       (emacs.override {
         withNativeCompilation = true;
