@@ -425,7 +425,7 @@
       # /b/{
 
       alacritty
-      wezterm
+      pkgs-unstable.wezterm
 
       # /b/}
 
