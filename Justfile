@@ -98,8 +98,8 @@ cache-rebuild:
 # Copy current user monitor settings to GDM user
 gdm-monitors-update:
   # see https://gitlab.gnome.org/GNOME/gdm/-/issues/699#note_1215577
-  sudo cp ~/.config/monitors.xml ~gdm/.config/monitors.xml
-  sudo chown gdm:gdm ~gdm/.config/monitors.xml
+  sudo cp ~/.config/monitors.xml /run/gdm/.config/monitors.xml
+  sudo chown gdm:gdm /run/gdm/.config/monitors.xml
 
 # Initialise root (global) home-manager
 hm-init-host *hostname:

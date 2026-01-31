@@ -95,7 +95,22 @@
     extraGSettingsOverrides = ''
       [org.gnome.mutter]
       experimental-features=['scale-monitor-framebuffer']
+
+      [org.gnome.desktop.wm.keybindings]
+      switch-to-workspace-left=['<Super><Alt>Left']
+      switch-to-workspace-right=['<Super><Alt>Right']
+
+      move-to-workspace-left=['<Super><Alt><Shift>Left']
+      move-to-workspace-right=['<Super><Alt><Shift>Right']
     '';
+  };
+
+  services.gnome = {
+    gnome-remote-desktop.enable = true;
+    games.enable = true;
+    gnome-keyring.enable = true;
+    gcr-ssh-agent.enable = true;
+    gnome-settings-daemon.enable = true;
   };
 
   # see https://discourse.nixos.org/t/configuring-remote-desktop-access-with-gnome-remote-desktop/48023/3
@@ -149,13 +164,6 @@
   in [
     "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsXml}"
   ];
-
-  services.gnome = {
-    gnome-remote-desktop.enable = true;
-    games.enable = true;
-    gnome-keyring.enable = true;
-    gcr-ssh-agent.enable = true;
-  };
 
   # TODO: remove this systemd wantedBy after the upstream issue has
   #       been resolved.
