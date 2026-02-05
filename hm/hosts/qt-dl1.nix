@@ -43,6 +43,7 @@
     ++ (with pkgs; [
       (config.lib.nixGL.wrap alacritty)
       (config.lib.nixGL.wrap pkgs-unstable.wezterm)
+      # inputs.wezterm.packages.${pkgs.system}.default
 
       (emacs.override {
         withNativeCompilation = true;

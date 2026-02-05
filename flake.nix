@@ -50,6 +50,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # wezterm = {
+    #   # Current MS Windows release version
+    #   url = "github:wez/wezterm/20240203-110809-5046fc22?dir=nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     # # Pure and reproducible packaging of binary distributed rust toolchains.
     # rust-overlay = {
     #   url = "github:oxalica/rust-overlay";
