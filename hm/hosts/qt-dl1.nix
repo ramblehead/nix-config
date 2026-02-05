@@ -42,8 +42,9 @@
     ++ llm.packages
     ++ (with pkgs; [
       (config.lib.nixGL.wrap alacritty)
-      (config.lib.nixGL.wrap pkgs-unstable.wezterm)
-      # inputs.wezterm.packages.${pkgs.system}.default
+      # (config.lib.nixGL.wrap pkgs-unstable.wezterm)
+      # (config.lib.nixGL.wrap inputs.wezterm.packages.${pkgs.system}.default)
+      # inputs.wezterm.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       (emacs.override {
         withNativeCompilation = true;

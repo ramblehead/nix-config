@@ -52,7 +52,7 @@
 
     # wezterm = {
     #   # Current MS Windows release version
-    #   url = "github:wez/wezterm/20240203-110809-5046fc22?dir=nix";
+    #   url = "github:wezterm/wezterm/20240203-110809-5046fc22?dir=nix";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
