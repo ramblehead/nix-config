@@ -163,6 +163,7 @@
     monitorsXml = inputs.dotfiles + /hosts/vostok/.config/monitors-gdm.xml;
   in [
     "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsXml}"
+    "Z /run/gdm/.config 0755 gdm gdm - -"
   ];
 
   # TODO: remove this systemd wantedBy after the upstream issue has
