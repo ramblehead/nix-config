@@ -46,6 +46,9 @@
       # (config.lib.nixGL.wrap inputs.wezterm.packages.${pkgs.system}.default)
       # inputs.wezterm.packages.${pkgs.stdenv.hostPlatform.system}.default
 
+      # Knowledge base on top of a local folder of plain Markdown files
+      (config.lib.nixGL.wrap obsidian)
+
       (emacs.override {
         withNativeCompilation = true;
         # withPgtk = true;
