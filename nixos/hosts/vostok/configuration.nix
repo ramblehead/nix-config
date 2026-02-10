@@ -445,10 +445,13 @@
 
       # /b/}
 
-      # Office and Documents
+      # Office, Documents and Organisers
       # /b/{
 
       libreoffice-fresh
+
+      # Knowledge base on top of a local folder of plain Markdown files
+      obsidian
 
       # /b/}
 
@@ -549,8 +552,14 @@
 
       # /b/}
 
-      # Infosecurity
+      # Browsers and Infosecurity
       # /b/{
+
+      chromium
+      google-chrome
+      microsoft-edge
+      tor-browser
+      # yandex-browser
 
       openssl
 
@@ -606,15 +615,9 @@
       onedrivegui
       telegram-desktop
       wasistlos
-      teams-for-linux
+      # teams-for-linux
       # pkgs-unstable.ollama
       gnome-boxes
-
-      chromium
-      google-chrome
-      microsoft-edge
-      tor-browser
-      # yandex-browser
     ]);
 
   # environment.variables.XCURSOR_THEME = "Adwaita";
