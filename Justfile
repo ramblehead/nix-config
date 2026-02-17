@@ -103,7 +103,11 @@ gdm-monitors-update:
 
 # Initialise root (global) home-manager
 hm-init-host *hostname:
-  sudo -i nix run home-manager/release-24.11 -- init --switch ${PWD}
+  if [ -z "{{hostname}}" ]; then \
+    sudo -i nix run home-manager/release-25.11 -- init --switch "$PWD#$(hostname)"; \
+  else \
+    sudo -i nix run home-manager/release-25.11 -- init --switch "$PWD#{{hostname}}"; \
+  fi
   @just hm-switch-host {{hostname}}
 
 # Switch host (root - global) home-manager
@@ -116,7 +120,7 @@ hm-switch-host *hostname:
 
 # Initialise user home-manager
 hm-init-user *username:
-  home-manager init --switch ${PWD}
+  UN={{username}}; home-manager init --switch "$PWD${UN:+#}$UN"
   @just hm-switch {{username}}
 
 # Switch user home-manager

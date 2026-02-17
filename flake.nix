@@ -305,5 +305,52 @@
         isNixOS = false;
       };
     };
+
+    homeConfigurations."glider" = home-manager.lib.homeManagerConfiguration (let
+      pkgs-unstable = import nixpkgs-unstable {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
+    in {
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        overlays = [
+          (import ./overlays/mc)
+          inputs.fenix.overlays.default
+        ];
+        config.allowUnfree = true;
+      };
+
+      modules = [
+        ./hm/hosts/glider.nix
+        ./hm/users/root.nix
+      ];
+
+      extraSpecialArgs = {
+        inherit self;
+        inherit pkgs-unstable;
+        inherit inputs;
+        inherit flakeRoot;
+      };
+    });
+
+    homeConfigurations."rh@glider" = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
+
+      modules = [
+        ./hm/users/rh.nix
+      ];
+
+      extraSpecialArgs = {
+        inherit self;
+        inherit inputs;
+        inherit flakeRoot;
+        isNixOS = false;
+      };
+    };
+
   };
 }
