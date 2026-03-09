@@ -613,7 +613,7 @@
 
       onedrive
       onedrivegui
-      telegram-desktop
+      pkgs-unstable.telegram-desktop
       wasistlos
       # teams-for-linux
       # pkgs-unstable.ollama
