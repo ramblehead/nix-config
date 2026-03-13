@@ -555,8 +555,13 @@
       # Browsers and Infosecurity
       # /b/{
 
+      (google-chrome.override {
+        commandLineArgs = [
+          "--ozone-platform=x11"
+        ];
+      })
+
       chromium
-      google-chrome
       microsoft-edge
       tor-browser
       # yandex-browser
