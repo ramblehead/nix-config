@@ -47,7 +47,23 @@
       # inputs.wezterm.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Knowledge base on top of a local folder of plain Markdown files
-      (config.lib.nixGL.wrap obsidian)
+      (config.lib.nixGL.wrap (obsidian.override {
+        commandLineArgs = [
+          # Numpad del key is not working on --ozone-platform=wayland (default):
+          # e.g. https://issues.chromium.org/issues/429730008
+          # TODO: this should be removed after the above issue is fixed
+          "--ozone-platform=x11"
+        ];
+      }))
+
+      (config.lib.nixGL.wrap (google-chrome.override {
+        commandLineArgs = [
+          # Numpad del key is not working on --ozone-platform=wayland (default):
+          # e.g. https://issues.chromium.org/issues/429730008
+          # TODO: this should be removed after the above issue is fixed
+          "--ozone-platform=x11"
+        ];
+      }))
 
       (emacs.override {
         withNativeCompilation = true;
