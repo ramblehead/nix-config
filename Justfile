@@ -91,7 +91,7 @@ path:
   echo $PATH | sed -e 's/:/\n/g'
 
 # Re-build system caches - font, icons etc.
-cache-rebuild-kde:
+kde-cache-rebuild:
   command -v kbuildsycoca5 >/dev/null 2>&1 && kbuildsycoca5 --noincremental
   fc-cache -f -v
 
