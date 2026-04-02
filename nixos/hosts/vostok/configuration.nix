@@ -85,6 +85,7 @@
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm = {
     enable = true;
+    # wayland = true;
     wayland = true;
     autoSuspend = false;
   };
@@ -614,8 +615,13 @@
 
       # dgen-sdl # Multiplatform Sega Genesis/Mega Drive Emulator
       # mednafen # Portable, CLI-driven, SDL+OpenGL-based, multi-system emulator
-      pkgs-unstable.retroarch-full # Multi-platform emulator frontend for libretro cores (e.g Sega)
-      uqm # Remake of Star Control II
+
+      # Multi-platform emulator frontend for libretro cores (e.g Sega)
+      # pkgs-unstable.retroarch-full
+      # retroarch-full
+
+      # Remake of Star Control II
+      uqm
 
       # /b/}
 
