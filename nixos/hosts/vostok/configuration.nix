@@ -85,7 +85,6 @@
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm = {
     enable = true;
-    # wayland = true;
     wayland = true;
     autoSuspend = false;
   };
@@ -166,6 +165,13 @@
     "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsXml}"
     "Z /run/gdm/.config 0755 gdm gdm - -"
   ];
+
+  # systemd.tmpfiles.rules = let
+  #   monitorsXml = inputs.dotfiles + /hosts/vostok/.config/monitors-gdm.xml;
+  # in [
+  #   "L+ /var/lib/gdm/.config/monitors.xml - - - - ${monitorsXml}"
+  #   "Z /var/lib/gdm/.config 0755 gdm gdm - -"
+  # ];
 
   # TODO: remove this systemd wantedBy after the upstream issue has
   #       been resolved.
