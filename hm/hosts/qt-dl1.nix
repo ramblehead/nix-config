@@ -95,8 +95,6 @@
       cargo-run-bin
       cargo-deb
 
-      plantuml-c4
-
       # (rust-bin.stable.latest.default.override {
       #   extensions = [
       #     # for x86_64-unknown-linux-gnu
@@ -134,6 +132,8 @@
       # })
 
       # rust-analyzer-nightly
+
+      plantuml-c4
 
       wl-clipboard
     ]);
