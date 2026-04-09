@@ -487,20 +487,20 @@
       # Rust
       # /b/{
 
-      # (fenix.stable.withComponents [
-      (fenix.complete.withComponents [
-        "rustc"
-        "cargo"
-        "rust-src"
-        "clippy"
-        "rustfmt"
-        "rust-docs"
-        "rust-analysis"
-        "rust-analyzer"
-      ])
+      # # (fenix.stable.withComponents [
+      # (fenix.complete.withComponents [
+      #   "rustc"
+      #   "cargo"
+      #   "rust-src"
+      #   "clippy"
+      #   "rustfmt"
+      #   "rust-docs"
+      #   "rust-analysis"
+      #   "rust-analyzer"
+      # ])
 
-      cargo-run-bin
-      cargo-deb
+      # cargo-run-bin
+      # cargo-deb
 
       # (rust-bin.stable.latest.default.override {
       #   extensions = [
@@ -545,17 +545,17 @@
       # Equivalent of the apt install build-essential and min python
       # /b/{
 
-      gcc
-      gnumake
-      pkg-config
-      autoconf
-      automake
-      libtool
-      cmake
+      # gcc
+      # gnumake
+      # pkg-config
+      # autoconf
+      # automake
+      # libtool
+      # cmake
 
       python314
-      uv
-      poetry
+      # uv
+      # poetry
 
       # /b/}
 
