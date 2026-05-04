@@ -623,7 +623,7 @@
       # mednafen # Portable, CLI-driven, SDL+OpenGL-based, multi-system emulator
 
       # Multi-platform emulator frontend for libretro cores (e.g Sega)
-      # pkgs-unstable.retroarch-full
+      pkgs-unstable.retroarch-full
       # retroarch-full
 
       # Remake of Star Control II
