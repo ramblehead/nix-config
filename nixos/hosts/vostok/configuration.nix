@@ -605,7 +605,7 @@
       gnomeExtensions.arcmenu
       gnomeExtensions.date-menu-formatter
       gnomeExtensions.dash-to-panel
-      gnomeExtensions.gtk4-desktop-icons-ng-ding
+      # gnomeExtensions.gtk4-desktop-icons-ng-ding
       gnomeExtensions.caffeine
       gnomeExtensions.clipboard-indicator
       # gnomeExtensions.vitals
