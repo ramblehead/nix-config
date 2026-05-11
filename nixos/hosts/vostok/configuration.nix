@@ -605,7 +605,7 @@
       gnomeExtensions.arcmenu
       gnomeExtensions.date-menu-formatter
       gnomeExtensions.dash-to-panel
-      gnomeExtensions.gtk4-desktop-icons-ng-ding
+      # gnomeExtensions.gtk4-desktop-icons-ng-ding
       gnomeExtensions.caffeine
       gnomeExtensions.clipboard-indicator
       # gnomeExtensions.vitals
@@ -623,7 +623,7 @@
       # mednafen # Portable, CLI-driven, SDL+OpenGL-based, multi-system emulator
 
       # Multi-platform emulator frontend for libretro cores (e.g Sega)
-      # pkgs-unstable.retroarch-full
+      pkgs-unstable.retroarch-full
       # retroarch-full
 
       # Remake of Star Control II
