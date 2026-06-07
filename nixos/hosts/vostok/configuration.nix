@@ -85,7 +85,6 @@
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm = {
     enable = true;
-    wayland = true;
     autoSuspend = false;
   };
 
@@ -102,6 +101,11 @@
 
       move-to-workspace-left=['<Super><Alt><Shift>Left']
       move-to-workspace-right=['<Super><Alt><Shift>Right']
+
+      [org.gnome.shell]
+      # disable-extension-version-validation is set to true to allow ArcMenu.
+      # It can removed after ArcMenu fixes its metadata.
+      disable-extension-version-validation=true
     '';
   };
 
@@ -112,6 +116,8 @@
     gcr-ssh-agent.enable = true;
     gnome-settings-daemon.enable = true;
   };
+
+  programs.niri.enable = true;
 
   # see https://discourse.nixos.org/t/configuring-remote-desktop-access-with-gnome-remote-desktop/48023/3
   # # Disable the GNOME3/GDM auto-suspend feature that cannot be disabled in GUI!
@@ -359,40 +365,40 @@
   #   # };
   # };
 
-  # see https://wiki.nixos.org/wiki/Grafana
-  #     https://nixos.wiki/wiki/Grafana
-  services.grafana = {
-    enable = true;
-    settings = {
-      server = {
-        http_addr = "127.0.0.1";
-        http_port = 3000;
-      };
-    };
+  # # see https://wiki.nixos.org/wiki/Grafana
+  # #     https://nixos.wiki/wiki/Grafana
+  # services.grafana = {
+  #   enable = true;
+  #   settings = {
+  #     server = {
+  #       http_addr = "127.0.0.1";
+  #       http_port = 3000;
+  #     };
+  #   };
 
-    # see https://github.com/NixOS/nixpkgs/blob/d44a276324b63ff7ca4254b7ea51d5bac7eb6c64/pkgs/servers/monitoring/grafana/plugins/plugins.nix
-    declarativePlugins = with pkgs.grafanaPlugins; [
-      frser-sqlite-datasource
-    ];
+  #   # see https://github.com/NixOS/nixpkgs/blob/d44a276324b63ff7ca4254b7ea51d5bac7eb6c64/pkgs/servers/monitoring/grafana/plugins/plugins.nix
+  #   declarativePlugins = with pkgs.grafanaPlugins; [
+  #     frser-sqlite-datasource
+  #   ];
 
-    # provision = {
-    #   enable = true;
-    #   datasources.settings = {
-    #     # deleteDatasources = [
-    #     #   {
-    #     #     name = "SQLite";
-    #     #     orgId = 1;
-    #     #   }
-    #     # ];
-    #     # datasources = [
-    #     #   {
-    #     #     name = "SQLite";
-    #     #     type = "frser-sqlite-datasource";
-    #     #   }
-    #     # ];
-    #   };
-    # };
-  };
+  #   # provision = {
+  #   #   enable = true;
+  #   #   datasources.settings = {
+  #   #     # deleteDatasources = [
+  #   #     #   {
+  #   #     #     name = "SQLite";
+  #   #     #     orgId = 1;
+  #   #     #   }
+  #   #     # ];
+  #   #     # datasources = [
+  #   #     #   {
+  #   #     #     name = "SQLite";
+  #   #     #     type = "frser-sqlite-datasource";
+  #   #     #   }
+  #   #     # ];
+  #   #   };
+  #   # };
+  # };
 
   programs.firefox.enable = true;
 
@@ -587,6 +593,14 @@
 
       # /b/}
 
+      # Niri
+      # /b/{
+
+      fuzzel
+      swaylock
+
+      # /b/}
+
       # Gnome
       # /b/{
 
@@ -602,7 +616,7 @@
       gsmartcontrol # SMART tool for modern HDD and SSD
       gparted # Graphical disk partitioning tool
 
-      gnomeExtensions.arcmenu
+      pkgs-unstable.gnomeExtensions.arcmenu
       gnomeExtensions.date-menu-formatter
       gnomeExtensions.dash-to-panel
       # gnomeExtensions.gtk4-desktop-icons-ng-ding
@@ -613,6 +627,7 @@
       gnomeExtensions.steal-my-focus-window
       gnomeExtensions.system-monitor-next
       gnomeExtensions.appindicator # Old tray icons, e.g. Telegram
+      gnomeExtensions.no-overview
 
       # /b/}
 
@@ -634,7 +649,7 @@
       onedrive
       onedrivegui
       pkgs-unstable.telegram-desktop
-      wasistlos
+      karere
       # teams-for-linux
       # pkgs-unstable.ollama
       gnome-boxes

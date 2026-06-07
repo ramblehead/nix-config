@@ -62,7 +62,6 @@
     displayManager.gdm = {
       # Enable the GNOME Desktop Environment.
       enable = true;
-      wayland = true;
       autoSuspend = false;
     };
 

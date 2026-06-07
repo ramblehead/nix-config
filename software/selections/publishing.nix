@@ -17,7 +17,7 @@
     plantuml
     ditaa
     graphviz
-    kgraphviewer
+    # kgraphviewer
 
     # /b/}
 
