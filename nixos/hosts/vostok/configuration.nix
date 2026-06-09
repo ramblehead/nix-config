@@ -620,7 +620,9 @@
       gnomeExtensions.steal-my-focus-window
       gnomeExtensions.system-monitor-next
       gnomeExtensions.appindicator # Old tray icons, e.g. Telegram
-      gnomeExtensions.no-overview
+
+      # Using no-overview from arcmenu extension
+      # gnomeExtensions.no-overview
 
       # /b/}
 
