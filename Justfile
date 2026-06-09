@@ -95,12 +95,6 @@ kde-cache-rebuild:
   command -v kbuildsycoca5 >/dev/null 2>&1 && kbuildsycoca5 --noincremental
   fc-cache -f -v
 
-# Copy current user monitor settings to GDM user
-gdm-monitors-update:
-  # see https://gitlab.gnome.org/GNOME/gdm/-/issues/699#note_1215577
-  sudo cp ~/.config/monitors.xml /run/gdm/.config/monitors.xml
-  sudo chown gdm:gdm /run/gdm/.config/monitors.xml
-
 # Initialise root (global) home-manager
 hm-init-host *hostname:
   if [ -z "{{hostname}}" ]; then \
