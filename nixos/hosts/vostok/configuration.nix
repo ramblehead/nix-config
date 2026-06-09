@@ -621,9 +621,6 @@
       gnomeExtensions.system-monitor-next
       gnomeExtensions.appindicator # Old tray icons, e.g. Telegram
 
-      # Using no-overview from arcmenu extension
-      # gnomeExtensions.no-overview
-
       # /b/}
 
       # Games
