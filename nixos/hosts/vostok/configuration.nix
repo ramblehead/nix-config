@@ -171,12 +171,12 @@
     "L+ /var/lib/gdm/seat0/config/monitors.xml - gdm gdm - ${monitorsXml}"
   ];
 
-  # TODO: remove this systemd wantedBy after the upstream issue has
-  #       been resolved.
-  # see https://github.com/NixOS/nixpkgs/issues/361163#issuecomment-2567342119
-  systemd.services.gnome-remote-desktop = {
-    wantedBy = ["graphical.target"];
-  };
+  # # TODO: remove this systemd wantedBy after the upstream issue has
+  # #       been resolved.
+  # # see https://github.com/NixOS/nixpkgs/issues/361163#issuecomment-2567342119
+  # systemd.services.gnome-remote-desktop = {
+  #   wantedBy = ["graphical.target"];
+  # };
 
   # Can use e.g ."xdg-mime query default text/plain" to test
   xdg.mime.defaultApplications = {
