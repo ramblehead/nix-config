@@ -168,16 +168,8 @@
   systemd.tmpfiles.rules = let
     monitorsXml = inputs.dotfiles + /hosts/vostok/.config/monitors-gdm.xml;
   in [
-    "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsXml}"
-    "Z /run/gdm/.config 0755 gdm gdm - -"
+    "L+ /var/lib/gdm/seat0/config/monitors.xml - gdm gdm - ${monitorsXml}"
   ];
-
-  # systemd.tmpfiles.rules = let
-  #   monitorsXml = inputs.dotfiles + /hosts/vostok/.config/monitors-gdm.xml;
-  # in [
-  #   "L+ /var/lib/gdm/.config/monitors.xml - - - - ${monitorsXml}"
-  #   "Z /var/lib/gdm/.config 0755 gdm gdm - -"
-  # ];
 
   # TODO: remove this systemd wantedBy after the upstream issue has
   #       been resolved.
@@ -598,6 +590,7 @@
 
       fuzzel
       swaylock
+      xwayland
 
       # /b/}
 
