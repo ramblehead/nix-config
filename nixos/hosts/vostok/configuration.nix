@@ -581,7 +581,7 @@
       # Embedded systems
       # /b/{
 
-      # rpi-imager
+      rpi-imager
 
       # /b/}
 
@@ -609,7 +609,7 @@
       gsmartcontrol # SMART tool for modern HDD and SSD
       gparted # Graphical disk partitioning tool
 
-      pkgs-unstable.gnomeExtensions.arcmenu
+      gnomeExtensions.arcmenu
       gnomeExtensions.date-menu-formatter
       gnomeExtensions.dash-to-panel
       # gnomeExtensions.gtk4-desktop-icons-ng-ding
