@@ -551,9 +551,16 @@
       # libtool
       # cmake
 
+      # /b/}
+
+      # Some minimal dev utils
+      # /b/{
+
       python314
       # uv
       # poetry
+
+      binutils
 
       # /b/}
 
