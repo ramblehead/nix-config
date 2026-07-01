@@ -134,6 +134,7 @@
       # rust-analyzer-nightly
 
       plantuml-c4
+      # wireguard-tools
 
       wl-clipboard
     ]);
