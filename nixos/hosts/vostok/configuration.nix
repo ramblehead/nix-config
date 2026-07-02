@@ -339,6 +339,19 @@
     # ];
   };
 
+  users.users.elena = {
+    isNormalUser = true;
+    description = "elena";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "scanner"
+      "lp"
+      "docker"
+      "libvirtd"
+    ];
+  };
+
   # services.ollama = {
   #   enable = true;
   #   package = pkgs-unstable.ollama;
@@ -650,6 +663,7 @@
       onedrivegui
       pkgs-unstable.telegram-desktop
       karere
+      wireguard-tools
       # teams-for-linux
       # pkgs-unstable.ollama
       gnome-boxes
