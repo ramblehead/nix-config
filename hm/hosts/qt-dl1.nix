@@ -43,6 +43,7 @@
     ++ (with pkgs; [
       (config.lib.nixGL.wrap alacritty)
       (config.lib.nixGL.wrap pkgs-unstable.wezterm)
+      # (config.lib.nixGL.wrap wezterm)
       # (config.lib.nixGL.wrap inputs.wezterm.packages.${pkgs.system}.default)
       # inputs.wezterm.packages.${pkgs.stdenv.hostPlatform.system}.default
 
@@ -134,6 +135,7 @@
       # rust-analyzer-nightly
 
       plantuml-c4
+      # wireguard-tools
 
       wl-clipboard
     ]);
