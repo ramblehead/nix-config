@@ -137,6 +137,7 @@
       plantuml-c4
       # wireguard-tools
 
+      remmina
       wl-clipboard
     ]);
 
