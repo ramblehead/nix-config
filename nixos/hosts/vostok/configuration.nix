@@ -566,7 +566,7 @@
 
       # /b/}
 
-      # Some minimal dev utils
+      # Some minimal dev and sysadmin utils - use direnv for per-project-tools
       # /b/{
 
       python314
@@ -574,6 +574,7 @@
       # poetry
 
       binutils
+      ethtool
 
       # /b/}
 
@@ -659,14 +660,19 @@
 
       # /b/}
 
+      # Misc
+      # /b/{
+
       onedrive
       onedrivegui
       pkgs-unstable.telegram-desktop
-      karere
+      karere # WhatsApp
       wireguard-tools
       # teams-for-linux
       # pkgs-unstable.ollama
-      gnome-boxes
+      gnome-boxes # user-friendly virtual machine manager
+
+      # /b/}
     ]);
 
   # environment.variables.XCURSOR_THEME = "Adwaita";
