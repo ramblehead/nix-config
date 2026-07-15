@@ -648,6 +648,8 @@
       # Games
       # /b/{
 
+      steam
+
       # dgen-sdl # Multiplatform Sega Genesis/Mega Drive Emulator
       # mednafen # Portable, CLI-driven, SDL+OpenGL-based, multi-system emulator
 
