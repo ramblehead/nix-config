@@ -417,6 +417,7 @@
 
     extraPackages = with pkgs; [
       gnome-themes-extra # This exposes Adwaita cursors directly inside the Steam FHS
+      pulseaudio # This provides the 'pactl' binary inside the Steam FHS sandbox
     ];
   };
 
