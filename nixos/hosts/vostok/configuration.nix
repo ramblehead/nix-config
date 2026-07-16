@@ -407,6 +407,19 @@
 
   programs.firefox.enable = true;
 
+  programs.steam = {
+    enable = true;
+    # extest.enable = true;
+
+    package = pkgs.steam.override {
+      extraArgs = "-forcedesktopscaling 1.25";
+    };
+
+    extraPackages = with pkgs; [
+      gnome-themes-extra # This exposes Adwaita cursors directly inside the Steam FHS
+    ];
+  };
+
   # nixpkgs.config.permittedInsecurePackages = [
   #   "yandex-browser-stable-24.7.1.1120-1"
   # ];
@@ -647,8 +660,6 @@
 
       # Games
       # /b/{
-
-      steam
 
       # dgen-sdl # Multiplatform Sega Genesis/Mega Drive Emulator
       # mednafen # Portable, CLI-driven, SDL+OpenGL-based, multi-system emulator
