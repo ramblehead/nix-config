@@ -28,11 +28,13 @@
 
   hardware.graphics = {
     enable = true;
-    # driSupport = true;
-    # driSupport32Bit = true;
+    driSupport = true;
+    driSupport32Bit = true;
     # setLdLibraryPath = true;
 
     extraPackages = with pkgs; [
+      mesa.drivers
+
       # rocmPackages_5.clr.icd
       # rocmPackages_5.clr
       # rocmPackages_5.rocm-runtime
@@ -42,6 +44,10 @@
       # rocmPackages_5.hipblas
 
       ocl-icd
+    ];
+
+    extraPackages32 = with pkgs; [
+      mesa.drivers
     ];
   };
 
