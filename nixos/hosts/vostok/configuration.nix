@@ -672,6 +672,11 @@
       # Remake of Star Control II
       uqm
 
+      # Steam-related
+      vulkan-tools
+      mesa-demos
+      protontricks
+
       # /b/}
 
       # Misc

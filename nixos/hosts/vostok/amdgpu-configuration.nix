@@ -30,8 +30,8 @@
     enable = true;
     enable32Bit = true;
 
-    package = pkgs.mesa.drivers;
-    package32 = pkgs.pkgsi686Linux.mesa.drivers;
+    package = pkgs.mesa;
+    package32 = pkgs.pkgsi686Linux.mesa;
 
     extraPackages = with pkgs; [
       # rocmPackages_5.clr.icd
