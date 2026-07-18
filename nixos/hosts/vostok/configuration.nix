@@ -347,8 +347,16 @@
       "wheel"
       "scanner"
       "lp"
-      "docker"
-      "libvirtd"
+    ];
+  };
+
+  users.users.aelita = {
+    isNormalUser = true;
+    description = "aelita";
+    extraGroups = [
+      "networkmanager"
+      "scanner"
+      "lp"
     ];
   };
 
