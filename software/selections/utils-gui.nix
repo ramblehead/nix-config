@@ -39,7 +39,7 @@
       # /b/{
 
       pinta # Drawing/editing program modeled after Paint.NET
-      dia # Gnome Diagram drawing software
+      # dia # Gnome Diagram drawing software
       # pkgs-unstable.yed # yEd - graph editor
       gimp-with-plugins # The GNU Image Manipulation Program
       # libsForQt5.kolourpaint # Easy-to-use paint program from KDE
