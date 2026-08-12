@@ -495,7 +495,7 @@
 
       # /b/}
 
-      # Text Editors and Software Development Tools
+      # Text Editors, and Software Development Tools and AI
       # /b/{
 
       git
@@ -511,9 +511,10 @@
 
       # zed-editor
       # jetbrains.rust-rover
-      # code-cursor
-      # aider-chat
       pkgs-unstable.aider-chat
+      pkgs-unstable.cursor-cli
+      pkgs-unstable.code-cursor
+      pkgs-unstable.claude-code
 
       # /b/}
 
