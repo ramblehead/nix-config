@@ -19,6 +19,8 @@ in {
   ];
 
   home.sessionVariables = {
+    EDITOR = "em";
+
     # claude-code DeepSeek configuration
     ANTHROPIC_BASE_URL = "https://api.deepseek.com/anthropic";
     ANTHROPIC_MODEL = "deepseek-v4-pro[1m]";
