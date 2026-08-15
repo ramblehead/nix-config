@@ -230,29 +230,6 @@
       ];
     });
 
-    homeConfigurations."rh-krancher" = home-manager.lib.homeManagerConfiguration {
-      # pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      pkgs = import nixpkgs {
-        system = "x86_64-linux";
-        overlays = [
-          (import ./overlays/mc)
-          # inputs.fenix.overlays.default
-        ];
-        config.allowUnfree = true;
-      };
-
-      modules = [
-        ./hm/hosts/rh-krancher.nix
-        ./hm/users/root.nix
-      ];
-
-      extraSpecialArgs = {
-        inherit self;
-        inherit inputs;
-        inherit flakeRoot;
-      };
-    };
-
     homeConfigurations."qt-dl1" = home-manager.lib.homeManagerConfiguration (let
       pkgs-25_05 = import inputs.nixpkgs-25_05 {
         system = "x86_64-linux";
