@@ -7,6 +7,7 @@
   inputs,
   pkgs-unstable,
   flakeRoot,
+  dotfiles,
   ...
 }: {
   imports = [
@@ -166,7 +167,7 @@
   };
 
   systemd.tmpfiles.rules = let
-    monitorsXml = inputs.dotfiles + /hosts/vostok/.config/monitors-gdm.xml;
+    monitorsXml = dotfiles + /hosts/vostok/.config/monitors-gdm.xml;
   in [
     "L+ /var/lib/gdm/seat0/config/monitors.xml - gdm gdm - ${monitorsXml}"
   ];

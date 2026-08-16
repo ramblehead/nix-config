@@ -2,6 +2,10 @@
   description = "ramblehead's NixOS and Nix flake";
 
   inputs = {
+    # Fetch the git submodules (dotfiles, and emacs nested inside it) when
+    # this flake is fetched from git, so `self` always contains their content.
+    self.submodules = true;
+
     # e.g. flake-utils.lib.eachDefaultSystem (system: ...)
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -62,11 +66,6 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    dotfiles = {
-      # url = "git+file:./dotfiles";
-      url = "git+file:///home/rh/box/nix-config/dotfiles";
-      flake = false;
-    };
   };
 
   outputs = {
@@ -80,6 +79,13 @@
     # subdirectories from other modules in a way that follows the flake's file
     # structure.
     flakeRoot = ./.;
+
+    # The dotfiles submodule, as part of the flake's own source tree.
+    # Built from `flakeRoot` (not `self.outPath`) so the result is a path
+    # with the flake source context, and stays valid in pure evaluation.
+    # `self.submodules` in the inputs above makes sure the submodule
+    # content is part of the tree when fetched from git.
+    dotfiles = flakeRoot + "/dotfiles";
   in {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
@@ -97,6 +103,7 @@
         inherit inputs;
         inherit pkgs-unstable;
         inherit flakeRoot;
+        inherit dotfiles;
       };
 
       modules = [
@@ -161,6 +168,7 @@
             inherit self;
             inherit inputs;
             inherit flakeRoot;
+            inherit dotfiles;
             # isNixOS = true;
           };
         }
@@ -202,6 +210,7 @@
         inherit pkgs-unstable;
         inherit inputs;
         inherit flakeRoot;
+        inherit dotfiles;
       };
     });
 
@@ -219,6 +228,7 @@
         inherit self;
         inherit inputs;
         inherit flakeRoot;
+        inherit dotfiles;
         isNixOS = false;
       };
     };
@@ -248,6 +258,7 @@
         inherit pkgs-unstable;
         inherit inputs;
         inherit flakeRoot;
+        inherit dotfiles;
       };
     });
 
@@ -265,6 +276,7 @@
         inherit self;
         inherit inputs;
         inherit flakeRoot;
+        inherit dotfiles;
         isNixOS = false;
       };
     };

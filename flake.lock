@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "dotfiles": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1783902704,
-        "narHash": "sha256-rdMKWtxgLEKxLswkUmxTxJw7HP+NhqQCooBpeTjyp2I=",
-        "ref": "refs/heads/main",
-        "rev": "e7b3ec923c0413d189379508106dd29ade56b1f1",
-        "revCount": 224,
-        "type": "git",
-        "url": "file:///home/rh/box/nix-config/dotfiles"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:///home/rh/box/nix-config/dotfiles"
-      }
-    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -150,7 +134,6 @@
     },
     "root": {
       "inputs": {
-        "dotfiles": "dotfiles",
         "fenix": "fenix",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",

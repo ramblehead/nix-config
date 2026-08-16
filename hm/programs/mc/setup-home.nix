@@ -2,10 +2,8 @@
   config,
   pkgs,
   lib,
-  inputs,
-}: let
-  inherit (inputs) dotfiles;
-in {
+  dotfiles,
+}: {
   setupMc = lib.hm.dag.entryAfter ["writeBoundary"] ''
     readonly MC_USER=$(whoami)
     run mkdir --parents "''${TMPDIR-/tmp}/mc-$MC_USER"

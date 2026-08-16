@@ -5,6 +5,7 @@
   lib,
   inputs,
   flakeRoot,
+  dotfiles,
   ...
 }: {
   home.username = "root";
@@ -38,7 +39,7 @@
       inherit config;
       inherit pkgs;
       inherit lib;
-      inherit inputs;
+      inherit dotfiles;
     };
   in {
     inherit (mc) setupMc;
