@@ -513,9 +513,9 @@
       # zed-editor
       # jetbrains.rust-rover
       pkgs-unstable.aider-chat
-      pkgs-unstable.cursor-cli
-      pkgs-unstable.code-cursor
       pkgs-unstable.claude-code
+      # pkgs-unstable.cursor-cli
+      # pkgs-unstable.code-cursor
 
       # /b/}
 
