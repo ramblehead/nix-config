@@ -138,6 +138,7 @@
       # wireguard-tools
 
       remmina
+      alpaca
       wl-clipboard
     ]);
 
