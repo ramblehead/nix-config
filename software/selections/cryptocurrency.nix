@@ -7,17 +7,17 @@
     # bitcoin
     # /b/{
 
-    bitcoin
+    # bitcoin
 
     # /b/}
 
     # monero
     # /b/{
 
-    monero-cli
-    monero-gui
-    p2pool
-    xmrig
+    # monero-cli
+    # monero-gui
+    # p2pool
+    # xmrig
 
     # /b/}
 

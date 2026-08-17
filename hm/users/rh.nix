@@ -5,6 +5,7 @@
   lib,
   inputs,
   flakeRoot,
+  dotfiles,
   ...
 }: let
   dotfilesLib = (import (flakeRoot + /lib/dotfiles.nix)) {
@@ -129,7 +130,7 @@ in {
       inherit config;
       inherit pkgs;
       inherit lib;
-      inherit inputs;
+      inherit dotfiles;
     };
   in {
     inherit (mc) setupMc;

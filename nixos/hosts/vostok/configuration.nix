@@ -7,6 +7,7 @@
   inputs,
   pkgs-unstable,
   flakeRoot,
+  dotfiles,
   ...
 }: {
   imports = [
@@ -166,7 +167,7 @@
   };
 
   systemd.tmpfiles.rules = let
-    monitorsXml = inputs.dotfiles + /hosts/vostok/.config/monitors-gdm.xml;
+    monitorsXml = dotfiles + /hosts/vostok/.config/monitors-gdm.xml;
   in [
     "L+ /var/lib/gdm/seat0/config/monitors.xml - gdm gdm - ${monitorsXml}"
   ];
@@ -347,8 +348,16 @@
       "wheel"
       "scanner"
       "lp"
-      "docker"
-      "libvirtd"
+    ];
+  };
+
+  users.users.aelita = {
+    isNormalUser = true;
+    description = "aelita";
+    extraGroups = [
+      "networkmanager"
+      "scanner"
+      "lp"
     ];
   };
 
@@ -406,6 +415,20 @@
   # };
 
   programs.firefox.enable = true;
+
+  programs.steam = {
+    enable = true;
+    # extest.enable = true;
+
+    package = pkgs.steam.override {
+      extraArgs = "-forcedesktopscaling 1.25";
+    };
+
+    extraPackages = with pkgs; [
+      gnome-themes-extra # This exposes Adwaita cursors directly inside the Steam FHS
+      pulseaudio # This provides the 'pactl' binary inside the Steam FHS sandbox
+    ];
+  };
 
   # nixpkgs.config.permittedInsecurePackages = [
   #   "yandex-browser-stable-24.7.1.1120-1"
@@ -473,7 +496,7 @@
 
       # /b/}
 
-      # Text Editors and Software Development Tools
+      # Text Editors, and Software Development Tools and AI
       # /b/{
 
       git
@@ -489,9 +512,10 @@
 
       # zed-editor
       # jetbrains.rust-rover
-      # code-cursor
-      # aider-chat
       pkgs-unstable.aider-chat
+      pkgs-unstable.claude-code
+      # pkgs-unstable.cursor-cli
+      # pkgs-unstable.code-cursor
 
       # /b/}
 
@@ -652,11 +676,16 @@
       # mednafen # Portable, CLI-driven, SDL+OpenGL-based, multi-system emulator
 
       # Multi-platform emulator frontend for libretro cores (e.g Sega)
-      pkgs-unstable.retroarch-full
+      # pkgs-unstable.retroarch-full
       # retroarch-full
 
       # Remake of Star Control II
       uqm
+
+      # Steam-related
+      vulkan-tools
+      mesa-demos
+      protontricks
 
       # /b/}
 

@@ -28,9 +28,10 @@
 
   hardware.graphics = {
     enable = true;
-    # driSupport = true;
-    # driSupport32Bit = true;
-    # setLdLibraryPath = true;
+    enable32Bit = true;
+
+    package = pkgs.mesa;
+    package32 = pkgs.pkgsi686Linux.mesa;
 
     extraPackages = with pkgs; [
       # rocmPackages_5.clr.icd
@@ -41,6 +42,10 @@
       # rocmPackages_5.rocblas
       # rocmPackages_5.hipblas
 
+      ocl-icd
+    ];
+
+    extraPackages32 = with pkgs.pkgsi686Linux; [
       ocl-icd
     ];
   };

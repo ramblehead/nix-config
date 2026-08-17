@@ -2,6 +2,10 @@
   description = "ramblehead's NixOS and Nix flake";
 
   inputs = {
+    # Fetch the git submodules (dotfiles, and emacs nested inside it) when
+    # this flake is fetched from git, so `self` always contains their content.
+    self.submodules = true;
+
     # e.g. flake-utils.lib.eachDefaultSystem (system: ...)
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -62,11 +66,6 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    dotfiles = {
-      # url = "git+file:./dotfiles";
-      url = "git+file:///home/rh/box/nix-config/dotfiles";
-      flake = false;
-    };
   };
 
   outputs = {
@@ -80,6 +79,13 @@
     # subdirectories from other modules in a way that follows the flake's file
     # structure.
     flakeRoot = ./.;
+
+    # The dotfiles submodule, as part of the flake's own source tree.
+    # Built from `flakeRoot` (not `self.outPath`) so the result is a path
+    # with the flake source context, and stays valid in pure evaluation.
+    # `self.submodules` in the inputs above makes sure the submodule
+    # content is part of the tree when fetched from git.
+    dotfiles = flakeRoot + "/dotfiles";
   in {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
@@ -97,6 +103,7 @@
         inherit inputs;
         inherit pkgs-unstable;
         inherit flakeRoot;
+        inherit dotfiles;
       };
 
       modules = [
@@ -161,6 +168,7 @@
             inherit self;
             inherit inputs;
             inherit flakeRoot;
+            inherit dotfiles;
             # isNixOS = true;
           };
         }
@@ -169,89 +177,6 @@
         ./lib/current-system-packages.nix
       ];
     });
-
-    nixosConfigurations.arilou = nixpkgs.lib.nixosSystem (let
-      system = "x86_64-linux";
-
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in {
-      inherit system;
-
-      specialArgs = {
-        inherit inputs;
-        inherit pkgs-unstable;
-        inherit flakeRoot;
-      };
-
-      modules = [
-        ({
-          # config,
-          # pkgs,
-          inputs,
-          ...
-        }: {
-          nixpkgs.overlays = [
-            (import ./overlays/mc)
-            inputs.fenix.overlays.default
-            # inputs.rust-overlay.overlays.default
-          ];
-
-          nixpkgs.config.allowUnfree = true;
-        })
-
-        ./nixos/hosts/arilou/configuration.nix
-
-        # make home-manager as a module of nixos
-        # so that home-manager configuration will be deployed
-        # automatically when executing `nixos-rebuild switch`
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-
-          home-manager.users.rh = import ./hm/users/rh-arilou.nix;
-          home-manager.users.root = import ./hm/users/root.nix;
-
-          # Optionally, use home-manager.extraSpecialArgs to pass
-          # arguments to home.nix
-          home-manager.extraSpecialArgs = {
-            inherit self;
-            inherit inputs;
-            inherit flakeRoot;
-            # isNixOS = true;
-          };
-        }
-
-        # List current system packages in /etc/current-system-packages
-        ./lib/current-system-packages.nix
-      ];
-    });
-
-    homeConfigurations."rh-krancher" = home-manager.lib.homeManagerConfiguration {
-      # pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      pkgs = import nixpkgs {
-        system = "x86_64-linux";
-        overlays = [
-          (import ./overlays/mc)
-          # inputs.fenix.overlays.default
-        ];
-        config.allowUnfree = true;
-      };
-
-      modules = [
-        ./hm/hosts/rh-krancher.nix
-        ./hm/users/root.nix
-      ];
-
-      extraSpecialArgs = {
-        inherit self;
-        inherit inputs;
-        inherit flakeRoot;
-      };
-    };
 
     homeConfigurations."qt-dl1" = home-manager.lib.homeManagerConfiguration (let
       pkgs-25_05 = import inputs.nixpkgs-25_05 {
@@ -285,6 +210,7 @@
         inherit pkgs-unstable;
         inherit inputs;
         inherit flakeRoot;
+        inherit dotfiles;
       };
     });
 
@@ -302,6 +228,7 @@
         inherit self;
         inherit inputs;
         inherit flakeRoot;
+        inherit dotfiles;
         isNixOS = false;
       };
     };
@@ -331,6 +258,7 @@
         inherit pkgs-unstable;
         inherit inputs;
         inherit flakeRoot;
+        inherit dotfiles;
       };
     });
 
@@ -348,6 +276,7 @@
         inherit self;
         inherit inputs;
         inherit flakeRoot;
+        inherit dotfiles;
         isNixOS = false;
       };
     };
