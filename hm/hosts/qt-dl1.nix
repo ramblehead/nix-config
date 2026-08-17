@@ -13,20 +13,6 @@
   # targets.genericLinux.nixGL.offloadWrapper = "nvidiaPrime";
   targets.genericLinux.nixGL.installScripts = ["mesa"];
 
-  home.sessionVariables = {
-    # Claude Code → local Ollama
-    ANTHROPIC_AUTH_TOKEN = "ollama";
-    # ANTHROPIC_API_KEY = ""; # empty so Claude Code doesn't try Anthropic auth
-    ANTHROPIC_BASE_URL = "http://localhost:11434";
-
-    # Default model (change to whatever you have pulled)
-    ANTHROPIC_MODEL = "qwen3-coder";
-    ANTHROPIC_DEFAULT_OPUS_MODEL = "qwen3-coder";
-    ANTHROPIC_DEFAULT_SONNET_MODEL = "qwen3-coder";
-    ANTHROPIC_DEFAULT_HAIKU_MODEL = "qwen3-coder"; # or a smaller/faster model
-    CLAUDE_CODE_SUBAGENT_MODEL = "qwen3-coder";
-  };
-
   home.packages = let
     utils-cli = (import (flakeRoot + /software/selections/utils-cli.nix)) {
       inherit pkgs;

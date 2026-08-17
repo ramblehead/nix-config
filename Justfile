@@ -107,9 +107,9 @@ hm-init-host *hostname:
 # Switch host (root - global) home-manager
 hm-switch-host *hostname:
   if [ -z "{{hostname}}" ]; then \
-    sudo -i home-manager switch --flake "$PWD#$(hostname)"; \
+    sudo home-manager switch --flake "$PWD#$(hostname)"; \
   else \
-    sudo -i home-manager switch --flake "$PWD#{{hostname}}"; \
+    sudo home-manager switch --flake "$PWD#{{hostname}}"; \
   fi
 
 # Initialise user home-manager

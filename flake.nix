@@ -65,7 +65,6 @@
     #   url = "github:oxalica/rust-overlay";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-
   };
 
   outputs = {
@@ -221,7 +220,7 @@
       };
 
       modules = [
-        ./hm/users/rh.nix
+        ./hm/users/rh-qt-dl1.nix
       ];
 
       extraSpecialArgs = {
