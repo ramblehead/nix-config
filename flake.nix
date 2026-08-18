@@ -199,8 +199,7 @@
       };
 
       modules = [
-        ./hm/hosts/qt-dl1.nix
-        ./hm/users/root.nix
+        ./hm/users/root-qt-dl1.nix
       ];
 
       extraSpecialArgs = {

@@ -8,6 +8,10 @@
   flakeRoot,
   ...
 }: {
+  imports = [
+    ./root.nix
+  ];
+
   targets.genericLinux.nixGL.packages = inputs.nixgl.packages;
   targets.genericLinux.nixGL.defaultWrapper = "mesa";
   # targets.genericLinux.nixGL.offloadWrapper = "nvidiaPrime";
@@ -144,6 +148,12 @@
       alpaca
       wl-clipboard
     ]);
+
+  home.sessionPath = [
+    "${config.home.homeDirectory}/.nix-profile/bin"
+    "/nix/var/nix/profiles/default/sbin"
+    "/nix/var/nix/profiles/default/bin"
+  ];
 
   home.activation = let
     # nix = (import (flakeRoot + /hm/programs/nix/setup-debian.nix)) {

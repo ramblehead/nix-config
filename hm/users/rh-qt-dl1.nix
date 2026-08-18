@@ -16,4 +16,10 @@
     ANTHROPIC_DEFAULT_HAIKU_MODEL = "qwen3-coder"; # or a smaller/faster model
     CLAUDE_CODE_SUBAGENT_MODEL = "qwen3-coder";
   };
+
+  home.sessionPath = [
+    "${config.home.homeDirectory}/.nix-profile/bin"
+    "/nix/var/nix/profiles/default/sbin"
+    "/nix/var/nix/profiles/default/bin"
+  ];
 }
