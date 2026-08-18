@@ -1,0 +1,4 @@
+# Load AGENTS.md into the chat context at startup, so repository
+# rules and commit-message conventions apply by default.
+read:
+  - AGENTS.md
