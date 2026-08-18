@@ -154,6 +154,12 @@ in {
   #
   # home.sessionVariables = {};
 
+  home.sessionPath = [
+    "${config.home.homeDirectory}/.nix-profile/bin"
+    "/nix/var/nix/profiles/default/sbin"
+    "/nix/var/nix/profiles/default/bin"
+  ];
+
   # This value determines whether home Manager should use the XDG base
   # directory specification for placing configuration files and other
   # user-specific data files.
