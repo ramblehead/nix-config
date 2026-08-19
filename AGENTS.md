@@ -77,6 +77,7 @@ Conventional prefixes, in order of typical use:
 - Subject <= 72 chars, imperative mood (`add`, `fix`, `remove`).
 - Body only when the why is non-obvious; link issues when relevant.
 - `wip:` replaces the old "Checkpoint" messages.
+- Do not add Co-Authored-By Claude message to commits!
 
 ## Useful workflows
 
