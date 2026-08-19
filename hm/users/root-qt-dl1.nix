@@ -156,11 +156,6 @@
   ];
 
   home.activation = let
-    # nix = (import (flakeRoot + /hm/programs/nix/setup-debian.nix)) {
-    #   inherit pkgs;
-    #   inherit lib;
-    # };
-    #
     sudo = (import (flakeRoot + /hm/programs/sudo/setup-debian.nix)) {
       inherit pkgs;
       inherit lib;
@@ -170,9 +165,14 @@
       inherit pkgs;
       inherit lib;
     };
+
+    nix = (import (flakeRoot + /hm/programs/nix/setup-debian-home.nix)) {
+      inherit pkgs;
+      inherit lib;
+    };
   in {
-    # inherit (nix) setupNix;
     inherit (sudo) setupSudoers;
     inherit (mc) setupMcWrapper;
+    inherit (nix) setupNix;
   };
 }

@@ -1,4 +1,10 @@
-{...}: {
+{
+  config,
+  pkgs,
+  lib,
+  flakeRoot,
+  ...
+}: {
   imports = [
     ./rh.nix
   ];
@@ -19,7 +25,17 @@
 
   home.sessionPath = [
     "${config.home.homeDirectory}/.nix-profile/bin"
+    "/nix/var/nix/profiles/per-user/root/profile/bin"
     "/nix/var/nix/profiles/default/sbin"
     "/nix/var/nix/profiles/default/bin"
   ];
+
+  home.activation = let
+    nix = (import (flakeRoot + /hm/programs/nix/setup-debian-home.nix)) {
+      inherit pkgs;
+      inherit lib;
+    };
+  in {
+    inherit (nix) setupNix;
+  };
 }

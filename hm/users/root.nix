@@ -3,7 +3,7 @@
   pkgs,
   # self,
   lib,
-  inputs,
+  # inputs,
   flakeRoot,
   dotfiles,
   ...
