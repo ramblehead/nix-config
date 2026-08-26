@@ -195,6 +195,9 @@
           inputs.fenix.overlays.default
           # inputs.rust-overlay.overlays.default
         ];
+        config.permittedInsecurePackages = [
+          "ventoy-qt5-1.1.12"
+        ];
         config.allowUnfree = true;
       };
 
