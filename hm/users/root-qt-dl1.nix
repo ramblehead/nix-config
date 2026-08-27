@@ -144,6 +144,7 @@
       plantuml-c4
       # wireguard-tools
 
+      ventoy-full-qt
       remmina
       alpaca
       wl-clipboard
