@@ -605,14 +605,15 @@
       # Browsers and Infosecurity
       # /b/{
 
-      (google-chrome.override {
-        commandLineArgs = [
-          # Numpad del key is not working on --ozone-platform=wayland (default):
-          # e.g. https://issues.chromium.org/issues/429730008
-          # TODO: this should be removed after the above issue is fixed
-          "--ozone-platform=x11"
-        ];
-      })
+      # (google-chrome.override {
+      #   commandLineArgs = [
+      #     # Numpad del key is not working on --ozone-platform=wayland (default):
+      #     # e.g. https://issues.chromium.org/issues/429730008
+      #     # TODO: this should be removed after the above issue is fixed
+      #     "--ozone-platform=x11"
+      #   ];
+      # })
+      google-chrome
 
       chromium
       microsoft-edge
