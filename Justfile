@@ -52,9 +52,12 @@ hm-news:
 
 # remove all generations older than 7 days
 clean:
+  # system profile
   sudo nix profile wipe-history \
     --profile /nix/var/nix/profiles/system  \
     --older-than 7d
+  # user profile
+  nix profile wipe-history --older-than 7d
   sudo nixos-rebuild boot
 
 # remove all generations
@@ -67,10 +70,8 @@ clean-all:
 
 # Garbage collect all unused nix store entries
 gc:
+  # sudo nix store gc --print-dead
   sudo nix store gc --debug
-  nix store gc --debug
-  sudo nix-collect-garbage --delete-old
-  nix-collect-garbage --delete-old
 
 # Remove all reflog entries and prune unreachable objects
 git-gc:
