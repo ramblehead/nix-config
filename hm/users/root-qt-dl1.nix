@@ -62,6 +62,8 @@
 
       emacsPackages.vterm
 
+      mdserve
+
       pkgs-unstable.aider-chat
       pkgs-unstable.claude-code
       # pkgs-unstable.cursor-cli
@@ -125,7 +127,7 @@
 
       dconf-editor
       gnome-tweaks
-      raider
+      raider # Permanently delete your files (also named File Shredder)
       # libappindicator
 
       gtk3

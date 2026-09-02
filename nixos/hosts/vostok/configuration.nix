@@ -501,14 +501,14 @@
 
       git
 
-      (pkgs-unstable.emacs.override {
+      (emacs.override {
         withNativeCompilation = true;
         withPgtk = true;
         # withGTK3 = true;
       })
 
-      pkgs-unstable.emacsPackages.vterm
-      pkgs-unstable.emacsPackages.clang-format
+      emacsPackages.vterm
+      emacsPackages.clang-format
 
       # zed-editor
       # jetbrains.rust-rover
@@ -583,13 +583,13 @@
       # Equivalent of the apt install build-essential and min python
       # /b/{
 
-      # gcc
-      # gnumake
-      # pkg-config
-      # autoconf
-      # automake
-      # libtool
-      # cmake
+      gcc
+      gnumake
+      pkg-config
+      autoconf
+      automake
+      libtool
+      cmake
 
       # /b/}
 
@@ -649,7 +649,7 @@
       dconf-editor
       gnome-tweaks
       raider # Permanently delete your files (also named File Shredder)
-      libappindicator
+      # libappindicator
 
       gtk3
       wl-clipboard
