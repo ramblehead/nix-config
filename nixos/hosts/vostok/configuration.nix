@@ -517,6 +517,9 @@
       # pkgs-unstable.cursor-cli
       # pkgs-unstable.code-cursor
 
+      # vscode
+      mdserve
+
       # /b/}
 
       # Rust
