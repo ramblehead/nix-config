@@ -30,7 +30,8 @@
 
   home.sessionPath = [
     "${config.home.homeDirectory}/.nix-profile/bin"
-    "/nix/var/nix/profiles/per-user/root/profile/bin"
+    # This path should be profiles/default/bin
+    # "/nix/var/nix/profiles/per-user/root/profile/bin"
     "/nix/var/nix/profiles/default/sbin"
     "/nix/var/nix/profiles/default/bin"
   ];

@@ -659,8 +659,8 @@
       gparted # Graphical disk partitioning tool
 
       gnomeExtensions.arcmenu
-      gnomeExtensions.date-menu-formatter
-      gnomeExtensions.dash-to-panel
+      gnomeExtensions.date-menu-formatter # EEE MMM Z y-MM-dd  HH : mm : ss
+      gnomeExtensions.dash-to-panel # 38 px
       # gnomeExtensions.gtk4-desktop-icons-ng-ding
       gnomeExtensions.caffeine
       gnomeExtensions.clipboard-indicator
