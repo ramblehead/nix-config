@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  pkgs-25_05,
   pkgs-unstable,
   inputs,
   lib,
@@ -52,28 +51,13 @@
       # inputs.wezterm.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Knowledge base on top of a local folder of plain Markdown files
-      (config.lib.nixGL.wrap (obsidian.override {
-        commandLineArgs = [
-          # Numpad del key is not working on --ozone-platform=wayland (default):
-          # e.g. https://issues.chromium.org/issues/429730008
-          # TODO: this should be removed after the above issue is fixed
-          "--ozone-platform=x11"
-        ];
-      }))
-
-      (config.lib.nixGL.wrap (google-chrome.override {
-        commandLineArgs = [
-          # Numpad del key is not working on --ozone-platform=wayland (default):
-          # e.g. https://issues.chromium.org/issues/429730008
-          # TODO: this should be removed after the above issue is fixed
-          "--ozone-platform=x11"
-        ];
-      }))
+      (config.lib.nixGL.wrap obsidian)
+      (config.lib.nixGL.wrap google-chrome)
 
       (emacs.override {
         withNativeCompilation = true;
-        # withPgtk = true;
-        withGTK3 = true;
+        withPgtk = true;
+        # withGTK3 = true;
       })
 
       emacsPackages.vterm
@@ -82,11 +66,6 @@
       pkgs-unstable.claude-code
       # pkgs-unstable.cursor-cli
       # pkgs-unstable.code-cursor
-
-      # Native KDE Dolphin in current Debian 12 is leaking memory
-      # and hungs. The following installation seems to fix it.
-      pkgs-25_05.libsForQt5.dolphin
-      pkgs-25_05.libsForQt5.gwenview
 
       # (fenix.stable.withComponents [
       (fenix.complete.withComponents [
@@ -141,19 +120,38 @@
 
       # rust-analyzer-nightly
 
+      # Gnome
+      # /b/{
+
+      dconf-editor
+      gnome-tweaks
+      raider
+      # libappindicator
+
+      gtk3
+      wl-clipboard
+
+      pavucontrol # PulseAudio Volume Control
+      gsmartcontrol # SMART tool for modern HDD and SSD
+      gparted # Graphical disk partitioning tool
+
+      # /b/}
+
       plantuml-c4
       # wireguard-tools
+
+      pkgs-unstable.telegram-desktop
 
       ventoy-full-qt
       remmina
       alpaca
-      wl-clipboard
     ]);
 
   home.sessionPath = [
-    "${config.home.homeDirectory}/.nix-profile/bin"
+    # These paths are added by default
+    # "${config.home.homeDirectory}/.nix-profile/bin"
+    # "/nix/var/nix/profiles/default/bin"
     "/nix/var/nix/profiles/default/sbin"
-    "/nix/var/nix/profiles/default/bin"
   ];
 
   home.activation = let

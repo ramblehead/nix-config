@@ -97,25 +97,11 @@ kde-cache-rebuild:
 
 # Initialise root (global) home-manager
 hm-init-host *hostname:
-  if [ -z "{{hostname}}" ]; then \
-    sudo -i nix run home-manager/release-25.11 -- init --switch "$PWD#$(hostname)"; \
-  else \
-    sudo -i nix run home-manager/release-25.11 -- init --switch "$PWD#{{hostname}}"; \
-  fi
-  @just hm-switch-host {{hostname}}
+  sudo -i nix run home-manager/release-26.05 -- switch --flake "$PWD#$(hostname)"
 
 # Switch host (root - global) home-manager
 hm-switch-host *hostname:
-  if [ -z "{{hostname}}" ]; then \
-    sudo home-manager switch --flake "$PWD#$(hostname)"; \
-  else \
-    sudo home-manager switch --flake "$PWD#{{hostname}}"; \
-  fi
-
-# Initialise user home-manager
-hm-init-user *username:
-  UN={{username}}; home-manager init --switch "$PWD${UN:+#}$UN"
-  @just hm-switch {{username}}
+  sudo home-manager switch --flake "$PWD#$(hostname)"
 
 # Switch user home-manager
 hm-switch-user *username:
