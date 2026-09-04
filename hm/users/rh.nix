@@ -6,8 +6,6 @@
   inputs,
   flakeRoot,
   dotfiles,
-  hmUsername,
-  hmHomeDirectory,
   ...
 }: let
   dotfilesLib = (import (flakeRoot + /lib/dotfiles.nix)) {
@@ -17,11 +15,6 @@
   };
   inherit (dotfilesLib) deduceRuntimePath;
 in {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = hmUsername;
-  home.homeDirectory = hmHomeDirectory;
-
   # link the configuration file in current directory to the specified location
   # in home directory home.file.".config/i3/wallpaper.jpg".source =
   # ./wallpaper.jpg;

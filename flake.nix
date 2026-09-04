@@ -156,12 +156,12 @@
           home-manager.useUserPackages = true;
 
           home-manager.users.rh = {
-            specialArgs = {
-              hmUsername = "rh";
-              hmHomeDirectory = "/home/rh";
-            };
-
             imports = [./hm/users/rh-vostok.nix];
+
+            # Home Manager needs a bit of information about you and the paths it
+            # should manage.
+            home.username = "rh";
+            home.homeDirectory = "/home/rh";
           };
 
           home-manager.users.root = import ./hm/users/root.nix;
@@ -219,6 +219,11 @@
       };
 
       modules = [
+        {
+          home.username = "rh";
+          home.homeDirectory = "/home/rh";
+        }
+
         ./hm/users/rh-qt-dl1.nix
       ];
 
@@ -227,8 +232,6 @@
         inherit inputs;
         inherit flakeRoot;
         inherit dotfiles;
-        hmUsername = "rh";
-        hmHomeDirectory = "/home/rh";
         isNixOS = false;
       };
     };
@@ -240,6 +243,11 @@
       };
 
       modules = [
+        {
+          home.username = "rh-rdp";
+          home.homeDirectory = "/home/rh-rdp";
+        }
+
         ./hm/users/rh-qt-dl1.nix
       ];
 
@@ -248,8 +256,6 @@
         inherit inputs;
         inherit flakeRoot;
         inherit dotfiles;
-        hmUsername = "rh-rdp";
-        hmHomeDirectory = "/home/rh-rdp";
         isNixOS = false;
       };
     };
