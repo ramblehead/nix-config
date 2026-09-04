@@ -151,10 +151,6 @@
       alpaca
     ]);
 
-  home.sessionPath = [
-    "$HOME/.nix-profile/bin"
-  ];
-
   home.activation = let
     sudo = (import (flakeRoot + /hm/programs/sudo/setup-debian.nix)) {
       inherit pkgs;

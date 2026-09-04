@@ -29,9 +29,9 @@
     # CLAUDE_CODE_DISABLE_UNKNOWN_MODEL_WINDOW_ENFORCEMENT = "1";
   };
 
-  home.sessionPath = [
-    "$HOME/.nix-profile/bin"
-  ];
+  # home.sessionPath = [
+  #   "$HOME/.nix-profile/bin"
+  # ];
 
   home.activation = let
     nix = (import (flakeRoot + /hm/programs/nix/setup-debian-home.nix)) {

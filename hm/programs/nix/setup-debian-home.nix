@@ -14,6 +14,11 @@
         run sh -c '
           {
             printf "%s\n" "$1"
+            printf "%s\n" \
+              "case \":\$PATH:\" in" \
+              "  *\":\$HOME/.nix-profile/bin:\"*) ;;" \
+              "  *) export PATH=\"\$HOME/.nix-profile/bin\''${PATH:+:}\$PATH\" ;;" \
+              "esac"
             cat "$2"
           } > "$2.tmp" && mv "$2.tmp" "$2"
         ' _ "$hm_vars_line" "$file"
