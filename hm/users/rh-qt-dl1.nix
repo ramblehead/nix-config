@@ -10,7 +10,7 @@
   ];
 
   home.sessionVariables = {
-    ANTHROPIC_BASE_URL = "$(cat \"${config.home.homeDirectory}/share/data/pit/ai-api/qt-ollama-url\")";
+    ANTHROPIC_BASE_URL = "$(cat \"${config.home.homeDirectory}/share/data/pit/ai-api/qt-ollama-url\" 2>/dev/null)";
     ANTHROPIC_AUTH_TOKEN = "ollama";
 
     ANTHROPIC_MODEL = "qwen3-coder:30b";

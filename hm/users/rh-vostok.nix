@@ -20,6 +20,7 @@ in {
 
   home.sessionVariables = {
     # claude-code DeepSeek configuration
+    ANTHROPIC_AUTH_TOKEN = "$(cat \"${config.home.homeDirectory}/share/data/pit/ai-api/deepseek\" 2>/dev/null)";
     ANTHROPIC_BASE_URL = "https://api.deepseek.com/anthropic";
     ANTHROPIC_MODEL = "deepseek-v4-pro[1m]";
     ANTHROPIC_DEFAULT_OPUS_MODEL = "deepseek-v4-pro[1m]";
@@ -30,14 +31,6 @@ in {
     CLAUDE_CODE_AUTO_COMPACT_WINDOW = "786432";
 
     CLAUDE_CODE_EFFORT_LEVEL = "max";
-  };
-
-  programs.bash = {
-    initExtra = ''
-      if [ -f "$HOME/share/data/pit/ai-api/deepseek" ]; then
-        export ANTHROPIC_AUTH_TOKEN="$(cat "$HOME/share/data/pit/ai-api/deepseek")"
-      fi
-    '';
   };
 
   home.activation = {
