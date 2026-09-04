@@ -1,3 +1,3 @@
 [submodule "dotfiles"]
 	path = dotfiles
-	url = git@github.com:ramblehead/dotfiles.git
+	url = ssh://git@github.com/ramblehead/dotfiles.git
