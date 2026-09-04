@@ -97,18 +97,27 @@ kde-cache-rebuild:
   fc-cache -f -v
 
 # Initialise root (global) home-manager
-hm-init-host *hostname:
+hm-init-host:
   sudo -i nix run home-manager/release-26.05 -- switch --flake "$PWD#$(hostname)"
 
 # Switch host (root - global) home-manager
-hm-switch-host *hostname:
+hm-switch-host:
   sudo home-manager switch --flake "$PWD#$(hostname)"
 
-# Switch user home-manager
+# hm-switch-user *username:
+#   # UN={{username}}; sudo -i"${UN:+u }$UN" home-manager switch --flake "$PWD${UN:+#}$UN"
+#   UN={{username}}; home-manager switch --flake "$PWD${UN:+#}$UN@$(hostname)"
+
 hm-switch-user *username:
-  UN={{username}}; home-manager switch --flake "$PWD${UN:+#}$UN"
+  if [ -z "{{username}}" ]; then \
+    home-manager switch --flake "$PWD"; \
+  else \
+    UN={{username}}; echo sudo -i"${UN:+u }$UN" \
+    home-manager switch --flake "$PWD#$UN@$(hostname)"; \
+  fi
 
 # Run `hm-init-user` an `hm-switch-user`
 hm-switch:
   @just hm-switch-host
-  @just hm-switch-user
+  @just hm-switch-user rh
+  @just hm-switch-user rh-rdp

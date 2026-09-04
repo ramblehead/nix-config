@@ -225,6 +225,25 @@
       };
     };
 
+    homeConfigurations."rh-rdp@qt-dl1" = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
+
+      modules = [
+        ./hm/users/rh-rdp-qt-dl1.nix
+      ];
+
+      extraSpecialArgs = {
+        inherit self;
+        inherit inputs;
+        inherit flakeRoot;
+        inherit dotfiles;
+        isNixOS = false;
+      };
+    };
+
     homeConfigurations."glider" = home-manager.lib.homeManagerConfiguration (let
       pkgs-unstable = import nixpkgs-unstable {
         system = "x86_64-linux";
