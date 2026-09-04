@@ -236,7 +236,7 @@
       };
 
       modules = [
-        ./hm/users/rh-rdp-qt-dl1.nix
+        ./hm/users/rh-qt-dl1.nix
       ];
 
       extraSpecialArgs = {
