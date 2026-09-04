@@ -155,18 +155,22 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.rh = import ./hm/users/rh-vostok.nix;
+          home-manager.users.rh = {
+            specialArgs = {
+              hmUsername = "rh";
+              hmHomeDirectory = "/home/rh";
+            };
+
+            imports = [./hm/users/rh-vostok.nix];
+          };
+
           home-manager.users.root = import ./hm/users/root.nix;
 
-          # Optionally, use home-manager.extraSpecialArgs to pass
-          # arguments to home.nix
           home-manager.extraSpecialArgs = {
             inherit self;
             inherit inputs;
             inherit flakeRoot;
             inherit dotfiles;
-            hmUsername = "rh";
-            hmHomeDirectory = "/home/rh";
             # isNixOS = true;
           };
         }
