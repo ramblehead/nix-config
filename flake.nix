@@ -165,6 +165,8 @@
             inherit inputs;
             inherit flakeRoot;
             inherit dotfiles;
+            hmUsername = "rh";
+            hmHomeDirectory = "/home/rh";
             # isNixOS = true;
           };
         }
@@ -221,6 +223,8 @@
         inherit inputs;
         inherit flakeRoot;
         inherit dotfiles;
+        hmUsername = "rh";
+        hmHomeDirectory = "/home/rh";
         isNixOS = false;
       };
     };
@@ -240,6 +244,8 @@
         inherit inputs;
         inherit flakeRoot;
         inherit dotfiles;
+        hmUsername = "rh-rdp";
+        hmHomeDirectory = "/home/rh-rdp";
         isNixOS = false;
       };
     };

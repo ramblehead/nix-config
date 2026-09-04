@@ -104,20 +104,11 @@ hm-init-host:
 hm-switch-host:
   sudo home-manager switch --flake "$PWD#$(hostname)"
 
-# hm-switch-user *username:
-#   # UN={{username}}; sudo -i"${UN:+u }$UN" home-manager switch --flake "$PWD${UN:+#}$UN"
-#   UN={{username}}; home-manager switch --flake "$PWD${UN:+#}$UN@$(hostname)"
-
-hm-switch-user *username:
-  if [ -z "{{username}}" ]; then \
-    home-manager switch --flake "$PWD"; \
-  else \
-    UN={{username}}; echo sudo -i"${UN:+u }$UN" \
-    home-manager switch --flake "$PWD#$UN@$(hostname)"; \
-  fi
+# Switch user home-manager
+hm-switch-user:
+  home-manager switch --flake "$PWD"
 
 # Run `hm-init-user` an `hm-switch-user`
 hm-switch:
   @just hm-switch-host
-  @just hm-switch-user rh
-  @just hm-switch-user rh-rdp
+  @just hm-switch-user
