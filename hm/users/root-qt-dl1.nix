@@ -152,10 +152,7 @@
     ]);
 
   home.sessionPath = [
-    # These paths are added by default
-    # "${config.home.homeDirectory}/.nix-profile/bin"
-    # "/nix/var/nix/profiles/default/bin"
-    "/nix/var/nix/profiles/default/sbin"
+    "$HOME/.nix-profile/bin"
   ];
 
   home.activation = let
