@@ -670,6 +670,7 @@
       gnomeExtensions.system-monitor-next
       gnomeExtensions.appindicator # Old tray icons, e.g. Telegram
       gnomeExtensions.no-overview
+      gnomeExtensions.allow-locked-remote-desktop
 
       # /b/}
 

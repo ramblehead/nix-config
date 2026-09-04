@@ -122,12 +122,14 @@
 
       # rust-analyzer-nightly
 
+      rsync
+      raider # Permanently delete your files (also named File Shredder)
+
       # Gnome
       # /b/{
 
       dconf-editor
       gnome-tweaks
-      raider # Permanently delete your files (also named File Shredder)
       # libappindicator
 
       gtk3
