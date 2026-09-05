@@ -658,6 +658,9 @@
       gsmartcontrol # SMART tool for modern HDD and SSD
       gparted # Graphical disk partitioning tool
 
+      # Part of Gnome shell
+      # gnomeExtensions.gnome-extensions-app
+
       gnomeExtensions.arcmenu
       gnomeExtensions.date-menu-formatter # EEE MMM Z y-MM-dd  HH : mm : ss
       gnomeExtensions.dash-to-panel # 38 px
