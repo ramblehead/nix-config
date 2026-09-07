@@ -10,8 +10,8 @@
 
     readonly MC_CONF="${config.home.homeDirectory}/.config/mc"
     # run mv -v "$MC_CONF" "''${MC_CONF}.$(date "+%Y%m%dT%H%M%S%3N%z")"
-    run rm -rf "''${MC_CONF}~"
-    run mv -v "$MC_CONF" "''${MC_CONF}~"
+    run rm -vrf "''${MC_CONF}~"
+    run mv -vf "$MC_CONF" "''${MC_CONF}~" ||:
     run mkdir -p "$MC_CONF"
     run cp -n "${dotfiles}/.config/mc/ini" "$MC_CONF"
     run chmod ug+w "$MC_CONF/ini"
