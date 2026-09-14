@@ -518,7 +518,8 @@
       # pkgs-unstable.code-cursor
 
       # vscode
-      mdserve
+      glow
+      inputs.arto.packages.${stdenv.hostPlatform.system}.default
 
       # /b/}
 
