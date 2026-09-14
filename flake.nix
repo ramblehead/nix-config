@@ -51,7 +51,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    arto.url = "github:arto-app/Arto";
+    # arto.url = "github:arto-app/Arto";
 
     # wezterm = {
     #   # Current MS Windows release version

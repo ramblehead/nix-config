@@ -519,7 +519,8 @@
 
       # vscode
       glow
-      inputs.arto.packages.${stdenv.hostPlatform.system}.default
+      mdserve
+      # inputs.arto.packages.${stdenv.hostPlatform.system}.default
 
       # /b/}
 
