@@ -28,11 +28,11 @@
       inherit inputs;
     };
 
-    database = (import (flakeRoot + /software/selections/database.nix)) {
-      inherit pkgs;
-      inherit pkgs-unstable;
-      inherit inputs;
-    };
+    # database = (import (flakeRoot + /software/selections/database.nix)) {
+    #   inherit pkgs;
+    #   inherit pkgs-unstable;
+    #   inherit inputs;
+    # };
 
     llm = (import (flakeRoot + /software/selections/llm.nix)) {
       inherit pkgs;
@@ -41,7 +41,7 @@
   in
     utils-cli.packages
     ++ utils-gui.packages
-    ++ database.packages
+    # ++ database.packages
     ++ llm.packages
     ++ (with pkgs; [
       (config.lib.nixGL.wrap alacritty)
@@ -65,7 +65,8 @@
       mdserve
 
       pkgs-unstable.aider-chat
-      pkgs-unstable.claude-code
+      # pkgs-unstable.claude-code
+      claude-code
       # pkgs-unstable.cursor-cli
       # pkgs-unstable.code-cursor
 
@@ -121,6 +122,8 @@
       # })
 
       # rust-analyzer-nightly
+
+      sqlitebrowser
 
       rsync
       raider # Permanently delete your files (also named File Shredder)
