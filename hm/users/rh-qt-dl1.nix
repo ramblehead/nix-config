@@ -13,9 +13,9 @@
     ANTHROPIC_BASE_URL = "$(cat \"${config.home.homeDirectory}/share/data/pit/ai-api/qt-ollama-url\" 2>/dev/null)";
     ANTHROPIC_AUTH_TOKEN = "ollama";
 
-    ANTHROPIC_MODEL = "qwen3-coder:30b";
-    ANTHROPIC_DEFAULT_OPUS_MODEL = " qwen3.6:35b ";
-    ANTHROPIC_DEFAULT_SONNET_MODEL = "qwen3.8:27b";
+    ANTHROPIC_MODEL = "qwen3.8:27b";
+    ANTHROPIC_DEFAULT_OPUS_MODEL = "qwen3.6:35b";
+    ANTHROPIC_DEFAULT_SONNET_MODEL = "qwen3-coder:30b";
     ANTHROPIC_DEFAULT_HAIKU_MODEL = "muse-glimmer:30b";
     CLAUDE_CODE_SUBAGENT_MODEL = "qwen3.8:27b";
 
