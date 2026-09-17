@@ -13,7 +13,7 @@
       if ! grep -Fxq "$hm_vars_line" "$file"; then
         run sh -c '
           {
-            printf "%s\n" "$1"
+            printf "%s\n" "unset __HM_SESS_VARS_SOURCED\n$1"
             printf "%s\n" \
               "case \":\$PATH:\" in" \
               "  *\":\$HOME/.nix-profile/bin:\"*) ;;" \
