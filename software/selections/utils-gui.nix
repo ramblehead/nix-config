@@ -5,10 +5,11 @@
 }: {
   packages = with pkgs;
     [
-      # Infosecurity
+      # Files, archives, encryption
       # /b/{
 
       keepassxc
+      peazip
 
       # /b/}
 
