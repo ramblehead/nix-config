@@ -33,6 +33,7 @@
     # zoxide # cd command replacement with intelligent auto-completion
     eza # ls command replacement with tree output
     fd # fast and user-friendly alternative to find
+    pv # Tool for monitoring the progress of data through a pipeline
 
     # /b/}
 
