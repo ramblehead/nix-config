@@ -653,8 +653,9 @@
       raider # Permanently delete your files (also named File Shredder)
       # libappindicator
 
-      gtk3
-      wl-clipboard
+      gtk3 # Multi-platform toolkit for creating graphical user interfaces
+      wl-clipboard # Command-line copy/paste utilities for Wayland
+      waypipe # Network proxy for Wayland clients (applications)
 
       pavucontrol # PulseAudio Volume Control
       gsmartcontrol # SMART tool for modern HDD and SSD

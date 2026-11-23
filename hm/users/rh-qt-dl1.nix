@@ -29,6 +29,19 @@
     # CLAUDE_CODE_DISABLE_UNKNOWN_MODEL_WINDOW_ENFORCEMENT = "1";
   };
 
+  # OpenSSH agent for CLI/SSH sessions, so key passphrases are asked
+  # once per session instead of on every connection. Note: home-manager
+  # does not manage the shell on this Debian host, so SSH_AUTH_SOCK is
+  # not exported by shell profile code here - add the following to
+  # ~/.profile on this host:
+  #
+  #   if [ -z "$SSH_AUTH_SOCK" -o -z "$SSH_CONNECTION" ]; then
+  #     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent"
+  #   fi
+  #
+  # The guard preserves agents forwarded via `ssh -A`.
+  # services.ssh-agent.enable = true;
+
   # home.sessionPath = [
   #   "$HOME/.nix-profile/bin"
   # ];
