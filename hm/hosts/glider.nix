@@ -56,7 +56,7 @@
 
       emacsPackages.vterm
 
-      pkgs-unstable.aider-chat
+      pkgs.aider-chat
 
       # (fenix.stable.withComponents [
       # (fenix.complete.withComponents [

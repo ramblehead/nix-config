@@ -64,7 +64,7 @@
 
       mdserve
 
-      pkgs-unstable.aider-chat
+      pkgs.aider-chat
       # pkgs-unstable.claude-code
       claude-code
       # pkgs-unstable.cursor-cli

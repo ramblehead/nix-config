@@ -33,6 +33,13 @@ in {
     CLAUDE_CODE_EFFORT_LEVEL = "max";
   };
 
+  # OpenSSH agent for CLI/SSH sessions, so key passphrases are asked
+  # once per session instead of on every connection. GUI sessions
+  # already use the gcr-ssh-agent (services.gnome.gcr-ssh-agent), and
+  # nixpkgs asserts programs.ssh.startAgent against it - hence the
+  # home-manager agent here instead of the NixOS-level option.
+  services.ssh-agent.enable = true;
+
   home.activation = {
     backupExistingMonitorsXml = lib.hm.dag.entryBefore ["linkGeneration"] ''
       if [ -e "${config.home.homeDirectory}/.config/monitors.xml" ]; then
