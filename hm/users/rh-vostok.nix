@@ -40,6 +40,16 @@ in {
   # home-manager agent here instead of the NixOS-level option.
   services.ssh-agent.enable = true;
 
+  # The ssh-agent module only exports SSH_AUTH_SOCK in ~/.profile,
+  # which non-login shells (e.g. terminal tabs) never source. Repeat
+  # the export in the home-manager-managed ~/.bashrc; the guard also
+  # preserves agents forwarded via `ssh -A`.
+  programs.bash.initExtra = ''
+    if [ -z "$SSH_AUTH_SOCK" -o -z "$SSH_CONNECTION" ]; then
+      export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent"
+    fi
+  '';
+
   home.activation = {
     backupExistingMonitorsXml = lib.hm.dag.entryBefore ["linkGeneration"] ''
       if [ -e "${config.home.homeDirectory}/.config/monitors.xml" ]; then
