@@ -118,6 +118,24 @@
     gnome-settings-daemon.enable = true;
   };
 
+  # Unlock the login keyring on ssh password logins so GUI apps
+  # running over waypipe/ssh (without a seat login) can decrypt
+  # stored tokens and serve the Secret portal. Key-auth ssh logins
+  # do not unlock; the keyring stays unlocked once opened.
+  security.pam.services.sshd.enableGnomeKeyring = true;
+
+  # Give the bus-activated xdg-desktop-portal a backend set when no
+  # desktop session is logged in (no XDG_CURRENT_DESKTOP): the common
+  # portals.conf is the fallback read when no per-desktop file
+  # matches, which also makes the Secret and GlobalShortcuts portals
+  # available to remote apps. The Secret portal is only provided by
+  # the gnome-keyring backend, so it is mapped explicitly (as in the
+  # generated niri-portals.conf).
+  xdg.portal.config.common = {
+    default = ["gnome" "gtk"];
+    "org.freedesktop.impl.portal.Secret" = ["gnome-keyring"];
+  };
+
   programs.niri.enable = true;
 
   # see https://discourse.nixos.org/t/configuring-remote-desktop-access-with-gnome-remote-desktop/48023/3
